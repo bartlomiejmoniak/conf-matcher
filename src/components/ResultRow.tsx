@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import type { VenueView } from '../lib/types';
 import { fmtDate, fmtRange } from '../lib/dates';
 import { icsHref } from '../lib/ics';
@@ -15,6 +16,7 @@ import {
   hasRankings,
   place,
 } from './Bits';
+import { ArrowLeftRight, CalendarPlus, Check, ChevronDown, ChevronUp, ExternalLink, FileText, Globe, ICON, Save } from './Icons';
 
 interface Props extends ViewProps {
   v: VenueView;
@@ -60,19 +62,28 @@ export default function ResultRow({ v, expanded, onExpand, data, saved, compare,
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6, fontSize: 12, paddingTop: 2 }}>
           <RankingBadges venue={v} taxonomy={data.taxonomy} />
           {hasRankings(v, data.taxonomy) && <span className="cg-muted">·</span>}
-          <AcceptanceText pct={v.acceptance.latestPct} />
+          <AcceptanceText venue={v} />
         </div>
       </div>
 
       <div className="cg-actions">
         <button type="button" className="btn btn-secondary" onClick={() => toggleSaved(v.id)} aria-pressed={saved.includes(v.id)}>
-          {saved.includes(v.id) ? 'Saved ✓' : 'Save'}
+          {saved.includes(v.id) ? <Check size={ICON} /> : <Save size={ICON} />}
+          {saved.includes(v.id) ? 'Saved' : 'Save'}
         </button>
         <button type="button" className="btn btn-secondary" onClick={() => toggleCompare(v.id)} aria-pressed={compare.includes(v.id)}>
-          {compare.includes(v.id) ? 'Comparing ✓' : 'Compare'}
+          {compare.includes(v.id) ? <Check size={ICON} /> : <ArrowLeftRight size={ICON} />}
+          {compare.includes(v.id) ? 'Comparing' : 'Compare'}
         </button>
+        {v.links?.website && (
+          <a className="btn btn-secondary" href={v.links.website} target="_blank" rel="noreferrer">
+            <Globe size={ICON} />
+            Website
+          </a>
+        )}
         <button type="button" className="btn btn-ghost" onClick={onExpand} aria-expanded={expanded}>
-          {expanded ? 'Less ▲' : 'More ▼'}
+          {expanded ? <ChevronUp size={ICON} /> : <ChevronDown size={ICON} />}
+          {expanded ? 'Less' : 'More'}
         </button>
       </div>
 
@@ -131,16 +142,45 @@ export default function ResultRow({ v, expanded, onExpand, data, saved, compare,
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
               {ics && (
                 <a className="btn btn-secondary" href={ics} download={`${v.id}-deadline.ics`} style={{ fontSize: 12 }}>
+                  <CalendarPlus size={ICON} />
                   Add to calendar
                 </a>
               )}
               <button type="button" className="btn btn-ghost" onClick={() => openDetail(v.id)} style={{ fontSize: 12 }}>
+                <FileText size={ICON} />
                 Full record
               </button>
-              {v.links?.cfp && <a className="btn btn-ghost" href={v.links.cfp} target="_blank" rel="noreferrer" style={{ fontSize: 12 }}>CFP</a>}
-              {v.links?.website && <a className="btn btn-ghost" href={v.links.website} target="_blank" rel="noreferrer" style={{ fontSize: 12 }}>Site</a>}
+              {v.links?.cfp && (
+                <a className="btn btn-ghost" href={v.links.cfp} target="_blank" rel="noreferrer" style={{ fontSize: 12 }}>
+                  <ExternalLink size={ICON} />
+                  CFP
+                </a>
+              )}
+              {v.links?.website && (
+                <a className="btn btn-ghost" href={v.links.website} target="_blank" rel="noreferrer" style={{ fontSize: 12 }}>
+                  <Globe size={ICON} />
+                  Site
+                </a>
+              )}
             </div>
             {v.notes && <div className="cg-muted" style={{ fontSize: 11, marginTop: 10, lineHeight: 1.55 }}>{v.notes}</div>}
+          </div>
+
+          {/* Provenance closes the panel, the way it closes the detail page. Every date above
+              is only as current as this line says it is, so it belongs with them rather than
+              one screen away. */}
+          <div
+            className="cg-muted"
+            style={{ gridColumn: '1 / -1', fontSize: 11, lineHeight: 1.6, paddingTop: 12, marginTop: 4, borderTop: '1px solid var(--color-divider)' }}
+          >
+            Last verified {fmtDate(v.source.verifiedOn)}
+            <ConfidenceNote venue={v} />
+            {v.source.urls.length > 0 && ' · '}
+            {v.source.urls.map((u, i) => (
+              <a key={i} href={u} target="_blank" rel="noreferrer" style={{ marginRight: 8 }}>
+                source {i + 1}
+              </a>
+            ))}
           </div>
         </div>
       )}
@@ -148,8 +188,8 @@ export default function ResultRow({ v, expanded, onExpand, data, saved, compare,
   );
 }
 
-export function Facts({ rows }: { rows: [string, string | undefined | null][] }) {
-  const present = rows.filter(([, v]) => v && v !== '—');
+export function Facts({ rows }: { rows: [string, ReactNode][] }) {
+  const present = rows.filter(([, v]) => v !== null && v !== undefined && v !== '' && v !== '—');
   if (!present.length) return <div className="cg-muted" style={{ fontSize: 12 }}>Not published.</div>;
   return (
     <dl style={{ margin: 0, fontSize: 12, lineHeight: 1.6 }}>

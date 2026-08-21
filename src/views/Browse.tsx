@@ -8,6 +8,7 @@ import { filtersActive } from '../lib/urlState';
 import { Chip, EmptyState, Label, SmallLabel } from '../components/Bits';
 import ResultRow from '../components/ResultRow';
 import { type ViewProps } from './shared';
+import { ICON_SM, X } from '../components/Icons';
 
 interface Props extends ViewProps {
   filters: Filters;
@@ -144,7 +145,7 @@ export default function Browse(props: Props) {
                   style={{ border: 0, cursor: 'pointer', fontFamily: 'var(--font-body)', gap: 6 }}
                   aria-label={`Remove topic ${t}`}
                 >
-                  {t} <span style={{ opacity: 0.55 }}>✕</span>
+                  {t} <X size={ICON_SM} style={{ opacity: 0.55 }} />
                 </button>
               ))}
               <select

@@ -9,6 +9,7 @@ import Detail from './views/Detail';
 import Compare from './views/Compare';
 import Watchlist from './views/Watchlist';
 import { EmptyState } from './components/Bits';
+import { Flag, ICON, Moon, Sun } from './components/Icons';
 
 const DEFAULT_PAPER: PaperProfile = { topics: [], tiers: [], readyBy: '' };
 
@@ -130,7 +131,8 @@ export default function App() {
             onClick={() => setTheme((t) => (t === 'light' ? 'dark' : 'light'))}
             style={{ fontSize: 12, padding: '6px 10px', minWidth: 74, justifyContent: 'flex-start' }}
           >
-            {theme === 'light' ? '☾ Dark' : '☀ Light'}
+            {theme === 'light' ? <Moon size={ICON} /> : <Sun size={ICON} />}
+            {theme === 'light' ? 'Dark' : 'Light'}
           </button>
         </div>
       </div>
@@ -268,7 +270,7 @@ function IssueBanner({ issues }: { issues: DataIssue[] }) {
           onClick={() => setOpen((o) => !o)}
           style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 12, color: 'var(--color-accent-800)' }}
         >
-          ⚑ {issues.length} data {issues.length === 1 ? 'issue' : 'issues'}
+          <Flag size={ICON} /> {issues.length} data {issues.length === 1 ? 'issue' : 'issues'}
           {errors ? ` (${errors} blocking)` : ''} · {open ? 'hide' : 'show'}
         </button>
         {open && (

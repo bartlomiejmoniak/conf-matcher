@@ -2,6 +2,7 @@ import { addMonths, fmtDate, fmtMonth, fmtRange, utc } from '../lib/dates';
 import { effectiveDate } from '../lib/matching';
 import { AcceptanceText, EmptyState, SmallLabel, place } from '../components/Bits';
 import type { ViewProps } from './shared';
+import { Flag, ICON_SM, X } from '../components/Icons';
 
 interface Props extends ViewProps {
   browse: () => void;
@@ -120,7 +121,7 @@ export default function Compare({ compare, byId, data, toggleCompare, openDetail
             {displayed.map(([key, src]) => (
               <Row key={key} label={src.label} venues={venues} cell={(v) => v.rankings[key as keyof typeof v.rankings] || '—'} />
             ))}
-            <Row label="Acceptance" venues={venues} cell={(v) => <AcceptanceText pct={v.acceptance.latestPct} />} />
+            <Row label="Acceptance" venues={venues} cell={(v) => <AcceptanceText venue={v} />} />
             <Row label="Review" venues={venues} cell={(v) => [v.review.blinding, v.review.rebuttal].filter((x) => x && x !== '—').join(' · ') || '—'} />
             <Row label="Page limit" venues={venues} cell={(v) => v.review.pageLimit || '—'} />
             <Row label="Cost" venues={venues} cell={(v) => v.registration?.fee || '—'} />
@@ -133,12 +134,15 @@ export default function Compare({ compare, byId, data, toggleCompare, openDetail
                 ))}
               </div>
             )} />
-            <Row label="Integrity" venues={venues} cell={(v) => v.integrityFlag ? `⚑ ${v.integrityFlag.level}` : <span className="cg-muted">no flag recorded</span>} />
+            <Row label="Integrity" venues={venues} cell={(v) => v.integrityFlag ? <><Flag size={ICON_SM} /> {v.integrityFlag.level}</> : <span className="cg-muted">no flag recorded</span>} />
             <tr>
               <td className="cg-muted">Remove</td>
               {venues.map((v) => (
                 <td key={v.id}>
-                  <button type="button" className="btn btn-ghost" onClick={() => toggleCompare(v.id)} style={{ fontSize: 11 }}>Remove</button>
+                  <button type="button" className="btn btn-ghost" onClick={() => toggleCompare(v.id)} style={{ fontSize: 11 }}>
+                    <X size={ICON_SM} />
+                    Remove
+                  </button>
                 </td>
               ))}
             </tr>

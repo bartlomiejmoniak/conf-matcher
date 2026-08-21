@@ -4,6 +4,7 @@ import { fmtRange } from '../lib/dates';
 import { icsHref } from '../lib/ics';
 import { ConfidenceNote, CountdownRail, DeadlineLine, EmptyState, SmallLabel, place } from '../components/Bits';
 import type { ViewProps } from './shared';
+import { CalendarPlus, Globe, ICON, ListChecks, Plus, X } from '../components/Icons';
 
 interface Props extends ViewProps {
   setPapers: (p: Record<string, TrackedPaper[]> | ((prev: Record<string, TrackedPaper[]>) => Record<string, TrackedPaper[]>)) => void;
@@ -83,10 +84,25 @@ export default function Watchlist({ saved, byId, data, papers, setPapers, toggle
 
             <div className="cg-actions">
               <button type="button" className="btn btn-secondary" onClick={() => setOpen((o) => (o === v.id ? null : v.id))} aria-expanded={open === v.id}>
+                <ListChecks size={ICON} />
                 Progress{tracked.length ? ` (${tracked.length})` : ''}
               </button>
-              {ics && <a className="btn btn-secondary" href={ics} download={`${v.id}-deadline.ics`}>Calendar</a>}
-              <button type="button" className="btn btn-ghost" onClick={() => toggleSaved(v.id)}>Remove</button>
+              {ics && (
+                <a className="btn btn-secondary" href={ics} download={`${v.id}-deadline.ics`}>
+                  <CalendarPlus size={ICON} />
+                  Calendar
+                </a>
+              )}
+              {v.links?.website && (
+                <a className="btn btn-secondary" href={v.links.website} target="_blank" rel="noreferrer">
+                  <Globe size={ICON} />
+                  Website
+                </a>
+              )}
+              <button type="button" className="btn btn-ghost" onClick={() => toggleSaved(v.id)}>
+                <X size={ICON} />
+                Remove
+              </button>
             </div>
 
             {open === v.id && (
@@ -168,7 +184,8 @@ export default function Watchlist({ saved, byId, data, papers, setPapers, toggle
                 })}
 
                 <button type="button" className="btn btn-secondary" onClick={() => addPaper(v.id)} style={{ fontSize: 12 }}>
-                  + Add a paper
+                  <Plus size={ICON} />
+                  Add a paper
                 </button>
               </div>
             )}

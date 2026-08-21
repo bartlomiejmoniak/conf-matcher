@@ -47,6 +47,17 @@ export function venueTiers(venue: Venue, taxonomy: Taxonomy): string[] {
     .map((t) => t.label);
 }
 
+/**
+ * Which edition of the venue this record is. Taken from the event dates where they exist,
+ * and otherwise from the trailing year of the id, which DATA_GUIDE requires be the edition
+ * year. Null when neither is available, in which case nothing downstream claims a gap.
+ */
+export function editionYear(venue: Venue): number | null {
+  if (venue.event.start) return Number(venue.event.start.slice(0, 4));
+  const fromId = venue.id.match(/-(\d{4})$/);
+  return fromId ? Number(fromId[1]) : null;
+}
+
 /** Build the derived view model for one venue against the user's paper profile. */
 export function toView(
   venue: Venue,

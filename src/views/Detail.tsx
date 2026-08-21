@@ -3,6 +3,7 @@ import { icsHref } from '../lib/ics';
 import { AcceptanceChart, AcceptanceText, ConfidenceNote, EmptyState, Label, SmallLabel, place } from '../components/Bits';
 import { Facts } from '../components/ResultRow';
 import type { ViewProps } from './shared';
+import { ArrowLeft, ArrowLeftRight, CalendarPlus, Check, ExternalLink, Flag, Globe, ICON, ICON_SM, Save } from '../components/Icons';
 
 interface Props extends ViewProps {
   id: string | null;
@@ -31,7 +32,10 @@ export default function Detail({ id, back, byId, data, saved, compare, toggleSav
   return (
     <div className="cg-in">
       <div style={{ padding: '14px 0' }}>
-        <button type="button" className="btn btn-ghost" onClick={back} style={{ fontSize: 12 }}>← Back</button>
+        <button type="button" className="btn btn-ghost" onClick={back} style={{ fontSize: 12 }}>
+          <ArrowLeft size={ICON} />
+          Back
+        </button>
       </div>
 
       <section className="cg-rule" style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 32, paddingBottom: 26 }}>
@@ -49,15 +53,32 @@ export default function Detail({ id, back, byId, data, saved, compare, toggleSav
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-            <button type="button" className="btn btn-primary" onClick={() => toggleSaved(v.id)} style={{ fontSize: 13 }}>
-              {saved.includes(v.id) ? 'Saved ✓' : 'Save to watchlist'}
+            <button type="button" className="btn btn-primary" onClick={() => toggleSaved(v.id)} aria-pressed={saved.includes(v.id)} style={{ fontSize: 13 }}>
+              {saved.includes(v.id) ? <Check size={ICON} /> : <Save size={ICON} />}
+              {saved.includes(v.id) ? 'Saved' : 'Save to watchlist'}
             </button>
-            <button type="button" className="btn btn-secondary" onClick={() => toggleCompare(v.id)} style={{ fontSize: 13 }}>
-              {compare.includes(v.id) ? 'Comparing ✓' : 'Compare'}
+            <button type="button" className="btn btn-secondary" onClick={() => toggleCompare(v.id)} aria-pressed={compare.includes(v.id)} style={{ fontSize: 13 }}>
+              {compare.includes(v.id) ? <Check size={ICON} /> : <ArrowLeftRight size={ICON} />}
+              {compare.includes(v.id) ? 'Comparing' : 'Compare'}
             </button>
-            {ics && <a className="btn btn-secondary" href={ics} download={`${v.id}-deadline.ics`} style={{ fontSize: 13 }}>Add to calendar</a>}
-            {v.links?.cfp && <a className="btn btn-ghost" href={v.links.cfp} target="_blank" rel="noreferrer" style={{ fontSize: 13 }}>Call for papers</a>}
-            {v.links?.website && <a className="btn btn-ghost" href={v.links.website} target="_blank" rel="noreferrer" style={{ fontSize: 13 }}>Website</a>}
+            {ics && (
+              <a className="btn btn-secondary" href={ics} download={`${v.id}-deadline.ics`} style={{ fontSize: 13 }}>
+                <CalendarPlus size={ICON} />
+                Add to calendar
+              </a>
+            )}
+            {v.links?.cfp && (
+              <a className="btn btn-ghost" href={v.links.cfp} target="_blank" rel="noreferrer" style={{ fontSize: 13 }}>
+                <ExternalLink size={ICON} />
+                Call for papers
+              </a>
+            )}
+            {v.links?.website && (
+              <a className="btn btn-ghost" href={v.links.website} target="_blank" rel="noreferrer" style={{ fontSize: 13 }}>
+                <Globe size={ICON} />
+                Website
+              </a>
+            )}
           </div>
         </div>
 
@@ -93,7 +114,7 @@ export default function Detail({ id, back, byId, data, saved, compare, toggleSav
                 ['Registration', v.registration?.fee],
                 ['Publisher', v.review.publisher],
                 ['Open access', v.review.openAccess],
-                ['Acceptance', v.acceptance.latestPct === null ? 'not published' : `${v.acceptance.latestPct}%`],
+                ['Acceptance', <AcceptanceText venue={v} />],
               ]}
             />
           </div>
@@ -102,7 +123,7 @@ export default function Detail({ id, back, byId, data, saved, compare, toggleSav
 
       {v.integrityFlag && (
         <section className="cg-rule" style={{ background: 'var(--color-accent-100)', margin: '0 -20px', padding: '16px 20px' }}>
-          <Label style={{ color: 'var(--color-accent-800)' }}>⚑ {v.integrityFlag.level}</Label>
+          <Label style={{ color: 'var(--color-accent-800)' }}><Flag size={ICON_SM} /> {v.integrityFlag.level}</Label>
           <p style={{ fontSize: 13, color: 'var(--color-accent-800)', maxWidth: '70ch', lineHeight: 1.6 }}>{v.integrityFlag.note}</p>
           <div style={{ fontSize: 11, color: 'var(--color-accent-800)' }}>
             Last checked {v.integrityFlag.reviewed}
@@ -169,7 +190,7 @@ export default function Detail({ id, back, byId, data, saved, compare, toggleSav
           <div style={{ marginTop: 14 }}>
             <SmallLabel style={{ marginBottom: 8 }}>Acceptance history</SmallLabel>
             <AcceptanceChart history={v.acceptance.history} />
-            <div style={{ fontSize: 12, marginTop: 6 }}><AcceptanceText pct={v.acceptance.latestPct} /></div>
+            <div style={{ fontSize: 12, marginTop: 6 }}><AcceptanceText venue={v} /></div>
           </div>
         </div>
       </section>
