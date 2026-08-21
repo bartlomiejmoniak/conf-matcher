@@ -96,6 +96,31 @@ for (const [narrow, broad] of Object.entries(taxonomy.narrowTopics ?? {})) {
   if (!TOPICS.has(broad)) err(`taxonomy narrowTopics."${narrow}" rolls up into "${broad}", which is not a topic`);
 }
 
+// ── taxonomy is internally consistent ───────────────────────────────────────
+// The tier rules and the window presets moved out of the code and into this file, so
+// they are now data that can be wrong. A tier naming a ranking source that does not
+// exist would silently match nothing.
+for (const t of taxonomy.tiers?.entries ?? []) {
+  if (!taxonomy.rankingSources?.[t.source]) {
+    err(`taxonomy tier "${t.label}" reads rankings.${t.source}, which is not in rankingSources`);
+  }
+  if (typeof t.value !== 'string' || !t.value) err(`taxonomy tier "${t.label}" has no value to match`);
+  if (typeof t.inProfile !== 'boolean') err(`taxonomy tier "${t.label}" needs an explicit inProfile boolean`);
+}
+if (!taxonomy.tiers?.entries?.some((t) => t.inProfile)) {
+  err('no taxonomy tier is marked inProfile, so the paper profile would offer no target tier');
+}
+for (const d of taxonomy.deadlineWindows?.days ?? []) {
+  if (!Number.isInteger(d) || d <= 0) err(`taxonomy deadlineWindows.days contains "${d}", which is not a positive day count`);
+}
+
+// A topic nothing uses renders no chip, which is fine — but it is worth saying out loud,
+// because it usually means either a missing record or a vocabulary that has drifted.
+const usedTopics = new Set(venues.flatMap((v) => v.topics ?? []));
+for (const t of taxonomy.topics) {
+  if (!usedTopics.has(t)) warn(`taxonomy topic "${t}" is used by no venue, so it renders no filter chip`);
+}
+
 // ── report ──────────────────────────────────────────────────────────────────
 for (const w of warnings) console.warn(`warn  ${w}`);
 for (const e of errors) console.error(`ERROR ${e}`);

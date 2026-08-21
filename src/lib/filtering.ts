@@ -1,5 +1,4 @@
 import type { Filters, VenueView } from './types';
-import { inTier } from './matching';
 
 export interface FilterOutcome {
   shown: VenueView[];
@@ -22,7 +21,7 @@ export function applyFilters(list: VenueView[], f: Filters): FilterOutcome {
     if (f.kind !== 'all' && v.kind !== f.kind) return false;
     if (f.formats.length && !f.formats.includes(v.location.format)) return false;
     if (f.blinding && v.review.blinding !== f.blinding) return false;
-    if (f.tiers.length && !inTier(v, f.tiers)) return false;
+    if (f.tiers.length && !f.tiers.some((t) => v.tierLabels.includes(t))) return false;
 
     if (f.window !== null) {
       if (v.daysLeft === null || v.daysLeft > f.window) return false;

@@ -36,16 +36,15 @@ const coreRank = (v: Venue): number => {
   return i === -1 ? CORE_ORDER.length : i;
 };
 
-/** Does the venue sit in one of the tiers the user is targeting? */
-export function inTier(venue: Venue, tiers: string[]): boolean {
-  if (tiers.length === 0) return false;
-  return tiers.some((t) => {
-    if (t === 'CORE A*') return venue.rankings.core === 'A*';
-    if (t === 'CORE A') return venue.rankings.core === 'A';
-    if (t === 'CORE B') return venue.rankings.core === 'B';
-    if (t === 'CCF-A') return venue.rankings.ccf === 'A';
-    return false;
-  });
+/**
+ * Every tier label the venue satisfies. The rules live in taxonomy.json rather than here,
+ * so adding a ranking tier is a data edit. Resolved once per venue in `toView`, which is
+ * why the filter downstream only ever reads `VenueView.tierLabels`.
+ */
+export function venueTiers(venue: Venue, taxonomy: Taxonomy): string[] {
+  return taxonomy.tiers.entries
+    .filter((t) => (venue.rankings as Record<string, string | undefined>)[t.source] === t.value)
+    .map((t) => t.label);
 }
 
 /** Build the derived view model for one venue against the user's paper profile. */
@@ -63,6 +62,7 @@ export function toView(
   const daysLeft = nextDeadline ? daysBetween(today, nextDeadline.effectiveDate) : null;
 
   const { band, overlap } = matchBand(venue, expandTopics(paper.topics, taxonomy));
+  const tierLabels = venueTiers(venue, taxonomy);
 
   return {
     ...venue,
@@ -70,10 +70,11 @@ export function toView(
     daysLeft,
     cycleClosed: chain.length > 0 && nextDeadline === null,
     hostName,
+    tierLabels,
     band,
     overlap,
     tooEarly: Boolean(paper.readyBy && nextDeadline && nextDeadline.effectiveDate < paper.readyBy),
-    inTargetTier: inTier(venue, paper.tiers),
+    inTargetTier: paper.tiers.some((t) => tierLabels.includes(t)),
   };
 }
 

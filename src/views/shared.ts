@@ -16,4 +16,3 @@ export interface ViewProps {
   trackedCount: (id: string) => number;
 }
 
-export const TIERS = ['CORE A*', 'CORE A', 'CORE B', 'CCF-A'];

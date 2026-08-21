@@ -81,9 +81,10 @@ describe('the trace is never silent', () => {
 });
 
 describe('deadline phrasing', () => {
-  it('buckets a relative window', () => {
-    expect(parseQuery('anything in the next 45 days', lexicon).patch.window).toBe(60);
-    expect(parseQuery('within 2 weeks', lexicon).patch.window).toBe(30);
+  it('reads a relative window as the exact day count', () => {
+    // It used to round up to the nearest 30/60/90 preset; the filter takes any day count.
+    expect(parseQuery('anything in the next 45 days', lexicon).patch.window).toBe(45);
+    expect(parseQuery('within 2 weeks', lexicon).patch.window).toBe(14);
   });
 
   it('turns "by <month>" into a before-date at the end of that month', () => {

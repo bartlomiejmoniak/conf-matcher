@@ -43,7 +43,7 @@ export function parseHash(hash: string): UrlState {
   return {
     f: {
       topics: list(p.get('t')),
-      window: w && [30, 60, 90].includes(Number(w)) ? Number(w) : null,
+      window: w && Number.isInteger(Number(w)) && Number(w) > 0 && Number(w) <= 3650 ? Number(w) : null,
       before: p.get('before') ?? '',
       tiers: list(p.get('tier')),
       formats: list(p.get('fmt')) as LocationFormat[],

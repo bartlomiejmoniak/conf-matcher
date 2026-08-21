@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Filters, LocationFormat, SortKey } from '../lib/types';
 import type { PaperProfile } from '../lib/types';
 import { applyFilters } from '../lib/filtering';
@@ -7,7 +7,7 @@ import { parseQuery, traceNote, type ParseResult } from '../lib/parser';
 import { filtersActive } from '../lib/urlState';
 import { Chip, EmptyState, Label, SmallLabel } from '../components/Bits';
 import ResultRow from '../components/ResultRow';
-import { TIERS, type ViewProps } from './shared';
+import { type ViewProps } from './shared';
 
 interface Props extends ViewProps {
   filters: Filters;
@@ -56,6 +56,21 @@ export default function Browse(props: Props) {
 
   const toggleIn = <T,>(list: T[], value: T): T[] =>
     list.includes(value) ? list.filter((x) => x !== value) : [...list, value];
+
+  /**
+   * Chips advertise only what the data can actually match. A topic in the taxonomy with no
+   * venue behind it renders a chip that empties the list, so the vocabulary is the taxonomy
+   * intersected with what shipped — in taxonomy order, which is load-bearing.
+   */
+  const topicOptions = useMemo(() => {
+    const used = new Set(views.flatMap((v) => v.topics));
+    return taxonomy.topics.filter((t) => used.has(t));
+  }, [views, taxonomy.topics]);
+
+  const kindOptions = useMemo(() => {
+    const used = new Set(views.map((v) => v.kind));
+    return taxonomy.kinds.filter((k) => used.has(k));
+  }, [views, taxonomy.kinds]);
 
   const { shown, closedHidden } = applyFilters(views, filters);
   const results = sortVenues(shown, sort);
@@ -159,8 +174,8 @@ export default function Browse(props: Props) {
           <div>
             <Label style={{ marginBottom: 6 }}>Target tier</Label>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-              {TIERS.slice(0, 3).map((t) => (
-                <Chip key={t} label={t} active={paper.tiers.includes(t)} onClick={() => setPaper((p) => ({ ...p, tiers: toggleIn(p.tiers, t) }))} />
+              {taxonomy.tiers.entries.filter((t) => t.inProfile).map((t) => (
+                <Chip key={t.label} label={t.label} active={paper.tiers.includes(t.label)} onClick={() => setPaper((p) => ({ ...p, tiers: toggleIn(p.tiers, t.label) }))} />
               ))}
             </div>
           </div>
@@ -188,7 +203,7 @@ export default function Browse(props: Props) {
         <div>
           <SmallLabel style={{ marginBottom: 7 }}>Topic</SmallLabel>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {taxonomy.topics.map((t) => (
+            {topicOptions.map((t) => (
               <Chip key={t} label={t} active={filters.topics.includes(t)} onClick={() => setFilters((f) => ({ ...f, topics: toggleIn(f.topics, t) }))} />
             ))}
           </div>
@@ -197,7 +212,7 @@ export default function Browse(props: Props) {
         <div>
           <SmallLabel style={{ marginBottom: 7 }}>Deadline window</SmallLabel>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {[30, 60, 90].map((w) => (
+            {taxonomy.deadlineWindows.days.map((w) => (
               <Chip key={w} label={`${w} days`} active={filters.window === w} onClick={() => setFilters((f) => ({ ...f, window: f.window === w ? null : w }))} />
             ))}
           </div>
@@ -206,8 +221,8 @@ export default function Browse(props: Props) {
         <div>
           <SmallLabel style={{ marginBottom: 7 }}>Ranking</SmallLabel>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {TIERS.map((t) => (
-              <Chip key={t} label={t} active={filters.tiers.includes(t)} onClick={() => setFilters((f) => ({ ...f, tiers: toggleIn(f.tiers, t) }))} />
+            {taxonomy.tiers.entries.map((t) => (
+              <Chip key={t.label} label={t.label} active={filters.tiers.includes(t.label)} onClick={() => setFilters((f) => ({ ...f, tiers: toggleIn(f.tiers, t.label) }))} />
             ))}
           </div>
         </div>
@@ -228,8 +243,9 @@ export default function Browse(props: Props) {
         <div>
           <SmallLabel style={{ marginBottom: 7 }}>Type</SmallLabel>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {([['all', 'Everything'], ['conference', 'Conferences'], ['workshop', 'Workshops']] as const).map(([k, label]) => (
-              <Chip key={k} label={label} active={filters.kind === k} onClick={() => setFilters((f) => ({ ...f, kind: k }))} />
+            <Chip label="Everything" active={filters.kind === 'all'} onClick={() => setFilters((f) => ({ ...f, kind: 'all' }))} />
+            {kindOptions.map((k) => (
+              <Chip key={k} label={`${k[0]!.toUpperCase()}${k.slice(1)}s`} active={filters.kind === k} onClick={() => setFilters((f) => ({ ...f, kind: k }))} />
             ))}
           </div>
         </div>

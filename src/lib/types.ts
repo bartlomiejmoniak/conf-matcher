@@ -46,11 +46,22 @@ export interface Venue {
   source: { verifiedOn: string; urls: string[]; confidence?: Confidence };
 }
 
+/** A ranking tier as a rule: `rankings[source] === value` puts a venue in it. */
+export interface TierDef {
+  label: string;
+  source: string;
+  value: string;
+  /** Offered as a paper's target tier. A shorter list than the filter row. */
+  inProfile: boolean;
+}
+
 export interface Taxonomy {
   topics: string[];
   narrowTopics: Record<string, string>;
   formats: LocationFormat[];
   kinds: Kind[];
+  tiers: { entries: TierDef[] };
+  deadlineWindows: { days: number[] };
   blindingTypes: Blinding[];
   rankingSources: Record<string, { label: string; assessedLabel: string; displayed: boolean }>;
   integrityLevels: string[];
@@ -78,6 +89,8 @@ export interface VenueView extends Venue {
   /** true when the venue published deadlines and every one of them has passed. */
   cycleClosed: boolean;
   hostName: string | null;
+  /** Every tier label this venue satisfies, resolved once against the taxonomy. */
+  tierLabels: string[];
   band: MatchBand;
   overlap: string[];
   /** Deadline falls before the user can have the paper ready. */
