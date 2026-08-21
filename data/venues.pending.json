@@ -1,0 +1,918 @@
+{
+  "$comment": "NOT LOADED BY THE APP. Records that failed a shipping gate, each with the reason under `_quarantine`. Fix the reason, delete `_quarantine`, move the record into venues.json, then run `npm run validate`. Ids here are already in their final form, so promoting a record never renames it.",
+  "version": 1,
+  "updated": "2026-08-21",
+  "venues": [
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "corl-2026",
+      "name": "CoRL 2026",
+      "fullName": "Conference on Robot Learning",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "unconfirmed",
+        "country": "unconfirmed",
+        "format": "in-person"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "robotics",
+        "reinforcement learning"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "UNVERIFIED: 2026 date/location not confirmed from a primary source within research budget.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "cvpr-2027",
+      "name": "CVPR 2027",
+      "fullName": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Seattle, WA",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-06-20",
+        "end": "2027-06-24"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "440",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE/CVF"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "projected"
+      },
+      "notes": "Projected from prior-year pattern; official CFP not yet posted.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "icassp-2026",
+      "name": "ICASSP 2026",
+      "fullName": "IEEE International Conference on Acoustics, Speech and Signal Processing",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Barcelona",
+        "country": "Spain",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-05-04",
+        "end": "2026-05-08"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "speech & audio",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "single-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE Xplore"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "icra-2026",
+      "name": "ICRA 2026",
+      "fullName": "IEEE International Conference on Robotics and Automation",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Vienna",
+        "country": "Austria",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-06-01",
+        "end": "2026-06-05"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "robotics"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "116",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE Xplore"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "Journal special issue, not a conference or workshop — same as tomm-fusion-2027.",
+        "Workshop with no `hostVenueId`. The host conference is not in this dataset, so the record cannot state what it is co-located with."
+      ],
+      "id": "ijcv-social-2027",
+      "name": "IJCV Special Issue: Social, Emotional, and Cognitive Visual Intelligence",
+      "kind": "workshop",
+      "broadScope": false,
+      "hostVenueId": null,
+      "location": {
+        "city": "—",
+        "country": "—",
+        "format": "journal"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision",
+        "multimodal"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer IJCV"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://wang.ist.psu.edu/docs/docs/IJCV-CFP.pdf"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Journal special issue; publication target Aug/Sept 2027.",
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "interspeech-2026",
+      "name": "Interspeech 2026",
+      "fullName": "Interspeech",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Sydney",
+        "country": "Australia",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-27",
+        "end": "2026-10-01"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "speech & audio"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "single-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "iros-2026",
+      "name": "IROS 2026",
+      "fullName": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "robotics"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Not confirmed from primary source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "kdd-2026",
+      "name": "KDD 2026",
+      "fullName": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Jeju",
+        "country": "South Korea",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-08-09",
+        "end": "2026-08-13"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "data mining",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACM DL"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "KDD runs two submission cycles per year; exact 2026 cycle dates not confirmed from primary source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "Workshop with no `hostVenueId`. The host conference is not in this dataset, so the record cannot state what it is co-located with."
+      ],
+      "id": "maclean-2026",
+      "name": "MACLEAN 2026",
+      "fullName": "MAChine Learning for EArth ObservatioN",
+      "kind": "workshop",
+      "broadScope": false,
+      "location": {
+        "city": "Naples",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-07",
+        "end": "2026-09-11"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision",
+        "data mining"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://sites.google.com/view/maclean26",
+        "website": "https://sites.google.com/view/maclean26"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "naacl-2026",
+      "name": "NAACL 2026",
+      "fullName": "North American Chapter of the Association for Computational Linguistics",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "unconfirmed",
+        "country": "unconfirmed",
+        "format": "in-person"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "natural language"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "UNVERIFIED: conflicting secondary sources on 2026 city/date; could not confirm from a primary source within research budget. Do not treat as reliable.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "recsys-2026",
+      "name": "RecSys 2026",
+      "fullName": "ACM Conference on Recommender Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "information retrieval",
+        "data mining"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Not confirmed from primary source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "sigir-2026",
+      "name": "SIGIR 2026",
+      "fullName": "ACM SIGIR Conference on Research and Development in Information Retrieval",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Melbourne",
+        "country": "Australia",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-07-20",
+        "end": "2026-07-24"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "information retrieval"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACM DL"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "Journal special issue, not a conference or workshop — `location.format: \"journal\"` is outside the taxonomy and the record has no `fullName`. The venue model is one record per venue per year; special issues need their own kind before they can ship.",
+        "Workshop with no `hostVenueId`. The host conference is not in this dataset, so the record cannot state what it is co-located with."
+      ],
+      "id": "tomm-fusion-2027",
+      "name": "TOMM Special Issue: Responsible & Explainable Multi-Modal Fusion",
+      "kind": "workshop",
+      "broadScope": false,
+      "hostVenueId": null,
+      "location": {
+        "city": "—",
+        "country": "—",
+        "format": "journal"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "multimodal",
+        "trustworthy AI"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACM TOMM"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://dl.acm.org/pb-assets/static_journal_pages/tomm/pdf/ACM-TOMM-CfP-Responsible-Explainable-Multi-Modal-Fusion-1774551739410.pdf"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Journal special issue, not a conference; publication target April 2027. Directly relevant to trustworthy-AI research interest.",
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "uai-2026",
+      "name": "UAI 2026",
+      "fullName": "Conference on Uncertainty in Artificial Intelligence",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "trustworthy AI"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Date/venue not confirmed from a primary source within budget.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "Summer school, not a peer-reviewed submission venue. Its only date is a registration deadline, which the countdown would misrepresent as a submission deadline.",
+        "Workshop with no `hostVenueId`. The host conference is not in this dataset, so the record cannot state what it is co-located with."
+      ],
+      "id": "vismac-2026",
+      "name": "VISMAC 2026",
+      "fullName": "CVPL Summer School on Machine Vision",
+      "kind": "workshop",
+      "broadScope": false,
+      "location": {
+        "city": "Siena",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-21",
+        "end": "2026-09-25"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://vismac26.github.io/",
+        "website": "https://vismac26.github.io/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Summer school, not a peer-reviewed paper venue — registration deadline, not a submission deadline.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "wsdm-2027",
+      "name": "WSDM 2027",
+      "fullName": "ACM International Conference on Web Search and Data Mining",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "information retrieval",
+        "data mining"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Not confirmed from primary source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "_quarantine": [
+        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
+      ],
+      "id": "www-2026",
+      "name": "TheWebConf 2026",
+      "fullName": "The Web Conference (WWW)",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "information retrieval",
+        "data mining"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {},
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Date/venue not confirmed from a primary source within research budget.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    }
+  ]
+}

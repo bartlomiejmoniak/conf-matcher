@@ -1,0 +1,38 @@
+{
+  "$comment": "Drives the plain-language search bar. Each entry maps trigger substrings (lowercase, matched against the raw query) onto a filter value. Extend this file to teach the parser new phrasings — no code change needed. When a real model replaces the rule parser, keep this file as the evaluation fixture: every trigger here must still resolve to the same filter.",
+  "topics": {
+    "computer vision": ["cv", "vision", "image", "visual", "detection", "segmentation"],
+    "natural language": ["nlp", "language", "llm", "text", "translation", "dialogue"],
+    "speech & audio": ["speech", "audio", "asr", "voice"],
+    "robotics": ["robot", "robotics", "embodied", "manipulation"],
+    "reinforcement learning": ["rl", "reinforcement", "policy learning"],
+    "trustworthy AI": ["robust", "adversarial", "fairness", "interpretab", "safety", "trustworthy", "alignment", "privacy"],
+    "medical imaging": ["medical", "clinical", "radiolog", "healthcare"],
+    "data mining": ["data mining", "recommend", "tabular"],
+    "information retrieval": ["retrieval", "search engine", "ranking"],
+    "ml theory": ["theory", "theoretical", "optimization", "statistic"],
+    "multimodal": ["multimodal", "vision-language", "vlm"],
+    "graph learning": ["graph", "gnn"]
+  },
+  "blinding": {
+    "double-blind": ["double blind", "double-blind", "doubleblind"],
+    "single-blind": ["single blind", "single-blind"]
+  },
+  "tiers": {
+    "CORE A*": ["a*", "a-star", "top tier", "top-tier", "prestigious", "best venues"],
+    "CCF-A": ["ccf a", "ccf-a"]
+  },
+  "formats": {
+    "virtual": ["virtual", "online", "remote"],
+    "hybrid": ["hybrid"],
+    "in-person": ["in person", "in-person", "on site", "on-site", "travel"]
+  },
+  "kinds": {
+    "workshop": ["workshop"],
+    "conference": ["conference", "main track"]
+  },
+  "acceptanceBands": [
+    { "triggers": ["easier", "higher acceptance", "above 30", ">30"], "from": 30, "to": 100 },
+    { "triggers": ["selective", "competitive", "under 20", "<20"], "from": 0, "to": 20 }
+  ]
+}
