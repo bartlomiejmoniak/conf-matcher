@@ -30,4 +30,5 @@ export const KEYS = {
   saved: 'cg.saved',
   paper: 'cg.paper',
   papers: 'cg.papers',
+  timeline: 'cg.timeline',
 } as const;
