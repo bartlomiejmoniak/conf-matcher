@@ -48,6 +48,22 @@ The workflow sets `CONFGRAPH_BASE=/<repo>/` because a *project* site is served f
 subpath. For a **user site** (`<user>.github.io`), delete the `env:` block so the base
 stays `/`.
 
+### What a push actually costs
+
+Nothing, while the repo is public. Actions minutes on standard GitHub-hosted runners are
+free and unbilled for public repositories, so the deploy on every push to `main` draws
+against no quota. The Pages **10 builds/hour** figure in the table above is not the
+relevant limit either — it applies to the legacy Jekyll builder, not to Actions-based
+deploys like this one.
+
+If the repo is ever made **private**, the Free plan's 2,000 minutes/month starts applying.
+A full run here is well under a minute, so that is still on the order of two thousand
+pushes a month.
+
+Which is why the venue data stays in this repo rather than a separate one: splitting it
+would buy no quota back, and would cost the deploy gate — `npm run validate` failing means
+a bad record never reaches the site. A data-only repo edits its way around that check.
+
 ## Cloudflare Pages
 
 No config file needed — set these in the dashboard (Workers & Pages → Create → Pages →
