@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Confgraph venue file",
+  "type": "object",
+  "required": ["version", "venues"],
+  "properties": {
+    "version": { "const": 1 },
+    "updated": { "type": "string", "description": "ISO date of the last edit to this file." },
+    "venues": { "type": "array", "items": { "$ref": "#/definitions/venue" } }
+  },
+  "definitions": {
+    "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "nullableDate": { "oneOf": [{ "$ref": "#/definitions/date" }, { "type": "null" }] },
+    "venue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "fullName", "kind", "location", "event", "topics", "rankings", "acceptance", "review", "deadlines", "source"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "description": "Stable slug, never reused or renamed: acronym-year, e.g. iclr-2027. Used in URLs, saved watchlists and paper-progress keys — changing it orphans a user's tracked papers."
+        },
+        "name": { "type": "string", "description": "Display name including the year, e.g. \"ICLR 2027\". For workshops, the short workshop name without the host." },
+        "fullName": { "type": "string", "description": "Expanded official name, no acronym." },
+        "kind": { "enum": ["conference", "workshop"] },
+        "hostVenueId": { "type": ["string", "null"], "description": "Required for workshops: the id of the conference it is co-located with. null for conferences." },
+        "broadScope": { "type": "boolean", "default": false, "description": "true for general-purpose venues (NeurIPS, ICML, AAAI) that accept most ML subfields. Softens a weak topic match to partial." },
+        "location": {
+          "type": "object",
+          "required": ["city", "country", "format"],
+          "additionalProperties": false,
+          "properties": {
+            "city": { "type": "string" },
+            "country": { "type": "string" },
+            "format": { "enum": ["in-person", "hybrid", "virtual"] }
+          }
+        },
+        "event": {
+          "type": "object",
+          "required": ["start", "end"],
+          "additionalProperties": false,
+          "description": "When the event runs. Both ends are null together when the venue has not announced its dates — a normal state for a cycle whose CFP is open but whose location is still TBA. Never write \"TBD\" or a guessed date into these fields.",
+          "properties": {
+            "start": { "$ref": "#/definitions/nullableDate" },
+            "end": { "$ref": "#/definitions/nullableDate", "description": "Same as start for a single-day workshop. null when start is null." }
+          }
+        },
+        "registration": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "fee": { "type": "string", "description": "Free text with currency symbol as published, e.g. \"$850\", \"€780\", \"included in ICLR registration\". Never converted." }
+          }
+        },
+        "topics": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "Broad topics only — each must appear in taxonomy.json#/topics. Three to six per venue; listing everything destroys the match signal."
+        },
+        "rankings": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Use the string \"—\" for genuinely unranked, never \"N/A\" or an empty string. h5Index is a number as a string.",
+          "properties": {
+            "core": { "type": "string" },
+            "ccf": { "type": "string" },
+            "h5Index": { "type": "string" },
+            "mnisw": { "type": "string" }
+          }
+        },
+        "acceptance": {
+          "type": "object",
+          "required": ["latestPct"],
+          "additionalProperties": false,
+          "properties": {
+            "latestPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "Most recent published main-track acceptance rate, or null when the venue publishes no figure. Never estimate one — DATA_GUIDE forbids it. A null record is shown as \"acceptance not published\" and is excluded from the acceptance range filter rather than being assigned a fake value." },
+            "history": {
+              "type": "array",
+              "description": "Oldest first. Omit years with no published figure rather than interpolating.",
+              "items": {
+                "type": "object",
+                "required": ["year", "pct"],
+                "additionalProperties": false,
+                "properties": { "year": { "type": "integer" }, "pct": { "type": "number" } }
+              }
+            }
+          }
+        },
+        "review": {
+          "type": "object",
+          "required": ["blinding"],
+          "additionalProperties": false,
+          "properties": {
+            "blinding": { "enum": ["double-blind", "single-blind", "open review", "unspecified"] },
+            "blindingNote": { "type": "string", "description": "Qualifier shown after the blinding type, e.g. \"via ACL Rolling Review\"." },
+            "rebuttal": { "type": "string", "description": "\"No\", or a description: \"Yes, 1 round\"." },
+            "pageLimit": { "type": "string", "description": "As published, e.g. \"8 pages + references\"." },
+            "openAccess": { "type": "string", "description": "\"Yes, PMLR\" / \"Optional (ACM OA fee)\" / \"No\"." },
+            "publisher": { "type": "string" }
+          }
+        },
+        "deadlines": {
+          "type": "array",
+          "minItems": 0,
+          "description": "The full chain in chronological order. The app derives the countdown from the first entry still in the future, so a venue whose chain has entirely passed correctly reads as a closed cycle. An empty array is permitted only when the venue genuinely publishes no itemised dates; it reads as \"no dates published\" and never as a deadline of zero. Never invent an entry to satisfy this field.",
+          "items": {
+            "type": "object",
+            "required": ["stage", "date"],
+            "additionalProperties": false,
+            "properties": {
+              "stage": { "type": "string", "description": "Free text, but stay consistent across venues: Abstract, Paper submission, Supplementary, ARR commitment, Reviews released, Rebuttal closes, Notification, Camera-ready." },
+              "date": { "$ref": "#/definitions/date", "description": "The ORIGINAL published date. Never overwrite it with an extension." },
+              "extendedTo": { "oneOf": [{ "$ref": "#/definitions/date" }, { "type": "null" }], "description": "Set only when officially extended. The UI strikes through `date` and shows this instead." },
+              "extensionNote": { "type": ["string", "null"], "description": "Why, in one clause: \"extended after submission-site outage\"." },
+              "timezone": { "type": "string", "default": "AoE", "description": "AoE unless the CFP says otherwise." }
+            }
+          }
+        },
+        "coLocatedWorkshops": {
+          "type": "array",
+          "description": "Shown on the conference. A workshop that is also its own venue record should appear in both places.",
+          "items": {
+            "type": "object",
+            "required": ["name", "deadline"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "deadline": { "$ref": "#/definitions/date" },
+              "venueId": { "type": ["string", "null"] }
+            }
+          }
+        },
+        "integrityFlag": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "required": ["level", "note", "reviewed"],
+              "additionalProperties": false,
+              "properties": {
+                "level": { "type": "string", "description": "One of taxonomy.json#/integrityLevels." },
+                "note": { "type": "string", "description": "The evidence, factually and without adjectives. This is a public accusation — it must be defensible." },
+                "reviewed": { "type": "string", "description": "Month and year the claim was last checked, e.g. \"June 2026\"." },
+                "sources": { "type": "array", "items": { "type": "string", "format": "uri" }, "description": "Required in practice. Do not flag a venue you cannot cite." }
+              }
+            }
+          ],
+          "description": "null for the overwhelming majority of venues. Absence of a flag is not an endorsement and the UI never claims otherwise."
+        },
+        "links": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cfp": { "type": "string", "description": "Call-for-papers page — the page carrying the deadlines in this record." },
+            "website": { "type": "string" }
+          }
+        },
+        "notes": { "type": "string", "description": "One or two sentences of submitter-relevant process detail: binding abstract deadlines, mandatory intent-to-submit, dual-submission policy, summary-reject phases. Not marketing copy." },
+        "source": {
+          "type": "object",
+          "required": ["verifiedOn", "urls"],
+          "additionalProperties": false,
+          "description": "Provenance. A venue with no source entry must not ship.",
+          "properties": {
+            "verifiedOn": { "$ref": "#/definitions/date", "description": "When a human last checked these dates against the official page." },
+            "urls": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+            "confidence": { "enum": ["confirmed", "provisional", "projected"], "default": "confirmed", "description": "confirmed: on the official CFP. provisional: announced but unpaged. projected: inferred from previous years — the UI must label these." }
+          }
+        }
+      }
+    }
+  }
+}

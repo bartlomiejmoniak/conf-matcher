@@ -1,0 +1,82 @@
+{
+  "$comment": "NOT LOADED BY THE APP. One conference and one workshop, filled the way every record should be filled — use it as the shape reference and as a smoke-test fixture (point the app at this file to confirm rendering, then point it back at venues.json). Dates here are illustrative, not verified; do not copy them into venues.json.",
+  "version": 1,
+  "updated": "2026-08-21",
+  "venues": [
+    {
+      "id": "iclr-2027",
+      "name": "ICLR 2027",
+      "fullName": "International Conference on Learning Representations",
+      "kind": "conference",
+      "hostVenueId": null,
+      "broadScope": true,
+      "location": { "city": "Rio de Janeiro", "country": "Brazil", "format": "in-person" },
+      "event": { "start": "2027-04-25", "end": "2027-04-29" },
+      "registration": { "fee": "$850" },
+      "topics": ["ml theory", "computer vision", "natural language", "reinforcement learning", "trustworthy AI"],
+      "rankings": { "core": "A*", "ccf": "—", "h5Index": "320", "mnisw": "200 pts" },
+      "acceptance": {
+        "latestPct": 31.7,
+        "history": [
+          { "year": 2024, "pct": 31.0 },
+          { "year": 2025, "pct": 32.1 },
+          { "year": 2026, "pct": 31.7 }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "public on OpenReview after decisions",
+        "rebuttal": "Yes, 1 round (open discussion)",
+        "pageLimit": "9 pages + references",
+        "openAccess": "Yes, OpenReview",
+        "publisher": "OpenReview (self-published)"
+      },
+      "deadlines": [
+        { "stage": "Abstract", "date": "2026-09-19", "extendedTo": null, "extensionNote": null, "timezone": "AoE" },
+        { "stage": "Paper submission", "date": "2026-09-24", "extendedTo": null, "extensionNote": null, "timezone": "AoE" },
+        { "stage": "Reviews released", "date": "2026-11-10" },
+        { "stage": "Rebuttal closes", "date": "2026-11-26" },
+        { "stage": "Notification", "date": "2027-01-22" },
+        { "stage": "Camera-ready", "date": "2027-03-05" }
+      ],
+      "coLocatedWorkshops": [
+        { "name": "Adversarial Robustness in the Wild", "deadline": "2027-02-10", "venueId": "ws-adversarial-robustness-2027" }
+      ],
+      "integrityFlag": null,
+      "links": { "cfp": "https://example.org/cfp", "website": "https://example.org" },
+      "notes": "Fully open review; submissions and reviews are public on OpenReview regardless of outcome.",
+      "source": { "verifiedOn": "2026-08-21", "urls": ["https://example.org/cfp"], "confidence": "provisional" }
+    },
+    {
+      "id": "ws-adversarial-robustness-2027",
+      "name": "Adversarial Robustness in the Wild",
+      "fullName": "Workshop on adversarial robustness under distribution shift",
+      "kind": "workshop",
+      "hostVenueId": "iclr-2027",
+      "broadScope": false,
+      "location": { "city": "Rio de Janeiro", "country": "Brazil", "format": "hybrid" },
+      "event": { "start": "2027-04-29", "end": "2027-04-29" },
+      "registration": { "fee": "included in ICLR registration" },
+      "topics": ["trustworthy AI", "computer vision", "ml theory"],
+      "rankings": { "core": "—", "ccf": "—", "h5Index": "—", "mnisw": "—" },
+      "acceptance": { "latestPct": 52.0, "history": [{ "year": 2026, "pct": 52.0 }] },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "No",
+        "pageLimit": "4 pages + references",
+        "openAccess": "Yes, OpenReview",
+        "publisher": "Non-archival"
+      },
+      "deadlines": [
+        { "stage": "Paper submission", "date": "2027-02-10" },
+        { "stage": "Notification", "date": "2027-03-05" },
+        { "stage": "Camera-ready", "date": "2027-04-01" }
+      ],
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "links": { "cfp": "https://example.org/workshop-cfp", "website": "https://example.org/workshop" },
+      "notes": "Non-archival — accepted papers may be submitted elsewhere afterwards.",
+      "source": { "verifiedOn": "2026-08-21", "urls": ["https://example.org/workshop-cfp"], "confidence": "provisional" }
+    }
+  ]
+}

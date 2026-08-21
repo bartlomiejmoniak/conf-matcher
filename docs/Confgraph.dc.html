@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/modernist-ad0f4f50-9b3d-422b-86fb-2eef560a995f/styles.css">
+<script src="_ds/modernist-ad0f4f50-9b3d-422b-86fb-2eef560a995f/_ds_bundle.js"></script>
+<style>
+:root[data-theme="dark"], body[data-theme="dark"], [data-theme="dark"]{
+  --color-bg:#171615; --color-surface:#221f1e; --color-text:#f1efee;
+  --color-divider: color-mix(in srgb, #f1efee 30%, transparent);
+  --color-accent:#ff563c;
+  --color-neutral-100:#2d2b2b; --color-neutral-200:#3a3838; --color-neutral-300:#4d4a4a;
+  --color-neutral-400:#605d5d; --color-neutral-500:#7d7979; --color-neutral-600:#9b9797;
+  --color-neutral-700:#bab6b6; --color-neutral-800:#d7d3d3; --color-neutral-900:#f8f4f4;
+  --color-accent-100:#4d170e; --color-accent-200:#61190c; --color-accent-300:#7c1405;
+  --color-accent-400:#ae1800; --color-accent-500:#ff563c; --color-accent-600:#ff7a63;
+  --color-accent-700:#ffc4b8; --color-accent-800:#ffe0d9; --color-accent-900:#fff2ef;
+  --color-accent-2-100:#471d16; --color-accent-2-200:#5c241a; --color-accent-2-300:#71261b;
+  --color-accent-2-400:#9e3526; --color-accent-2-500:#ef6853; --color-accent-2-600:#ff8570;
+  --color-accent-2-700:#ffc4b9; --color-accent-2-800:#ffe0da; --color-accent-2-900:#fff2ef;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.5); --shadow-md: 0 3px 10px rgba(0,0,0,.55); --shadow-lg: 0 12px 32px rgba(0,0,0,.6);
+}
+body{margin:0}
+a{color:var(--color-accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--color-accent) 45%,transparent)}
+a:hover{color:var(--color-accent-600);border-bottom-color:var(--color-accent-600)}
+input::placeholder{color:color-mix(in srgb,var(--color-text) 38%,transparent)}
+select.input{appearance:none}
+.cg-range{position:absolute;left:0;top:0;width:100%;height:28px;margin:0;padding:0;background:none;border:0;pointer-events:none;-webkit-appearance:none;appearance:none}
+.cg-range:focus{outline:none}
+.cg-range::-webkit-slider-runnable-track{background:transparent;height:28px}
+.cg-range::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:10px;height:22px;margin-top:3px;background:var(--color-accent);border:1px solid var(--color-bg);cursor:ew-resize}
+.cg-range::-moz-range-track{background:transparent;height:28px}
+.cg-range::-moz-range-thumb{pointer-events:auto;width:10px;height:22px;background:var(--color-accent);border:1px solid var(--color-bg);border-radius:0;cursor:ew-resize}
+[data-edges="round"]{--radius-sm:3px;--radius-md:4px;--radius-lg:6px}
+[data-edges="round"] button,[data-edges="round"] input,[data-edges="round"] select,[data-edges="round"] .tag,[data-edges="round"] .card,[data-edges="round"] a.btn,[data-edges="round"] span[data-pill]{border-radius:4px}
+[data-edges="round"] .cg-range::-webkit-slider-thumb{border-radius:3px}
+[data-edges="round"] [data-rail]{border-radius:4px 0 0 4px}
+@keyframes cg-pulse{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes cg-in{from{opacity:0;transform:translateY(-2px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div data-edges="{{ edges }}" data-theme="{{ theme }}" style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);-webkit-font-smoothing:antialiased">
+
+  <div class="nav" style="position:sticky;top:0;z-index:20;background:var(--color-bg);padding:10px 20px;gap:20px">
+    <div class="nav-brand" style="display:flex;align-items:baseline;gap:10px;margin-right:auto">
+      <span style="font-size:17px;letter-spacing:-0.02em">CONFGRAPH</span>
+      <span class="text-muted" style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-family:var(--font-body);font-weight:400">AI venue index</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:4px">
+      <button onClick="{{ goBrowse }}" class="btn btn-ghost" style="font-size:13px;padding:6px 10px">Browse</button>
+      <button onClick="{{ goCompare }}" class="btn btn-ghost" style="font-size:13px;padding:6px 10px">{{ compareLabel }}</button>
+      <button onClick="{{ goSaved }}" class="btn btn-ghost" style="font-size:13px;padding:6px 10px">{{ savedLabel }}</button>
+      <button onClick="{{ toggleEdges }}" class="btn btn-secondary" style="font-size:12px;padding:6px 10px;margin-left:8px;min-width:96px;justify-content:flex-start">{{ edgesLabel }}</button>
+      <button onClick="{{ toggleTheme }}" class="btn btn-secondary" style="font-size:12px;padding:6px 10px;min-width:74px;justify-content:flex-start">{{ themeLabel }}</button>
+    </div>
+  </div>
+
+  <sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:80px 20px;max-width:1280px;margin:0 auto;font-size:13px;animation:cg-pulse 1s infinite">Loading venue data…</div>
+  </sc-if>
+
+  <sc-if value="{{ dataEmpty }}" hint-placeholder-val="{{ false }}">
+    <div data-screen-label="No data" style="max-width:1280px;margin:0 auto;padding:0 20px">
+      <div style="border-bottom:2px solid var(--color-divider);padding:48px 0 26px;max-width:60ch">
+        <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);font-family:var(--font-heading);font-weight:800;margin-bottom:10px">No venues yet</div>
+        <h1 style="font-size:40px;letter-spacing:-0.03em">The index is empty.</h1>
+        <p style="font-size:15px">Every conference, deadline and ranking in this interface is read from <code>data/venues.json</code>, which currently holds an empty array. Add records there and they appear here — no code change.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0;border-bottom:2px solid var(--color-divider)">
+        <div style="padding:22px 26px 22px 0;border-right:1px solid var(--color-divider)">
+          <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Start here</div>
+          <div style="font-size:13px;line-height:1.6"><code>DATA_GUIDE.md</code> — what each field means, the rules that matter more than the schema, and the order worth filling records in.</div>
+        </div>
+        <div style="padding:22px 26px;border-right:1px solid var(--color-divider)">
+          <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Shape</div>
+          <div style="font-size:13px;line-height:1.6"><code>data/venue.schema.json</code> for the authoritative field list; <code>data/venues.example.json</code> for two filled records to copy the shape from.</div>
+        </div>
+        <div style="padding:22px 0 22px 26px">
+          <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Vocabulary</div>
+          <div style="font-size:13px;line-height:1.6"><code>data/taxonomy.json</code> holds the topic list the filters render and every venue must draw from.</div>
+        </div>
+      </div>
+      <div class="text-muted" style="font-size:12px;padding:22px 0 40px;max-width:60ch;line-height:1.6">One record is enough to see the interface work. The countdown, match bands, compare timeline and progress tracker all derive from the fields — nothing needs wiring per venue.</div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ dataError }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1280px;margin:0 auto;padding:48px 20px;max-width:60ch">
+      <h4>Could not load the data files.</h4>
+      <p style="font-size:13px">{{ dataErrorMsg }}</p>
+      <p class="text-muted" style="font-size:13px">The files under <code>data/</code> are fetched at runtime, so this page has to be served over HTTP — opening it straight off the filesystem blocks the request. Run any static server from the project root.</p>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ hasIssues }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--color-accent-100);border-bottom:2px solid var(--color-divider);padding:12px 20px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:12px;color:var(--color-accent-800)">⚑ {{ issueCount }}</div>
+        <sc-for list="{{ issues }}" as="i" hint-placeholder-count="0">
+          <div style="font-size:12px;color:var(--color-accent-800)">{{ i.text }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isBrowse }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Browse">
+
+    <div style="border-bottom:2px solid var(--color-divider);padding:20px 20px 14px">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-accent);font-family:var(--font-heading);font-weight:800">Ask or filter</span>
+          <span class="text-muted" style="font-size:11px">Plain language sets the filters below — you can always correct them by hand.</span>
+        </div>
+        <div style="display:flex;gap:8px;align-items:stretch">
+          <input class="input" value="{{ query }}" onChange="{{ onQuery }}" onKeyDown="{{ onQueryKey }}" placeholder="double-blind CV venues I can hit by March" style="min-height:52px;font-size:18px;padding:0 14px;font-family:var(--font-heading);font-weight:400" />
+          <button onClick="{{ runQuery }}" class="btn btn-primary" style="min-height:52px;padding:0 20px;justify-content:flex-start">Interpret</button>
+        </div>
+        <sc-if value="{{ thinking }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;animation:cg-pulse 1s infinite">
+            <span style="width:6px;height:6px;background:var(--color-accent)"></span>Reading your query
+          </div>
+        </sc-if>
+        <sc-if value="{{ hasTrace }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:10px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;animation:cg-in .2s ease-out">
+            <span style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent);font-family:var(--font-heading);font-weight:800">Read as</span>
+            <sc-for list="{{ traceTokens }}" as="t" hint-placeholder-count="3">
+              <span class="tag tag-accent" style="font-size:11px">{{ t.text }}</span>
+            </sc-for>
+            <span class="text-muted" style="font-size:11px">{{ traceNote }}</span>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="border-bottom:2px solid var(--color-divider);background:var(--color-surface)">
+      <div style="max-width:1280px;margin:0 auto;padding:12px 20px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px">
+        <div>
+          <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-family:var(--font-heading);font-weight:800;margin-bottom:6px">Your paper</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+            <sc-for list="{{ paperTopics }}" as="p" hint-placeholder-count="2">
+              <button onClick="{{ p.remove }}" class="tag tag-accent" style="border:0;cursor:pointer;font-family:var(--font-body);gap:6px">{{ p.label }} <span style="opacity:.55">✕</span></button>
+            </sc-for>
+            <select class="input" value="{{ addTopicValue }}" onChange="{{ onAddTopic }}" style="width:auto;min-height:26px;font-size:11px;padding:2px 8px">
+              <option value="">+ topic</option>
+              <sc-for list="{{ allTopics }}" as="t" hint-placeholder-count="6">
+                <option value="{{ t }}">{{ t }}</option>
+              </sc-for>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-family:var(--font-heading);font-weight:800;margin-bottom:6px">Target tier</div>
+          <div style="display:flex;gap:6px">
+            <sc-for list="{{ tierChips }}" as="c" hint-placeholder-count="3">
+              <sc-if value="{{ c.active }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ c.toggle }}" style="cursor:pointer;font:inherit;font-size:12px;padding:3px 10px;border:1px solid var(--color-accent);background:var(--color-accent);color:var(--color-bg)">{{ c.label }}</button>
+              </sc-if>
+              <sc-if value="{{ c.off }}" hint-placeholder-val="{{ true }}">
+                <button onClick="{{ c.toggle }}" style="cursor:pointer;font:inherit;font-size:12px;padding:3px 10px;border:1px solid var(--color-divider);background:transparent;color:var(--color-text)">{{ c.label }}</button>
+              </sc-if>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-family:var(--font-heading);font-weight:800;margin-bottom:6px">Ready by</div>
+          <input class="input" type="date" value="{{ readyBy }}" onChange="{{ onReadyBy }}" style="width:150px;min-height:28px;font-size:12px" />
+        </div>
+        <div style="margin-left:auto;text-align:left;max-width:280px">
+          <div class="text-muted" style="font-size:11px;line-height:1.45">{{ paperSummary }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-bottom:2px solid var(--color-divider)">
+      <div style="max-width:1280px;margin:0 auto;padding:14px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px 28px">
+        <sc-for list="{{ chipGroups }}" as="g" hint-placeholder-count="6">
+          <div>
+            <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:7px">{{ g.label }}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px">
+              <sc-for list="{{ g.chips }}" as="c" hint-placeholder-count="4">
+                <sc-if value="{{ c.active }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ c.toggle }}" style="cursor:pointer;font:inherit;font-size:12px;line-height:1.3;padding:4px 10px;border:1px solid var(--color-accent);background:var(--color-accent);color:var(--color-bg)">{{ c.label }}</button>
+                </sc-if>
+                <sc-if value="{{ c.off }}" hint-placeholder-val="{{ true }}">
+                  <button onClick="{{ c.toggle }}" style="cursor:pointer;font:inherit;font-size:12px;line-height:1.3;padding:4px 10px;border:1px solid var(--color-divider);background:transparent;color:var(--color-text)">{{ c.label }}</button>
+                </sc-if>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+        <div>
+          <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:7px">Acceptance rate · {{ accLabel }}</div>
+          <div style="position:relative;height:28px">
+            <div style="position:absolute;top:12px;left:0;right:0;height:4px;background:var(--color-neutral-300)"></div>
+            <div style="position:absolute;top:12px;height:4px;background:var(--color-accent);left:{{ accFrom }}%;width:{{ accWidth }}%"></div>
+            <input class="cg-range" type="range" min="0" max="100" step="1" value="{{ accFrom }}" onChange="{{ onAccFrom }}" aria-label="Minimum acceptance rate" />
+            <input class="cg-range" type="range" min="0" max="100" step="1" value="{{ accTo }}" onChange="{{ onAccTo }}" aria-label="Maximum acceptance rate" />
+          </div>
+          <div class="text-muted" style="display:flex;justify-content:space-between;font-size:10px">
+            <span>0%</span><span>100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:1280px;margin:0 auto;padding:0 20px" data-results="1">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;padding:12px 0;border-bottom:2px solid var(--color-divider)">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:15px">{{ resultCount }}</div>
+        <span class="text-muted" style="font-size:11px">{{ closedNote }}</span>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+          <span class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase">Sort</span>
+          <sc-for list="{{ sortChips }}" as="c" hint-placeholder-count="4">
+            <sc-if value="{{ c.active }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ c.toggle }}" style="cursor:pointer;font:inherit;font-size:12px;padding:3px 9px;border:1px solid var(--color-accent);background:var(--color-accent);color:var(--color-bg)">{{ c.label }}</button>
+            </sc-if>
+            <sc-if value="{{ c.off }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ c.toggle }}" style="cursor:pointer;font:inherit;font-size:12px;padding:3px 9px;border:1px solid var(--color-divider);background:transparent;color:var(--color-text)">{{ c.label }}</button>
+            </sc-if>
+          </sc-for>
+          <button onClick="{{ clearAll }}" class="btn btn-ghost" style="font-size:12px">Reset</button>
+        </div>
+      </div>
+
+      <sc-for list="{{ results }}" as="v" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:92px 1fr auto;border-bottom:1px solid var(--color-divider)">
+          <sc-if value="{{ v.urgent }}" hint-placeholder-val="{{ false }}">
+            <div data-rail="1" style="background:var(--color-accent);color:var(--color-bg);padding:12px 10px;display:flex;flex-direction:column;justify-content:center">
+              <div style="font-family:var(--font-heading);font-weight:800;font-size:30px;line-height:1;letter-spacing:-0.03em">{{ v.days }}</div>
+              <div style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;opacity:.8;margin-top:3px">days left</div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ v.calm }}" hint-placeholder-val="{{ false }}">
+            <div style="background:var(--color-surface);padding:12px 10px;display:flex;flex-direction:column;justify-content:center">
+              <div style="font-family:var(--font-heading);font-weight:800;font-size:30px;line-height:1;letter-spacing:-0.03em">{{ v.days }}</div>
+              <div class="text-muted" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-top:3px">days left</div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ v.closed }}" hint-placeholder-val="{{ false }}">
+            <div style="background:transparent;border-right:1px solid var(--color-divider);padding:12px 10px;display:flex;flex-direction:column;justify-content:center">
+              <div class="text-muted" style="font-family:var(--font-heading);font-weight:800;font-size:15px;line-height:1.1">Cycle<br />closed</div>
+            </div>
+          </sc-if>
+
+          <div style="padding:12px 16px;min-width:0">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+              <button onClick="{{ v.open }}" style="cursor:pointer;background:none;border:0;padding:0;color:inherit;font-family:var(--font-heading);font-weight:800;font-size:18px;letter-spacing:-0.02em;text-align:left">{{ v.name }}</button>
+              <sc-if value="{{ v.isWorkshop }}" hint-placeholder-val="{{ false }}">
+                <span class="tag tag-neutral">Workshop · {{ v.host }}</span>
+              </sc-if>
+              <sc-if value="{{ v.bandStrong }}" hint-placeholder-val="{{ false }}">
+                <span data-pill="1" style="font-size:11px;padding:3px 9px;background:var(--color-accent);color:var(--color-bg);font-family:var(--font-heading);font-weight:800;letter-spacing:0.04em">STRONG MATCH</span>
+              </sc-if>
+              <sc-if value="{{ v.bandPartial }}" hint-placeholder-val="{{ false }}">
+                <span data-pill="1" style="font-size:11px;padding:3px 9px;border:1px solid var(--color-accent);color:var(--color-accent-700);letter-spacing:0.04em">PARTIAL MATCH</span>
+              </sc-if>
+              <sc-if value="{{ v.bandWeak }}" hint-placeholder-val="{{ false }}">
+                <span data-pill="1" class="text-muted" style="font-size:11px;padding:3px 9px;border:1px solid var(--color-divider);letter-spacing:0.04em">WEAK MATCH</span>
+              </sc-if>
+              <sc-if value="{{ v.flagged }}" hint-placeholder-val="{{ false }}">
+                <span data-pill="1" style="font-size:11px;padding:3px 9px;background:var(--color-accent-200);color:var(--color-accent-800);font-family:var(--font-heading);font-weight:800">⚑ {{ v.flagLabel }}</span>
+              </sc-if>
+              <sc-if value="{{ v.hasPapers }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ v.openTracker }}" data-pill="1" style="cursor:pointer;font:inherit;font-size:11px;padding:3px 9px;border:1px solid var(--color-accent);background:transparent;color:var(--color-accent-700)">{{ v.papersLabel }}</button>
+              </sc-if>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:6px;font-size:13px">
+              <span>{{ v.nextLine }}</span>
+              <sc-if value="{{ v.provisional }}" hint-placeholder-val="{{ false }}">
+                <span class="text-muted" style="font-size:12px">{{ v.confidenceLine }}</span>
+              </sc-if>
+              <sc-if value="{{ v.tooEarly }}" hint-placeholder-val="{{ false }}">
+                <span style="color:var(--color-accent-700)">too early for your ready-by date</span>
+              </sc-if>
+              <span class="text-muted">{{ v.whereLine }}</span>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;align-items:center">
+              <sc-for list="{{ v.badges }}" as="b" hint-placeholder-count="3">
+                <span data-pill="1" style="font-size:11px;padding:2px 8px;border:1px solid var(--color-divider)"><span class="text-muted">{{ b.src }}</span> {{ b.val }}</span>
+              </sc-for>
+              <span class="text-muted" style="font-size:11px">·</span>
+              <span style="font-size:11px">{{ v.acceptLine }}</span>
+            </div>
+
+            <sc-if value="{{ v.expanded }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:14px;border-top:1px solid var(--color-divider);padding-top:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;animation:cg-in .18s ease-out">
+                <div>
+                  <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Cycle</div>
+                  <sc-for list="{{ v.chain }}" as="d" hint-placeholder-count="4">
+                    <div style="display:flex;gap:10px;font-size:12px;padding:3px 0;border-bottom:1px solid color-mix(in srgb,var(--color-text) 8%,transparent)">
+                      <span style="width:118px;flex:none">{{ d.stage }}</span>
+                      <sc-if value="{{ d.struck }}" hint-placeholder-val="{{ false }}">
+                        <span class="text-muted" style="text-decoration:line-through">{{ d.when }}</span>
+                      </sc-if>
+                      <sc-if value="{{ d.live }}" hint-placeholder-val="{{ true }}">
+                        <span>{{ d.when }}</span>
+                      </sc-if>
+                    </div>
+                    <sc-if value="{{ d.note }}" hint-placeholder-val="{{ false }}">
+                      <div style="font-size:11px;color:var(--color-accent-700);padding:3px 0 5px 128px">{{ d.note }}</div>
+                    </sc-if>
+                  </sc-for>
+                </div>
+                <div>
+                  <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Review process</div>
+                  <sc-for list="{{ v.process }}" as="p" hint-placeholder-count="4">
+                    <div style="display:flex;gap:10px;font-size:12px;padding:3px 0">
+                      <span class="text-muted" style="width:118px;flex:none">{{ p.k }}</span><span>{{ p.v }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+                <div>
+                  <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Acceptance rate</div>
+                  <div style="display:flex;align-items:flex-end;gap:8px">
+                    <sc-for list="{{ v.history }}" as="h" hint-placeholder-count="4">
+                      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                        <span style="font-size:10px">{{ h.val }}</span>
+                        <div style="width:16px;background:var(--color-accent-400);height:{{ h.h }}px"></div>
+                        <span class="text-muted" style="font-size:10px">{{ h.year }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <sc-if value="{{ v.hasWorkshops }}" hint-placeholder-val="{{ false }}">
+                    <div style="margin-top:14px">
+                      <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:6px">Co-located workshops</div>
+                      <sc-for list="{{ v.workshops }}" as="w" hint-placeholder-count="2">
+                        <div style="font-size:12px;padding:2px 0">{{ w.name }} <span class="text-muted">· {{ w.when }}</span></div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+                <div>
+                  <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Topics</div>
+                  <div style="display:flex;flex-wrap:wrap;gap:5px">
+                    <sc-for list="{{ v.topicTags }}" as="t" hint-placeholder-count="4">
+                      <sc-if value="{{ t.hit }}" hint-placeholder-val="{{ false }}">
+                        <span class="tag tag-accent">{{ t.name }}</span>
+                      </sc-if>
+                      <sc-if value="{{ t.miss }}" hint-placeholder-val="{{ true }}">
+                        <span class="tag tag-neutral">{{ t.name }}</span>
+                      </sc-if>
+                    </sc-for>
+                  </div>
+                  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+                    <a href="{{ v.ics }}" download="{{ v.icsName }}" class="btn btn-secondary" style="font-size:12px;border-bottom-width:1px">Add deadline to calendar</a>
+                    <button onClick="{{ v.toggleSave }}" class="btn btn-secondary" style="font-size:12px">{{ v.saveLabel }}</button>
+                    <button onClick="{{ v.trackHere }}" class="btn btn-primary" style="font-size:12px;justify-content:flex-start">{{ v.trackLabel }}</button>
+                  </div>
+                  <div style="display:flex;gap:14px;margin-top:10px;font-size:12px">
+                    <a href="{{ v.cfp }}" target="_blank" rel="noreferrer">Call for papers</a>
+                    <a href="{{ v.site }}" target="_blank" rel="noreferrer">Website</a>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:4px;padding:10px 12px 10px 0">
+            <button onClick="{{ v.toggleSave }}" class="btn btn-secondary" style="font-size:12px;min-width:104px">{{ v.saveShort }}</button>
+            <button onClick="{{ v.toggleCompare }}" class="btn btn-secondary" style="font-size:12px;min-width:104px">{{ v.compareShort }}</button>
+            <button onClick="{{ v.toggleExpand }}" class="btn btn-ghost" style="font-size:12px;min-width:104px;justify-content:flex-start">{{ v.expandLabel }}</button>
+          </div>
+        </div>
+      </sc-for>
+
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:56px 0;max-width:460px">
+          <h4>Nothing matches those filters.</h4>
+          <p class="text-muted" style="font-size:13px">Closed cycles are hidden by default — the venue you want may have already run this year.</p>
+          <button onClick="{{ clearAll }}" class="btn btn-primary" style="justify-content:flex-start">Reset filters</button>
+        </div>
+      </sc-if>
+
+      <div class="text-muted" style="font-size:11px;padding:22px 0 40px;max-width:640px;line-height:1.6">{{ updatedLine }} · Every record carries its own source and verification date; venues marked provisional or projected have dates inferred rather than confirmed. Community ratings stay hidden until there is real data behind them.</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Detail" style="max-width:1280px;margin:0 auto;padding:0 20px">
+    <div style="padding:14px 0;border-bottom:1px solid var(--color-divider)">
+      <button onClick="{{ goBrowse }}" class="btn btn-ghost" style="font-size:12px">← All venues</button>
+    </div>
+    <div style="display:grid;grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr);gap:0;border-bottom:2px solid var(--color-divider)">
+      <div style="padding:26px 26px 26px 0">
+        <div class="text-muted" style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">{{ detail.kindLine }}</div>
+        <h1 style="font-size:44px;letter-spacing:-0.03em">{{ detail.name }}</h1>
+        <p style="font-size:15px;max-width:52ch">{{ detail.full }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+          <sc-for list="{{ detail.topicTags }}" as="t" hint-placeholder-count="4">
+            <sc-if value="{{ t.hit }}" hint-placeholder-val="{{ false }}">
+              <span class="tag tag-accent">{{ t.name }}</span>
+            </sc-if>
+            <sc-if value="{{ t.miss }}" hint-placeholder-val="{{ true }}">
+              <span class="tag tag-neutral">{{ t.name }}</span>
+            </sc-if>
+          </sc-for>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:20px">
+          <button onClick="{{ detail.toggleSave }}" class="btn btn-primary" style="justify-content:flex-start">{{ detail.saveLabel }}</button>
+          <button onClick="{{ detail.toggleCompare }}" class="btn btn-secondary" style="justify-content:flex-start">{{ detail.compareShort }}</button>
+          <a href="{{ detail.ics }}" download="{{ detail.icsName }}" class="btn btn-secondary" style="border-bottom-width:1px">Add to calendar</a>
+        </div>
+      </div>
+      <div style="border-left:2px solid var(--color-divider);padding:26px">
+        <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Next deadline</div>
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:26px;line-height:1.1;letter-spacing:-0.02em">{{ detail.nextStage }}</div>
+        <div style="font-size:15px;margin-top:4px">{{ detail.nextWhen }}</div>
+        <div style="color:var(--color-accent);font-size:13px;margin-top:2px">{{ detail.nextRel }}</div>
+        <hr class="hr" />
+        <sc-for list="{{ detail.facts }}" as="f" hint-placeholder-count="6">
+          <div style="display:flex;gap:12px;font-size:12px;padding:4px 0">
+            <span class="text-muted" style="width:104px;flex:none">{{ f.k }}</span><span>{{ f.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ detail.flagged }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--color-accent-100);border-bottom:2px solid var(--color-divider);padding:16px 0">
+        <div style="display:flex;gap:12px;align-items:flex-start;max-width:820px">
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;color:var(--color-accent-800);white-space:nowrap;flex:none">⚑ {{ detail.flagLabel }}</span>
+          <span style="font-size:13px;color:var(--color-accent-800)">{{ detail.flagNote }}</span>
+        </div>
+      </div>
+    </sc-if>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;border-bottom:2px solid var(--color-divider)">
+      <div style="padding:22px 26px 22px 0;border-right:1px solid var(--color-divider)">
+        <h5 style="margin-bottom:12px">Deadline chain</h5>
+        <sc-for list="{{ detail.chain }}" as="d" hint-placeholder-count="5">
+          <div style="display:flex;gap:12px;font-size:13px;padding:5px 0;border-bottom:1px solid color-mix(in srgb,var(--color-text) 8%,transparent)">
+            <span style="width:140px;flex:none">{{ d.stage }}</span>
+            <sc-if value="{{ d.struck }}" hint-placeholder-val="{{ false }}">
+              <span class="text-muted" style="text-decoration:line-through">{{ d.when }}</span>
+            </sc-if>
+            <sc-if value="{{ d.live }}" hint-placeholder-val="{{ true }}">
+              <span>{{ d.when }}</span>
+            </sc-if>
+          </div>
+          <sc-if value="{{ d.note }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;color:var(--color-accent-700);padding:4px 0 6px 152px">{{ d.note }}</div>
+          </sc-if>
+        </sc-for>
+      </div>
+      <div style="padding:22px 26px;border-right:1px solid var(--color-divider)">
+        <h5 style="margin-bottom:12px">Rankings</h5>
+        <table class="table">
+          <thead><tr><th>Source</th><th>Value</th><th>Assessed</th></tr></thead>
+          <tbody>
+            <sc-for list="{{ detail.rankings }}" as="r" hint-placeholder-count="4">
+              <tr><td>{{ r.src }}</td><td style="font-family:var(--font-heading);font-weight:800">{{ r.val }}</td><td class="text-muted">{{ r.year }}</td></tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:22px 0 22px 26px">
+        <h5 style="margin-bottom:12px">Review process</h5>
+        <sc-for list="{{ detail.process }}" as="p" hint-placeholder-count="5">
+          <div style="display:flex;gap:12px;font-size:13px;padding:4px 0">
+            <span class="text-muted" style="width:130px;flex:none">{{ p.k }}</span><span>{{ p.v }}</span>
+          </div>
+        </sc-for>
+        <div style="margin-top:16px">
+          <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px">Acceptance rate history</div>
+          <div style="display:flex;align-items:flex-end;gap:10px">
+            <sc-for list="{{ detail.history }}" as="h" hint-placeholder-count="4">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                <span style="font-size:10px">{{ h.val }}</span>
+                <div style="width:20px;background:var(--color-accent-400);height:{{ h.h }}px"></div>
+                <span class="text-muted" style="font-size:10px">{{ h.year }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ detail.hasWorkshops }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:22px 0;border-bottom:2px solid var(--color-divider)">
+        <h5 style="margin-bottom:12px">Co-located workshops</h5>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+          <sc-for list="{{ detail.workshops }}" as="w" hint-placeholder-count="2">
+            <div class="card">
+              <div class="card-kicker">Workshop</div>
+              <div class="card-title">{{ w.name }}</div>
+              <div class="card-meta">{{ w.when }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-if>
+    <div class="text-muted" style="font-size:11px;padding:22px 0 40px;max-width:640px;line-height:1.6">{{ detail.notes }}</div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isCompare }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Compare" style="max-width:1280px;margin:0 auto;padding:0 20px">
+    <div style="padding:22px 0 14px;border-bottom:2px solid var(--color-divider);display:flex;align-items:baseline;gap:16px">
+      <h2 style="margin:0">Compare</h2>
+      <span class="text-muted" style="font-size:12px">{{ compareHint }}</span>
+      <button onClick="{{ clearCompare }}" class="btn btn-ghost" style="font-size:12px;margin-left:auto">Clear</button>
+    </div>
+    <sc-if value="{{ compareEmpty }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:56px 0;max-width:460px">
+        <h4>Nothing to compare yet.</h4>
+        <p class="text-muted" style="font-size:13px">Add two to four venues from the browse list and they line up here on one timeline.</p>
+        <button onClick="{{ goBrowse }}" class="btn btn-primary" style="justify-content:flex-start">Browse venues</button>
+      </div>
+    </sc-if>
+    <sc-if value="{{ compareReady }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="padding:22px 0;border-bottom:2px solid var(--color-divider)">
+          <div class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px">Deadlines on one timeline</div>
+          <div style="position:relative;padding-left:150px;padding-right:70px">
+            <div style="position:relative;height:18px;border-bottom:1px solid var(--color-divider)">
+              <sc-for list="{{ months }}" as="m" hint-placeholder-count="6">
+                <div style="position:absolute;top:0;left:{{ m.pct }}%;font-size:10px;color:color-mix(in srgb,var(--color-text) 50%,transparent);border-left:1px solid var(--color-divider);padding-left:4px;height:18px">{{ m.label }}</div>
+              </sc-for>
+            </div>
+            <sc-for list="{{ compareRows }}" as="r" hint-placeholder-count="3">
+              <div style="position:relative;height:62px;border-bottom:1px solid color-mix(in srgb,var(--color-text) 10%,transparent)">
+                <div style="position:absolute;left:-150px;top:16px;width:142px;font-family:var(--font-heading);font-weight:800;font-size:13px">{{ r.name }}</div>
+                <sc-for list="{{ r.marks }}" as="k" hint-placeholder-count="4">
+                  <div style="position:absolute;top:{{ k.top }}px;left:{{ k.pct }}%">
+                    <div style="width:2px;height:14px;background:var(--color-accent)"></div>
+                    <div style="font-size:9px;white-space:nowrap;transform:translateX(-2px);color:color-mix(in srgb,var(--color-text) 65%,transparent)">{{ k.label }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="overflow-x:auto;padding-bottom:40px">
+          <table class="table" style="min-width:560px">
+            <thead>
+              <tr>
+                <th style="width:150px">&nbsp;</th>
+                <sc-for list="{{ compareRows }}" as="r" hint-placeholder-count="3">
+                  <th>{{ r.name }}</th>
+                </sc-for>
+              </tr>
+            </thead>
+            <tbody>
+              <sc-for list="{{ compareAxes }}" as="a" hint-placeholder-count="7">
+                <tr>
+                  <td class="text-muted" style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase">{{ a.label }}</td>
+                  <sc-for list="{{ a.cells }}" as="c" hint-placeholder-count="3">
+                    <td>{{ c.text }}</td>
+                  </sc-for>
+                </tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isSaved }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Saved" style="max-width:1280px;margin:0 auto;padding:0 20px">
+    <div style="padding:22px 0 14px;border-bottom:2px solid var(--color-divider);display:flex;align-items:baseline;gap:16px">
+      <h2 style="margin:0">Watchlist</h2>
+      <span class="text-muted" style="font-size:12px">{{ savedHint }}</span>
+      <button onClick="{{ compareAllSaved }}" class="btn btn-secondary" style="font-size:12px;margin-left:auto;justify-content:flex-start">Compare these</button>
+    </div>
+    <sc-if value="{{ savedEmpty }}" hint-placeholder-val="{{ true }}">
+      <div style="padding:56px 0;max-width:460px">
+        <h4>No saved venues.</h4>
+        <p class="text-muted" style="font-size:13px">Saves stay in this browser — no account needed.</p>
+        <button onClick="{{ goBrowse }}" class="btn btn-primary" style="justify-content:flex-start">Browse venues</button>
+      </div>
+    </sc-if>
+    <sc-for list="{{ savedList }}" as="v" hint-placeholder-count="0">
+      <div style="border-bottom:1px solid var(--color-divider)">
+        <div style="display:grid;grid-template-columns:92px 1fr auto;align-items:center">
+          <div data-rail="1" style="background:var(--color-surface);padding:12px 10px;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:var(--font-heading);font-weight:800;font-size:26px;line-height:1">{{ v.daysShort }}</div>
+            <div class="text-muted" style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase">{{ v.daysUnit }}</div>
+          </div>
+          <div style="padding:12px 16px">
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px">
+              <button onClick="{{ v.open }}" style="cursor:pointer;background:none;border:0;padding:0;color:inherit;font-family:var(--font-heading);font-weight:800;font-size:17px;text-align:left">{{ v.name }}</button>
+              <sc-if value="{{ v.hasPapers }}" hint-placeholder-val="{{ false }}">
+                <span data-pill="1" style="font-size:11px;padding:3px 9px;background:var(--color-accent);color:var(--color-bg);font-family:var(--font-heading);font-weight:800">{{ v.progressLabel }}</span>
+              </sc-if>
+            </div>
+            <div style="font-size:13px;margin-top:4px">{{ v.nextLine }}</div>
+            <div class="text-muted" style="font-size:12px">{{ v.whereLine }}</div>
+          </div>
+          <div style="display:flex;gap:6px;padding-right:12px">
+            <button onClick="{{ v.toggleTracker }}" class="btn btn-primary" style="font-size:12px;justify-content:flex-start;min-width:118px">{{ v.trackerLabel }}</button>
+            <a href="{{ v.ics }}" download="{{ v.icsName }}" class="btn btn-secondary" style="font-size:12px;border-bottom-width:1px">Calendar</a>
+            <button onClick="{{ v.toggleSave }}" class="btn btn-ghost" style="font-size:12px">Remove</button>
+          </div>
+        </div>
+
+        <sc-if value="{{ v.trackerOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:4px 16px 18px 92px;animation:cg-in .18s ease-out">
+            <sc-for list="{{ v.papers }}" as="p" hint-placeholder-count="1">
+              <div style="border-top:1px solid var(--color-divider);padding:14px 0">
+                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+                  <input class="input" value="{{ p.title }}" onChange="{{ p.setTitle }}" placeholder="Paper title" style="max-width:330px;min-height:30px;font-size:13px" />
+                  <span class="text-muted" style="font-size:11px">{{ p.summary }}</span>
+                  <button onClick="{{ p.remove }}" class="btn btn-ghost" style="font-size:12px;margin-left:auto">Remove</button>
+                </div>
+                <div style="display:flex;margin-top:10px;border:1px solid var(--color-divider)">
+                  <sc-for list="{{ p.steps }}" as="st" hint-placeholder-count="6">
+                    <sc-if value="{{ st.done }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ st.set }}" style="flex:1;cursor:pointer;font:inherit;font-size:11px;padding:6px 4px;border:0;border-right:1px solid var(--color-bg);background:var(--color-accent);color:var(--color-bg);text-align:left">{{ st.label }}</button>
+                    </sc-if>
+                    <sc-if value="{{ st.todo }}" hint-placeholder-val="{{ true }}">
+                      <button onClick="{{ st.set }}" style="flex:1;cursor:pointer;font:inherit;font-size:11px;padding:6px 4px;border:0;border-right:1px solid var(--color-divider);background:transparent;color:color-mix(in srgb,var(--color-text) 60%,transparent);text-align:left">{{ st.label }}</button>
+                    </sc-if>
+                  </sc-for>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center">
+                  <span class="text-muted" style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase">Outcome</span>
+                  <sc-for list="{{ p.outcomes }}" as="o" hint-placeholder-count="3">
+                    <sc-if value="{{ o.active }}" hint-placeholder-val="{{ false }}">
+                      <button onClick="{{ o.set }}" data-pill="1" style="cursor:pointer;font:inherit;font-size:11px;padding:3px 10px;border:1px solid var(--color-accent);background:var(--color-accent);color:var(--color-bg)">{{ o.label }}</button>
+                    </sc-if>
+                    <sc-if value="{{ o.off }}" hint-placeholder-val="{{ true }}">
+                      <button onClick="{{ o.set }}" data-pill="1" style="cursor:pointer;font:inherit;font-size:11px;padding:3px 10px;border:1px solid var(--color-divider);background:transparent;color:var(--color-text)">{{ o.label }}</button>
+                    </sc-if>
+                  </sc-for>
+                  <input class="input" value="{{ p.note }}" onChange="{{ p.setNote }}" placeholder="Notes — reviewer scores, next action" style="flex:1;min-width:200px;min-height:30px;font-size:12px" />
+                </div>
+              </div>
+            </sc-for>
+            <div style="border-top:1px solid var(--color-divider);padding-top:12px">
+              <button onClick="{{ v.addPaper }}" class="btn btn-secondary" style="font-size:12px;justify-content:flex-start">+ Add a paper</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+    <div style="height:40px"></div>
+  </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;hideClosedCycles&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Results&quot;},&quot;defaultSort&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;fit&quot;,&quot;deadline&quot;,&quot;ranking&quot;,&quot;acceptance&quot;],&quot;default&quot;:&quot;fit&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Results&quot;},&quot;cornerStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;square&quot;,&quot;round&quot;],&quot;default&quot;:&quot;square&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  TOPICS = [];
+  PARENT = {};
+
+  V = [];
+  LEX = null;
+  DATA = {venues:'data/venues.json', taxonomy:'data/taxonomy.json', lexicon:'data/query-lexicon.json'};
+
+  async loadData(){
+    const get = async p => {
+      const r = await fetch(p, {cache:'no-store'});
+      if(!r.ok) throw new Error(p+' → HTTP '+r.status);
+      return r.json();
+    };
+    try{
+      const [venues, tax, lex] = await Promise.all([get(this.DATA.venues), get(this.DATA.taxonomy), get(this.DATA.lexicon)]);
+      this.TOPICS = (tax.topics||[]).slice();
+      this.PARENT = Object.assign({}, tax.narrowTopics||{}); delete this.PARENT.$comment;
+      this.STAGES = (tax.paperStages||this.STAGES).slice();
+      this.OUTCOMES = (tax.paperOutcomes||this.OUTCOMES).slice();
+      this.RANKS = tax.rankingSources||{};
+      this.LEX = lex;
+      const bad = [];
+      this.V = (venues.venues||[]).map(r => this.normalize(r, bad));
+      this.setState({dataState: this.V.length ? 'ready' : 'empty', dataIssues: bad, dataUpdated: venues.updated||''});
+    }catch(e){
+      this.setState({dataState:'error', dataError: String(e.message||e)});
+    }
+  }
+
+  normalize(r, bad){
+    const id = r.id || '(missing id)';
+    const need = k => { if(!r[k]) bad.push(id+': missing '+k); };
+    ['name','kind','location','event','topics','deadlines'].forEach(need);
+    const loc = r.location||{}, ev = r.event||{}, rk = r.rankings||{}, ac = r.acceptance||{}, rv = r.review||{}, src = r.source||{};
+    (r.topics||[]).forEach(t => { if(this.TOPICS.length && !this.TOPICS.includes(t)) bad.push(id+': topic "'+t+'" not in taxonomy'); });
+    if(!src.verifiedOn) bad.push(id+': no source.verifiedOn');
+    const chain = (r.deadlines||[]).map(d => [d.stage, d.date, d.extendedTo||null, d.extensionNote||null]);
+    for(let i = 1; i < chain.length; i++){ if(chain[i][1] < chain[i-1][1]){ bad.push(id+': deadlines out of order at "'+chain[i][0]+'"'); break; } }
+    return {
+      id: r.id, name: r.name, full: r.fullName||r.name,
+      kind: r.kind === 'workshop' ? 'workshop' : 'conf',
+      host: r.hostVenueId || '', broad: !!r.broadScope,
+      city: loc.city||'', country: loc.country||'', format: loc.format||'in-person',
+      start: ev.start||'', end: ev.end||ev.start||'',
+      fee: (r.registration||{}).fee || '—',
+      topics: r.topics||[],
+      rank: {CORE: rk.core||'—', CCF: rk.ccf||'—', MNiSW: rk.mnisw||'—', h5: rk.h5Index||'—'},
+      accept: typeof ac.latestPct === 'number' ? ac.latestPct : 0,
+      hist: (ac.history||[]).map(h => [h.year, h.pct]),
+      review: rv.blinding||'unspecified', reviewNote: rv.blindingNote||'',
+      rebuttal: rv.rebuttal||'—', pages: rv.pageLimit||'—', oa: rv.openAccess||'—', pub: rv.publisher||'—',
+      chain,
+      ws: (r.coLocatedWorkshops||[]).map(w => [w.name, w.deadline]),
+      flag: r.integrityFlag ? {level: r.integrityFlag.level, note: r.integrityFlag.note+(r.integrityFlag.reviewed ? ' Last reviewed '+r.integrityFlag.reviewed+'.' : '')} : null,
+      cfp: (r.links||{}).cfp || '#', site: (r.links||{}).website || '#',
+      notes: r.notes||'',
+      confidence: src.confidence||'confirmed', verifiedOn: src.verifiedOn||''
+    };
+  }
+
+  state = {
+    view:'browse', detailId:null, query:'', trace:null, thinking:false,
+    f:{topics:[],window:null,before:null,tier:[],format:[],kind:'all',accFrom:0,accTo:100,review:null},
+    paper:{topics:['adversarial robustness','computer vision'],tier:['A*','A'],readyBy:'2026-11-01'},
+    expanded:{}, saved:[], compare:[], sort:null, theme:'light', addTopic:'',
+    papers:{}, tracker:{}, edges:'square',
+    dataState:'loading', dataIssues:[], dataError:'', dataUpdated:''
+  };
+  STAGES = ['Drafting','Submitted','Under review','Rebuttal','Decision','Camera-ready'];
+  OUTCOMES = ['Pending','Accepted','Rejected'];
+
+  // ── lifecycle ────────────────────────────────────────────────
+  componentDidMount(){
+    let theme = 'light';
+    try{
+      const st = localStorage.getItem('cg.theme');
+      if(st){ theme = st; }
+      else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ theme = 'dark'; }
+      const sv = JSON.parse(localStorage.getItem('cg.saved')||'[]');
+      const pp = JSON.parse(localStorage.getItem('cg.paper')||'null');
+      const tr = JSON.parse(localStorage.getItem('cg.papers')||'{}');
+      const eg = localStorage.getItem('cg.edges') || this.props.cornerStyle || 'square';
+      this.setState({theme, edges:eg, saved:Array.isArray(sv)?sv:[], paper:pp||this.state.paper, papers:(tr && typeof tr === 'object') ? tr : {}});
+    }catch(e){ this.setState({theme}); }
+    this.applyTheme(theme);
+    this.loadData();
+    this.readHash();
+    this._hash = () => this.readHash();
+    window.addEventListener('hashchange', this._hash);
+  }
+  componentWillUnmount(){ window.removeEventListener('hashchange', this._hash); }
+  componentDidUpdate(){ this.sync(); }
+  sync(){
+    const s = this.state, prev = this._prev || {};
+    if(prev.theme !== s.theme) this.applyTheme(s.theme);
+    if(prev.f !== s.f || prev.view !== s.view || prev.sort !== s.sort || prev.detailId !== s.detailId) this.writeHash();
+    try{
+      if(prev.saved !== s.saved) localStorage.setItem('cg.saved', JSON.stringify(s.saved));
+      if(prev.paper !== s.paper) localStorage.setItem('cg.paper', JSON.stringify(s.paper));
+      if(prev.papers !== s.papers) localStorage.setItem('cg.papers', JSON.stringify(s.papers));
+      if(prev.edges !== s.edges) localStorage.setItem('cg.edges', s.edges);
+    }catch(e){}
+    this._prev = {theme:s.theme, f:s.f, view:s.view, sort:s.sort, detailId:s.detailId, saved:s.saved, paper:s.paper, papers:s.papers, edges:s.edges};
+  }
+  applyTheme(t){
+    try{
+      document.documentElement.setAttribute('data-theme', t);
+      if(document.body) document.body.setAttribute('data-theme', t);
+    }catch(e){}
+  }
+
+  // ── url state ────────────────────────────────────────────────
+  writeHash(){
+    const f = this.state.f, p = [];
+    if(this.state.view !== 'browse') p.push('view='+this.state.view);
+    if(this.state.detailId) p.push('id='+this.state.detailId);
+    if(f.topics.length) p.push('t='+f.topics.map(encodeURIComponent).join(','));
+    if(f.window) p.push('w='+f.window);
+    if(f.before) p.push('before='+f.before);
+    if(f.tier.length) p.push('tier='+f.tier.map(encodeURIComponent).join(','));
+    if(f.format.length) p.push('fmt='+f.format.join(','));
+    if(f.kind !== 'all') p.push('kind='+f.kind);
+    if(f.accFrom > 0 || f.accTo < 100) p.push('acc='+f.accFrom+'-'+f.accTo);
+    if(f.review) p.push('rev='+encodeURIComponent(f.review));
+    if(this.state.sort) p.push('sort='+this.state.sort);
+    const h = '#'+p.join('&');
+    try{ if(location.hash !== h) history.replaceState(null,'',h||'#'); }catch(e){}
+  }
+  readHash(){
+    let raw = '';
+    try{ raw = (location.hash||'').replace(/^#/,''); }catch(e){}
+    if(!raw) return;
+    const q = {};
+    raw.split('&').forEach(kv => { const i = kv.indexOf('='); if(i>0) q[kv.slice(0,i)] = decodeURIComponent(kv.slice(i+1)); });
+    const f = Object.assign({}, this.state.f);
+    if(q.t) f.topics = q.t.split(',').map(decodeURIComponent);
+    if(q.w) f.window = +q.w;
+    if(q.before) f.before = q.before;
+    if(q.tier) f.tier = q.tier.split(',').map(decodeURIComponent);
+    if(q.fmt) f.format = q.fmt.split(',');
+    if(q.kind) f.kind = q.kind;
+    if(q.acc && /^\d+-\d+$/.test(q.acc)){ const [a, b] = q.acc.split('-').map(Number); f.accFrom = a; f.accTo = b; }
+    if(q.rev) f.review = q.rev;
+    this.setState({f, view:q.view||'browse', detailId:q.id||null, sort:q.sort||this.state.sort});
+  }
+
+  // ── helpers ──────────────────────────────────────────────────
+  get today(){ return new Date(); }
+  d(s){ return new Date(s+'T23:59:00'); }
+  days(s){ return Math.round((this.d(s) - this.today)/86400000); }
+  fmt(s){
+    const dt = this.d(s);
+    return dt.getDate()+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][dt.getMonth()]+' '+dt.getFullYear();
+  }
+  span(a,b){
+    const A = this.d(a), B = this.d(b), M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    if(A.getMonth()===B.getMonth()) return (A.getDate()===B.getDate()? A.getDate() : A.getDate()+'–'+B.getDate())+' '+M[A.getMonth()]+' '+A.getFullYear();
+    return A.getDate()+' '+M[A.getMonth()]+' – '+B.getDate()+' '+M[B.getMonth()]+' '+B.getFullYear();
+  }
+  expand(t){ const o = [t]; if(this.PARENT[t]) o.push(this.PARENT[t]); return o; }
+  next(v){
+    for(const c of v.chain){ const when = c[2]||c[1]; if(this.d(when) > this.today) return {stage:c[0], when, days:this.days(when)}; }
+    return null;
+  }
+  band(v){
+    const mine = new Set(); (this.state.paper.topics||[]).forEach(t => this.expand(t).forEach(x => mine.add(x)));
+    if(!mine.size) return {n:0, band:'none'};
+    const theirs = new Set(); v.topics.forEach(t => this.expand(t).forEach(x => theirs.add(x)));
+    let n = 0; mine.forEach(t => { if(theirs.has(t)) n++; });
+    if(n >= 2) return {n, band:'strong'};
+    if(n === 1) return {n, band:'partial'};
+    return {n:0, band: v.broad ? 'partial' : 'weak'};
+  }
+  tierOf(v){ return v.rank.CORE; }
+  ics(v, nx){
+    if(!nx) return '#';
+    const dt = this.d(nx.when), pad = n => String(n).padStart(2,'0');
+    const stamp = dt.getUTCFullYear()+pad(dt.getUTCMonth()+1)+pad(dt.getUTCDate())+'T'+pad(dt.getUTCHours())+pad(dt.getUTCMinutes())+'00Z';
+    const body = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Confgraph//EN','BEGIN:VEVENT','UID:'+v.id+'-'+nx.stage.replace(/\s/g,'')+'@confgraph','DTSTAMP:'+stamp,'DTSTART:'+stamp,'DTEND:'+stamp,'SUMMARY:'+v.name+' — '+nx.stage,'DESCRIPTION:Deadline tracked in Confgraph. Dates are approximate; confirm on the venue site.','END:VEVENT','END:VCALENDAR'].join('\r\n');
+    return 'data:text/calendar;charset=utf-8,'+encodeURIComponent(body);
+  }
+
+  // ── natural-language parsing (scripted) ──────────────────────
+  MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
+
+  parse(q){
+    const L = this.LEX;
+    if(!L) return {f: Object.assign({}, this.state.f), tokens: []};
+    const s = ' '+q.toLowerCase()+' ';
+    const f = {topics:[],window:null,before:null,tier:[],format:[],kind:'all',accFrom:0,accTo:100,review:null};
+    const tokens = [];
+    const hit = arr => (arr||[]).some(w => s.includes(w));
+    Object.keys(L.topics||{}).forEach(topic => {
+      if(hit(L.topics[topic])){ f.topics.push(topic); tokens.push({text:'topic · '+topic}); }
+    });
+    Object.keys(L.blinding||{}).forEach(b => { if(!f.review && hit(L.blinding[b])){ f.review = b; tokens.push({text:'review · '+b}); } });
+    Object.keys(L.tiers||{}).forEach(t => { if(hit(L.tiers[t])){ f.tier.push(t); tokens.push({text:'ranking · '+t}); } });
+    Object.keys(L.formats||{}).forEach(fm => { if(hit(L.formats[fm])){ f.format.push(fm); tokens.push({text:'format · '+fm}); } });
+    Object.keys(L.kinds||{}).forEach(k => {
+      if(f.kind === 'all' && hit(L.kinds[k])){ f.kind = k === 'workshop' ? 'workshop' : 'conf'; tokens.push({text:'type · '+k+'s'}); }
+    });
+    (L.acceptanceBands||[]).forEach(b => {
+      if(hit(b.triggers)){ f.accFrom = b.from; f.accTo = b.to; tokens.push({text:'acceptance · '+b.from+'–'+b.to+'%'}); }
+    });
+    const wk = s.match(/next (\d+) (day|week|month)/);
+    if(wk){ const n = +wk[1]; const mult = wk[2]==='day'?1:wk[2]==='week'?7:30; f.window = n*mult; tokens.push({text:'deadline · next '+(n*mult)+' days'}); }
+    let mi = -1;
+    this.MONTHS.forEach((m,i) => { if(s.includes(' '+m) || s.includes(m.slice(0,3)+' ')) mi = i; });
+    if(mi >= 0 && !wk){
+      const now = this.today; let y = now.getFullYear();
+      if(mi < now.getMonth()) y++;
+      const last = new Date(y, mi+1, 0);
+      f.before = y+'-'+String(mi+1).padStart(2,'0')+'-'+String(last.getDate()).padStart(2,'0');
+      tokens.push({text:'deadline · by '+this.fmt(f.before)});
+    }
+    if(/save|favourite|favorite|watchlist/.test(s)) tokens.push({text:'note · use the watchlist tab'});
+    return {f, tokens};
+  }
+  runQuery = () => {
+    const q = this.state.query.trim();
+    if(!q){ this.setState({trace:null}); return; }
+    this.setState({thinking:true});
+    setTimeout(() => {
+      const {f, tokens} = this.parse(q);
+      const note = tokens.length ? '' : 'Nothing recognised — try a topic, a month, or “double-blind”.';
+      this.setState({thinking:false, trace:{tokens, note}, f});
+    }, 420);
+  };
+
+  // ── filtering ────────────────────────────────────────────────
+  matches(v, nx){
+    const f = this.state.f;
+    if(f.kind !== 'all' && v.kind !== f.kind) return false;
+    if(!nx) return false;
+    if(f.topics.length){
+      const theirs = new Set(); v.topics.forEach(t => this.expand(t).forEach(x => theirs.add(x)));
+      if(!f.topics.some(t => theirs.has(t))) return false;
+    }
+    if(f.window && nx.days > f.window) return false;
+    if(f.before && this.d(nx.when) > this.d(f.before)) return false;
+    if(f.format.length && !f.format.includes(v.format)) return false;
+    if(f.review && !(v.review||'').startsWith(f.review)) return false;
+    if(v.accept < f.accFrom || v.accept > f.accTo) return false;
+    if(f.tier.length){
+      const ok = f.tier.some(t => (t === 'CORE A*' && v.rank.CORE === 'A*') || (t === 'CORE A' && v.rank.CORE === 'A') || (t === 'CCF-A' && v.rank.CCF === 'A'));
+      if(!ok) return false;
+    }
+    return true;
+  }
+
+  vm(v, opts){
+    const nx = this.next(v), b = this.band(v), s = this.state;
+    const saved = s.saved.includes(v.id), cmp = s.compare.includes(v.id);
+    const mine = new Set(); (s.paper.topics||[]).forEach(t => this.expand(t).forEach(x => mine.add(x)));
+    const feasible = nx && s.paper.readyBy ? this.d(nx.when) >= this.d(s.paper.readyBy) : true;
+    const badges = [{src:'CORE',val:v.rank.CORE},{src:'CCF',val:v.rank.CCF},{src:'h5',val:v.rank.h5}].filter(x => x.val !== '—');
+    const maxA = Math.max.apply(null, v.hist.map(h => h[1]));
+    const plist = s.papers[v.id]||[];
+    const furthest = plist.length ? this.STAGES[Math.max.apply(null, plist.map(p => p.stage||0))] : '';
+    return {
+      id:v.id, name:v.name, full:v.full, isWorkshop:v.kind === 'workshop', host:v.host||'',
+      days: nx ? String(nx.days) : '', daysShort: nx ? String(nx.days) : '—', daysUnit: nx ? 'days left' : 'closed',
+      urgent: !!nx && nx.days <= 45, calm: !!nx && nx.days > 45, closed: !nx,
+      bandStrong: b.band === 'strong', bandPartial: b.band === 'partial', bandWeak: b.band === 'weak' || b.band === 'none',
+      nextLine: nx ? nx.stage+' · '+this.fmt(nx.when) : 'No open deadline this cycle',
+      tooEarly: !!nx && !feasible,
+      whereLine: v.city+', '+v.country+' · '+this.span(v.start, v.end)+' · '+v.format,
+      acceptLine: v.accept+'% accepted',
+      badges, primaryTier: v.rank.CORE,
+      flagged: !!v.flag, flagLabel: v.flag ? v.flag.level : '', flagNote: v.flag ? v.flag.note : '',
+      expanded: !!s.expanded[v.id],
+      saved, saveLabel: saved ? 'Saved to watchlist' : 'Save to watchlist',
+      saveShort: saved ? '✓ Saved' : 'Save',
+      compareShort: cmp ? '✓ Comparing' : 'Compare',
+      expandLabel: s.expanded[v.id] ? 'Less ▲' : 'More ▼',
+      toggleSave: () => this.toggleSave(v.id),
+      toggleCompare: () => this.toggleCompare(v.id),
+      toggleExpand: () => this.setState(st => ({expanded: Object.assign({}, st.expanded, {[v.id]: !st.expanded[v.id]})})),
+      open: () => this.setState({view:'detail', detailId:v.id}),
+      chain: v.chain.map(c => {
+        const when = c[2]||c[1];
+        return {stage:c[0], when:this.fmt(c[1]), struck: !!c[2], live: !c[2], note: c[2] ? 'Extended to '+this.fmt(c[2])+' — '+c[3] : null};
+      }),
+      process: [{k:'Review',v:v.review+(v.reviewNote ? ' · '+v.reviewNote : '')},{k:'Rebuttal',v:v.rebuttal},{k:'Length',v:v.pages},{k:'Open access',v:v.oa},{k:'Publisher',v:v.pub},{k:'Registration',v:v.fee}],
+      history: v.hist.map(h => ({year:String(h[0]), val:h[1]+'%', h: Math.max(4, Math.round(h[1]/maxA*40))})),
+      topicTags: v.topics.map(t => ({name:t, hit: mine.has(t) || this.expand(t).some(x => mine.has(x)), miss: !(mine.has(t) || this.expand(t).some(x => mine.has(x)))})),
+      hasWorkshops: (v.ws||[]).length > 0,
+      workshops: (v.ws||[]).map(w => ({name:w[0], when:'deadline '+this.fmt(w[1])})),
+      ics: this.ics(v, nx), icsName: v.id+'-deadline.ics',
+      cfp: v.cfp||'#', site: v.site||'#',
+      provisional: v.confidence !== 'confirmed',
+      confidenceLine: v.confidence === 'confirmed' ? '' : v.confidence+' dates',
+      kindLine: v.kind === 'workshop' ? 'Workshop · hosted by '+v.host : 'Conference',
+      nextStage: nx ? nx.stage : 'Cycle closed',
+      nextWhen: nx ? this.fmt(nx.when)+' (AoE)' : '—',
+      nextRel: nx ? 'in '+nx.days+' days'+(feasible ? '' : ' — earlier than your ready-by date of '+this.fmt(s.paper.readyBy)) : 'watch for the next cycle',
+      facts: [{k:'Dates',v:this.span(v.start,v.end)},{k:'Location',v:v.city+', '+v.country},{k:'Format',v:v.format},{k:'Registration',v:v.fee},{k:'Publisher',v:v.pub},{k:'Open access',v:v.oa},{k:'Acceptance',v:v.accept+'%'}],
+      rankings: [{src:'CORE',val:v.rank.CORE,year:'2023 list'},{src:'CCF',val:v.rank.CCF,year:'2022 list'},{src:'h5-index',val:v.rank.h5,year:'2026'}],
+      hasPapers: plist.length > 0,
+      papersLabel: plist.length+(plist.length === 1 ? ' paper tracked' : ' papers tracked'),
+      progressLabel: plist.length+(plist.length === 1 ? ' paper · ' : ' papers · ')+furthest,
+      trackerOpen: !!s.tracker[v.id],
+      trackerLabel: s.tracker[v.id] ? 'Hide progress' : (plist.length ? 'Progress ('+plist.length+')' : 'Track progress'),
+      trackLabel: plist.length ? 'Track another paper' : 'Track a paper here',
+      toggleTracker: () => this.setState(st => ({tracker: Object.assign({}, st.tracker, {[v.id]: !st.tracker[v.id]})})),
+      openTracker: () => this.setState(st => ({view:'saved', tracker: Object.assign({}, st.tracker, {[v.id]: true})})),
+      addPaper: () => this.addPaper(v.id),
+      trackHere: () => {
+        this.addPaper(v.id);
+        this.setState(st => ({view:'saved', saved: st.saved.includes(v.id) ? st.saved : st.saved.concat([v.id])}));
+      },
+      papers: plist.map((p, i) => ({
+        title: p.title || '', note: p.note || '',
+        summary: this.STAGES[p.stage||0]+((p.outcome && p.outcome !== 'Pending') ? ' · '+p.outcome : ''),
+        setTitle: e => this.setPaper(v.id, i, {title: e.target.value}),
+        setNote: e => this.setPaper(v.id, i, {note: e.target.value}),
+        remove: () => this.removePaper(v.id, i),
+        steps: this.STAGES.map((label, si) => ({label, done: si <= (p.stage||0), todo: si > (p.stage||0), set: () => this.setPaper(v.id, i, {stage: si})})),
+        outcomes: this.OUTCOMES.map(o => ({label:o, active: (p.outcome||'Pending') === o, off: (p.outcome||'Pending') !== o, set: () => this.setPaper(v.id, i, {outcome:o})}))
+      })),
+      notes: [v.notes, v.verifiedOn ? 'Source last verified '+this.fmt(v.verifiedOn)+(v.confidence !== 'confirmed' ? ' · '+v.confidence+' dates' : '')+'.' : 'No source recorded for this venue.'].filter(Boolean).join(' '),
+      _raw:v, _nx:nx, _band:b
+    };
+  }
+
+  toggleSave(id){ this.setState(s => ({saved: s.saved.includes(id) ? s.saved.filter(x => x !== id) : s.saved.concat([id])})); }
+  setPaper(vid, i, patch){
+    this.setState(s => {
+      const list = (s.papers[vid]||[]).slice();
+      list[i] = Object.assign({}, list[i], patch);
+      return {papers: Object.assign({}, s.papers, {[vid]: list})};
+    });
+  }
+  addPaper(vid){
+    this.setState(s => ({
+      papers: Object.assign({}, s.papers, {[vid]: (s.papers[vid]||[]).concat([{title:'', stage:0, outcome:'Pending', note:''}])}),
+      tracker: Object.assign({}, s.tracker, {[vid]: true})
+    }));
+  }
+  removePaper(vid, i){
+    this.setState(s => ({papers: Object.assign({}, s.papers, {[vid]: (s.papers[vid]||[]).filter((x, j) => j !== i)})}));
+  }
+  toggleCompare(id){
+    this.setState(s => {
+      if(s.compare.includes(id)) return {compare: s.compare.filter(x => x !== id)};
+      if(s.compare.length >= 4) return {compare: s.compare.slice(1).concat([id])};
+      return {compare: s.compare.concat([id])};
+    });
+  }
+  chip(label, active, toggle){ return {label, active, off: !active, toggle}; }
+  toggleIn(key, val){
+    this.setState(s => {
+      const arr = s.f[key], nextArr = arr.includes(val) ? arr.filter(x => x !== val) : arr.concat([val]);
+      return {f: Object.assign({}, s.f, {[key]: nextArr})};
+    });
+  }
+  setF(patch){ this.setState(s => ({f: Object.assign({}, s.f, patch)})); }
+
+  renderVals(){
+    const s = this.state, f = s.f;
+    const sort = s.sort || this.props.defaultSort || 'fit';
+    const hideClosed = this.props.hideClosedCycles !== false;
+
+    const all = this.V.map(v => ({v, nx:this.next(v)}));
+    let list = all.filter(({v, nx}) => this.matches(v, nx));
+    if(!hideClosed) list = list.concat(all.filter(({v, nx}) => !nx && (f.kind === 'all' || v.kind === f.kind)));
+    const closedCount = all.filter(x => !x.nx).length;
+
+    const bandRank = {strong:3, partial:2, weak:1, none:1};
+    const tierRank = {'A*':4,'A':3,'B':2,'—':0};
+    list.sort((a, b) => {
+      if(sort === 'deadline') return (a.nx ? a.nx.days : 9e5) - (b.nx ? b.nx.days : 9e5);
+      if(sort === 'ranking') return tierRank[b.v.rank.CORE] - tierRank[a.v.rank.CORE] || (a.nx ? a.nx.days : 9e5) - (b.nx ? b.nx.days : 9e5);
+      if(sort === 'acceptance') return b.v.accept - a.v.accept;
+      const ba = this.band(a.v), bb = this.band(b.v);
+      const target = s.paper.tier||[];
+      const ta = target.includes(a.v.rank.CORE) ? 1 : 0, tb = target.includes(b.v.rank.CORE) ? 1 : 0;
+      return bandRank[bb.band] - bandRank[ba.band] || bb.n - ba.n || tb - ta || tierRank[b.v.rank.CORE] - tierRank[a.v.rank.CORE] || (a.nx ? a.nx.days : 9e5) - (b.nx ? b.nx.days : 9e5);
+    });
+    const results = list.map(x => this.vm(x.v));
+
+    const paperTopics = (s.paper.topics||[]).map(t => ({
+      label: t,
+      remove: () => this.setState(st => ({paper: Object.assign({}, st.paper, {topics: st.paper.topics.filter(x => x !== t)})}))
+    }));
+
+    const chipGroups = [
+      {label:'Topic', chips: this.TOPICS.map(t => this.chip(t, f.topics.includes(t), () => this.toggleIn('topics', t)))},
+      {label:'Deadline window', chips: [30,60,90].map(w => this.chip('next '+w+' days', f.window === w, () => this.setF({window: f.window === w ? null : w, before:null})))
+        .concat(f.before ? [this.chip('by '+this.fmt(f.before), true, () => this.setF({before:null}))] : [])},
+      {label:'Ranking', chips: ['CORE A*','CORE A','CCF-A'].map(t => this.chip(t, f.tier.includes(t), () => this.toggleIn('tier', t)))},
+      {label:'Format', chips: ['in-person','hybrid','virtual'].map(t => this.chip(t, f.format.includes(t), () => this.toggleIn('format', t)))
+        .concat(f.review ? [this.chip(f.review, true, () => this.setF({review:null}))] : [])},
+      {label:'Type', chips: [['all','Everything'],['conf','Conferences'],['workshop','Workshops']].map(([k, l]) => this.chip(l, f.kind === k, () => this.setF({kind:k})))}
+    ];
+
+    const strong = results.filter(r => r.bandStrong).length;
+    const paperSummary = (s.paper.topics||[]).length
+      ? strong+' of '+results.length+' shown are strong topic matches. Ready-by '+(s.paper.readyBy ? this.fmt(s.paper.readyBy) : 'not set')+' flags deadlines that fall too early.'
+      : 'Add your paper topics to rank venues by topic match.';
+
+    // compare
+    const cmp = s.compare.map(id => this.V.find(v => v.id === id)).filter(Boolean).map(v => this.vm(v));
+    const now = this.today, horizon = 16;
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+    const total = horizon * 30.4;
+    const months = [];
+    for(let i = 0; i < horizon; i += 2){
+      const dt = new Date(monthStart.getFullYear(), monthStart.getMonth() + i, 1);
+      months.push({label:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][dt.getMonth()]+' '+String(dt.getFullYear()).slice(2), pct: Math.round((dt - monthStart)/86400000/total*1000)/10});
+    }
+    const compareRows = cmp.map(r => ({
+      name: r.name,
+      marks: r._raw.chain.map((c, i) => {
+        const when = c[2]||c[1], pct = (this.d(when) - monthStart)/86400000/total*100;
+        return {label: c[0].split(' ')[0], top: i % 2 ? 30 : 10, pct: Math.max(0, Math.min(97, Math.round(pct*10)/10))};
+      })
+    }));
+    const shared = cmp.length > 1 ? cmp[0]._raw.topics.filter(t => cmp.every(c => c._raw.topics.includes(t))) : [];
+    const compareAxes = cmp.length > 1 ? [
+      {label:'Next deadline', cells: cmp.map(c => ({text: c._nx ? c._nx.stage+', '+this.fmt(c._nx.when)+' ('+c._nx.days+'d)' : 'closed'}))},
+      {label:'CORE / CCF / h5', cells: cmp.map(c => ({text: c._raw.rank.CORE+' / '+c._raw.rank.CCF+' / '+c._raw.rank.h5}))},
+      {label:'Acceptance rate', cells: cmp.map(c => ({text: c._raw.accept+'%'}))},
+      {label:'Review', cells: cmp.map(c => ({text: c._raw.review+' · '+c._raw.rebuttal}))},
+      {label:'Cost & location', cells: cmp.map(c => ({text: c._raw.fee+' · '+c._raw.city+', '+c._raw.country}))},
+      {label:'Shared topics', cells: cmp.map(c => ({text: shared.length ? shared.join(', ') : 'none in common'}))},
+      {label:'Trust flag', cells: cmp.map(c => ({text: c.flagged ? '⚑ '+c.flagLabel : 'no flags recorded'}))}
+    ] : [];
+
+    const savedList = s.saved.map(id => this.V.find(v => v.id === id)).filter(Boolean).map(v => this.vm(v));
+    const detailV = s.detailId ? this.V.find(v => v.id === s.detailId) : null;
+
+    return {
+      loading: s.dataState === 'loading',
+      dataEmpty: s.dataState === 'empty',
+      dataError: s.dataState === 'error',
+      dataErrorMsg: s.dataError,
+      hasData: s.dataState === 'ready',
+      issueCount: s.dataIssues.length ? s.dataIssues.length+(s.dataIssues.length === 1 ? ' record needs attention' : ' records need attention') : '',
+      issues: s.dataIssues.slice(0, 8).map(t => ({text:t})),
+      hasIssues: s.dataIssues.length > 0,
+      updatedLine: s.dataUpdated ? 'Venue data updated '+s.dataUpdated : '',
+      isBrowse: s.dataState === 'ready' && s.view === 'browse',
+      isDetail: s.dataState === 'ready' && s.view === 'detail' && !!detailV,
+      isCompare: s.dataState === 'ready' && s.view === 'compare',
+      isSaved: s.dataState === 'ready' && s.view === 'saved',
+      goBrowse: () => this.setState({view:'browse', detailId:null}),
+      goCompare: () => this.setState({view:'compare'}),
+      goSaved: () => this.setState({view:'saved'}),
+      compareLabel: 'Compare'+(s.compare.length ? ' ('+s.compare.length+')' : ''),
+      savedLabel: 'Watchlist'+(s.saved.length ? ' ('+s.saved.length+')' : ''),
+      themeLabel: s.theme === 'dark' ? '☀ Light' : '☾ Dark',
+      toggleTheme: () => {
+        const t = this.state.theme === 'dark' ? 'light' : 'dark';
+        try{ localStorage.setItem('cg.theme', t); }catch(e){}
+        this.setState({theme:t});
+      },
+
+      query: s.query,
+      onQuery: e => this.setState({query: e.target.value}),
+      onQueryKey: e => { if(e.key === 'Enter') this.runQuery(); },
+      runQuery: this.runQuery,
+      thinking: s.thinking,
+      hasTrace: !!s.trace && !s.thinking,
+      traceTokens: s.trace ? s.trace.tokens : [],
+      traceNote: s.trace ? s.trace.note : '',
+
+      paperTopics,
+      allTopics: this.TOPICS.concat(['adversarial robustness','fairness','interpretability']).filter(t => !(s.paper.topics||[]).includes(t)),
+      addTopicValue: s.addTopic,
+      onAddTopic: e => { const val = e.target.value; if(val) this.setState(st => ({paper: Object.assign({}, st.paper, {topics: st.paper.topics.concat([val])}), addTopic:''})); },
+      tierChips: ['A*','A','B'].map(t => this.chip('CORE '+t, (s.paper.tier||[]).includes(t), () => this.setState(st => {
+        const cur = st.paper.tier||[];
+        return {paper: Object.assign({}, st.paper, {tier: cur.includes(t) ? cur.filter(x => x !== t) : cur.concat([t])})};
+      }))),
+      readyBy: s.paper.readyBy || '',
+      onReadyBy: e => { const val = e.target.value; this.setState(st => ({paper: Object.assign({}, st.paper, {readyBy: val})})); },
+      paperSummary,
+
+      chipGroups,
+      sortChips: [['fit','Fit'],['deadline','Deadline'],['ranking','Ranking'],['acceptance','Acceptance']].map(([k, l]) => this.chip(l, sort === k, () => this.setState({sort:k}))),
+      results,
+      resultCount: results.length+(results.length === 1 ? ' venue' : ' venues'),
+      closedNote: hideClosed ? closedCount+' closed cycles hidden' : 'closed cycles shown',
+      noResults: results.length === 0,
+      clearAll: () => this.setState({f:{topics:[],window:null,before:null,tier:[],format:[],kind:'all',accFrom:0,accTo:100,review:null}, query:'', trace:null}),
+      accFrom: f.accFrom, accTo: f.accTo, accWidth: Math.max(0, f.accTo - f.accFrom),
+      accLabel: (f.accFrom === 0 && f.accTo === 100) ? 'any' : f.accFrom+'–'+f.accTo+'%',
+      onAccFrom: e => { const val = Math.min(+e.target.value, this.state.f.accTo - 1); this.setF({accFrom: Math.max(0, val)}); },
+      onAccTo: e => { const val = Math.max(+e.target.value, this.state.f.accFrom + 1); this.setF({accTo: Math.min(100, val)}); },
+      theme: s.theme,
+      edges: s.edges,
+      edgesLabel: s.edges === 'round' ? '▢ Rounded' : '▪ Square',
+      toggleEdges: () => this.setState({edges: this.state.edges === 'round' ? 'square' : 'round'}),
+
+      detail: detailV ? this.vm(detailV) : {},
+      compareEmpty: cmp.length < 2, compareReady: cmp.length > 1,
+      compareHint: cmp.length ? cmp.length+' of 4 selected' : 'select two to four venues',
+      clearCompare: () => this.setState({compare:[]}),
+      months, compareRows, compareAxes,
+
+      savedList, savedEmpty: savedList.length === 0,
+      savedHint: savedList.length ? savedList.length+' saved in this browser' : 'nothing saved yet',
+      compareAllSaved: () => this.setState({compare: s.saved.slice(0, 4), view:'compare'})
+    };
+  }
+}
+
+</script>
+</body>
+</html>

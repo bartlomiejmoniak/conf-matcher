@@ -1,0 +1,45 @@
+{
+  "$comment": "Controlled vocabularies. Every value used in venues.json must exist here. Order matters: `topics` renders left-to-right in the topic filter row, `paperStages` renders left-to-right in the progress bar.",
+  "topics": [
+    "computer vision",
+    "natural language",
+    "speech & audio",
+    "robotics",
+    "reinforcement learning",
+    "trustworthy AI",
+    "medical imaging",
+    "data mining",
+    "information retrieval",
+    "ml theory",
+    "multimodal",
+    "graph learning"
+  ],
+  "narrowTopics": {
+    "$comment": "Finer-grained topics a user may put in their own paper profile, mapped to the broad topic they roll up into. A paper tagged `fairness` matches a venue tagged `trustworthy AI`. Keys are NOT valid venue topics; values must be.",
+    "adversarial robustness": "trustworthy AI",
+    "fairness": "trustworthy AI",
+    "interpretability": "trustworthy AI",
+    "ai safety": "trustworthy AI",
+    "privacy": "trustworthy AI",
+    "medical imaging": "computer vision",
+    "deep learning": "ml theory"
+  },
+  "formats": ["in-person", "hybrid", "virtual"],
+  "kinds": ["conference", "workshop"],
+  "blindingTypes": ["double-blind", "single-blind", "open review", "unspecified"],
+  "rankingSources": {
+    "$comment": "displayed=false keeps a ranking in the data but out of the UI. MNiSW is collected and hidden by product decision.",
+    "core": { "label": "CORE", "assessedLabel": "2023 list", "displayed": true },
+    "ccf": { "label": "CCF", "assessedLabel": "2022 list", "displayed": true },
+    "h5Index": { "label": "h5", "assessedLabel": "2026", "displayed": true },
+    "mnisw": { "label": "MNiSW", "assessedLabel": "2025 list", "displayed": false }
+  },
+  "integrityLevels": [
+    "Confirmed predatory",
+    "Under investigation",
+    "Scandal on record",
+    "Quality concerns"
+  ],
+  "paperStages": ["Drafting", "Submitted", "Under review", "Rebuttal", "Decision", "Camera-ready"],
+  "paperOutcomes": ["Pending", "Accepted", "Rejected"]
+}
