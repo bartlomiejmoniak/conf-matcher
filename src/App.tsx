@@ -8,6 +8,7 @@ import Browse from './views/Browse';
 import Detail from './views/Detail';
 import Compare from './views/Compare';
 import Watchlist from './views/Watchlist';
+import Papers from './views/Papers';
 import { EmptyState } from './components/Bits';
 import { Flag, ICON, Moon, Sun } from './components/Icons';
 
@@ -103,6 +104,7 @@ export default function App() {
   const nav = (view: UrlState['view']) => () => { patchUrl({ view }); window.scrollTo({ top: 0 }); };
 
   const trackedCount = useCallback((id: string) => papers[id]?.length ?? 0, [papers]);
+  const paperCount = useMemo(() => Object.values(papers).reduce((n, list) => n + list.length, 0), [papers]);
 
   // ── chrome ───────────────────────────────────────────────────────────────
   const header = (
@@ -118,13 +120,29 @@ export default function App() {
         </button>
 
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
-          <button type="button" className="btn btn-ghost" onClick={nav('browse')} style={{ fontSize: 13 }}>Browse</button>
-          <button type="button" className="btn btn-ghost" onClick={nav('compare')} style={{ fontSize: 13 }}>
-            Compare{url.compare.length ? ` (${url.compare.length})` : ''}
-          </button>
-          <button type="button" className="btn btn-ghost" onClick={nav('watchlist')} style={{ fontSize: 13 }}>
-            Watchlist{saved.length ? ` (${saved.length})` : ''}
-          </button>
+          {(
+            [
+              ['browse', 'Browse', null],
+              ['compare', 'Compare', url.compare.length],
+              ['watchlist', 'Watchlist', saved.length],
+              ['papers', 'Papers', paperCount],
+            ] as const
+          ).map(([view, label, count]) => {
+            // Detail has no tab of its own; it belongs to Browse, which is where Back goes.
+            const active = url.view === view || (view === 'browse' && url.view === 'detail');
+            return (
+              <button
+                key={view}
+                type="button"
+                className="btn btn-ghost"
+                onClick={nav(view)}
+                aria-current={active ? 'page' : undefined}
+                style={{ fontSize: 13, textDecoration: active ? 'underline' : undefined, textUnderlineOffset: 4 }}
+              >
+                {label}{count ? ` (${count})` : ''}
+              </button>
+            );
+          })}
           <button
             type="button"
             className="btn btn-secondary"
@@ -224,6 +242,7 @@ export default function App() {
         )}
         {url.view === 'compare' && <Compare {...shared} browse={nav('browse')} />}
         {url.view === 'watchlist' && <Watchlist {...shared} setPapers={setPapers} browse={nav('browse')} />}
+        {url.view === 'papers' && <Papers {...shared} setPapers={setPapers} browse={nav('browse')} />}
       </div>
       <footer className="cg-shell cg-muted" style={{ fontSize: 11, padding: '32px 20px 40px', borderTop: '2px solid var(--color-divider)', marginTop: 40 }}>
         {data.venues.length} venues · data verified per record, see each venue's provenance line · deadlines are AoE

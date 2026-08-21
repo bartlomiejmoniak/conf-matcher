@@ -29,7 +29,7 @@ export interface UrlState {
 }
 
 const SORTS: SortKey[] = ['fit', 'deadline', 'ranking', 'acceptance'];
-const VIEWS: View[] = ['browse', 'detail', 'compare', 'watchlist'];
+const VIEWS: View[] = ['browse', 'detail', 'compare', 'watchlist', 'papers'];
 
 const list = (s: string | null): string[] => (s ? s.split('|').filter(Boolean) : []);
 

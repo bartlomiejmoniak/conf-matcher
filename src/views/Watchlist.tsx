@@ -2,9 +2,11 @@ import { useState } from 'react';
 import type { TrackedPaper } from '../lib/types';
 import { fmtRange } from '../lib/dates';
 import { icsHref } from '../lib/ics';
-import { ConfidenceNote, CountdownRail, DeadlineLine, EmptyState, SmallLabel, place } from '../components/Bits';
+import { ConfidenceNote, CountdownRail, DeadlineLine, EmptyState, place } from '../components/Bits';
 import type { ViewProps } from './shared';
 import { CalendarPlus, Globe, ICON, ListChecks, Plus, X } from '../components/Icons';
+import { PaperEditor } from '../components/PaperEditor';
+import { addPaper, removePaper, updatePaper } from '../lib/papers';
 
 interface Props extends ViewProps {
   setPapers: (p: Record<string, TrackedPaper[]> | ((prev: Record<string, TrackedPaper[]>) => Record<string, TrackedPaper[]>)) => void;
@@ -28,27 +30,15 @@ export default function Watchlist({ saved, byId, data, papers, setPapers, toggle
     );
   }
 
-  const update = (venueId: string, index: number, patch: Partial<TrackedPaper>) => {
-    setPapers((prev) => {
-      const list = [...(prev[venueId] ?? [])];
-      const current = list[index];
-      if (!current) return prev;
-      list[index] = { ...current, ...patch };
-      return { ...prev, [venueId]: list };
-    });
-  };
+  const update = (venueId: string, index: number, patch: Partial<TrackedPaper>) =>
+    setPapers((prev) => updatePaper(prev, venueId, index, patch));
 
-  const addPaper = (venueId: string) => {
-    setPapers((prev) => ({
-      ...prev,
-      [venueId]: [...(prev[venueId] ?? []), { title: '', stage: data.taxonomy.paperStages[0]!, outcome: data.taxonomy.paperOutcomes[0]!, note: '' }],
-    }));
+  const add = (venueId: string) => {
+    setPapers((prev) => addPaper(prev, venueId, data.taxonomy));
     setOpen(venueId);
   };
 
-  const removePaper = (venueId: string, index: number) => {
-    setPapers((prev) => ({ ...prev, [venueId]: (prev[venueId] ?? []).filter((_, i) => i !== index) }));
-  };
+  const remove = (venueId: string, index: number) => setPapers((prev) => removePaper(prev, venueId, index));
 
   return (
     <div className="cg-in">
@@ -113,77 +103,17 @@ export default function Watchlist({ saved, byId, data, papers, setPapers, toggle
                   </div>
                 )}
 
-                {tracked.map((p, i) => {
-                  const stageIndex = data.taxonomy.paperStages.indexOf(p.stage);
-                  return (
-                    <div key={i} style={{ marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid var(--color-divider)' }}>
-                      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8, flexWrap: 'wrap' }}>
-                        <input
-                          className="input"
-                          value={p.title}
-                          onChange={(e) => update(v.id, i, { title: e.target.value })}
-                          placeholder="Paper title"
-                          aria-label="Paper title"
-                          style={{ flex: '1 1 260px', minHeight: 30, fontSize: 13 }}
-                        />
-                        <span className="cg-muted" style={{ fontSize: 11 }}>{p.stage} · {p.outcome}</span>
-                        <button type="button" className="btn btn-ghost" onClick={() => removePaper(v.id, i)} style={{ fontSize: 11 }}>Remove</button>
-                      </div>
+                {tracked.map((p, i) => (
+                  <PaperEditor
+                    key={i}
+                    paper={p}
+                    taxonomy={data.taxonomy}
+                    onChange={(patch) => update(v.id, i, patch)}
+                    onRemove={() => remove(v.id, i)}
+                  />
+                ))}
 
-                      <SmallLabel style={{ marginBottom: 6 }}>Stage</SmallLabel>
-                      <div style={{ display: 'flex', gap: 2, marginBottom: 10 }}>
-                        {data.taxonomy.paperStages.map((stage, si) => (
-                          <button
-                            key={stage}
-                            type="button"
-                            onClick={() => update(v.id, i, { stage })}
-                            aria-pressed={si <= stageIndex}
-                            title={stage}
-                            style={{
-                              flex: 1,
-                              font: 'inherit',
-                              fontSize: 10,
-                              padding: '6px 4px',
-                              cursor: 'pointer',
-                              textAlign: 'left',
-                              border: '1px solid var(--color-divider)',
-                              background: si <= stageIndex ? 'var(--color-accent)' : 'transparent',
-                              color: si <= stageIndex ? 'var(--color-bg)' : 'var(--color-text)',
-                            }}
-                          >
-                            {stage}
-                          </button>
-                        ))}
-                      </div>
-
-                      <SmallLabel style={{ marginBottom: 6 }}>Outcome</SmallLabel>
-                      <div style={{ display: 'flex', gap: 5, marginBottom: 10 }}>
-                        {data.taxonomy.paperOutcomes.map((outcome) => (
-                          <button
-                            key={outcome}
-                            type="button"
-                            className="cg-chip"
-                            aria-pressed={p.outcome === outcome}
-                            onClick={() => update(v.id, i, { outcome })}
-                          >
-                            {outcome}
-                          </button>
-                        ))}
-                      </div>
-
-                      <input
-                        className="input"
-                        value={p.note}
-                        onChange={(e) => update(v.id, i, { note: e.target.value })}
-                        placeholder="Note — reviewer scores, rebuttal plan, anything"
-                        aria-label="Note"
-                        style={{ minHeight: 30, fontSize: 12 }}
-                      />
-                    </div>
-                  );
-                })}
-
-                <button type="button" className="btn btn-secondary" onClick={() => addPaper(v.id)} style={{ fontSize: 12 }}>
+                <button type="button" className="btn btn-secondary" onClick={() => add(v.id)} style={{ fontSize: 12 }}>
                   <Plus size={ICON} />
                   Add a paper
                 </button>

@@ -152,4 +152,4 @@ export interface Filters {
 }
 
 export type SortKey = 'fit' | 'deadline' | 'ranking' | 'acceptance';
-export type View = 'browse' | 'detail' | 'compare' | 'watchlist';
+export type View = 'browse' | 'detail' | 'compare' | 'watchlist' | 'papers';
