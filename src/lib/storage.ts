@@ -4,6 +4,9 @@
  *
  * Every read and write is guarded: private windows, cleared site data and storage-blocking
  * settings all make these throw, and none of that should take the page down.
+ *
+ * `cg.edges` was retired with the corner-style toggle. It is left orphaned in whatever
+ * browsers still hold it — reading it is nobody's job now, so there is nothing to migrate.
  */
 export function read<T>(key: string, fallback: T): T {
   try {
@@ -24,7 +27,6 @@ export function write(key: string, value: unknown): void {
 
 export const KEYS = {
   theme: 'cg.theme',
-  edges: 'cg.edges',
   saved: 'cg.saved',
   paper: 'cg.paper',
   papers: 'cg.papers',

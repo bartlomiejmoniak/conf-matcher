@@ -40,7 +40,7 @@ them into the build, so neither is duplicated into `public/`.
 - **No unsourced records.** Every venue carries `source.verifiedOn` and at least one URL. `confidence: "projected"` for dates inferred from previous years.
 - **Ids are permanent.** Watchlists and paper progress are keyed on venue id in browser storage; renaming one orphans a user's tracked work.
 - **Never overwrite an extended deadline** — original in `date`, extension in `extendedTo`.
-- **Design system is binding.** Modernist: zero corner radius, 2px rules, flush-left labels, Archivo, single red accent. Take every colour, space and font from `var(--*)` in `_ds/modernist-*/styles.css`; never hard-code a hex. The one sanctioned exception is the rounded-corner variant, gated behind the `cornerStyle` prop / header toggle while the choice is open.
+- **Design system is binding.** Modernist: zero corner radius, 2px rules, flush-left labels, Archivo, single red accent. Take every colour, space and font from `var(--*)` in `_ds/modernist-*/styles.css`; never hard-code a hex. Radius is 0 everywhere; the rounded-corner variant was trialled behind a header toggle and has been dropped.
 - **Integrity flags need citable evidence.** Default `null`. See DATA_GUIDE.
 - Dark mode is a `data-theme="dark"` attribute; both themes must be checked on any visual change.
 

@@ -1,6 +1,6 @@
 /* Everything visual comes from the Modernist tokens in the design-system stylesheet
-   under _ds/. This file adds only what the system does not carry: the dark override,
-   the sanctioned rounded-corner variant, and the two motion rules. No new colours. */
+   under _ds/. This file adds only what the system does not carry: the dark override
+   and the two motion rules. No new colours. */
 
 /* ── Dark theme ───────────────────────────────────────────────────────────
    Ramps inverted in step, so the same ramp position keeps the same visual weight. */
@@ -44,16 +44,6 @@ a {
   border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
 }
 a:hover { border-bottom-color: var(--color-accent); }
-
-/* Modernist mandates radius 0. The rounded variant is the one sanctioned deviation,
-   gated behind data-edges while the choice is open. When it settles, delete the loser. */
-:root[data-edges='round'] .btn,
-:root[data-edges='round'] .input,
-:root[data-edges='round'] .tag,
-:root[data-edges='round'] .card,
-:root[data-edges='round'] .cg-chip,
-:root[data-edges='round'] .cg-pill { border-radius: 4px; }
-:root[data-edges='round'] .cg-rail { border-radius: 4px 0 0 4px; }
 
 /* ── Motion — 180–200ms ease-out; the loading pulse is the only continuous animation ── */
 @keyframes cg-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }

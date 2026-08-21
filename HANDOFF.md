@@ -26,7 +26,7 @@ Four views in one page, switched from the header. State is in the URL hash (`#t=
 
 Vertical stack, max-width 1280px, 20px side padding, sections separated by 2px `--color-divider` rules.
 
-**Header** (`.nav`, sticky, `--color-bg`): wordmark "CONFGRAPH" at 17px `--font-heading` with "AI VENUE INDEX" at 11px uppercase letterspaced 0.1em beside it; right side Browse / Compare (n) / Watchlist (n) as ghost buttons, then the corner-style toggle and theme toggle as secondary buttons.
+**Header** (`.nav`, sticky, `--color-bg`): wordmark "CONFGRAPH" at 17px `--font-heading` with "AI VENUE INDEX" at 11px uppercase letterspaced 0.1em beside it; right side Browse / Compare (n) / Watchlist (n) as ghost buttons, then the theme toggle as a secondary button.
 
 **Ask bar**: 11px accent uppercase label "ASK OR FILTER" with a muted one-line explanation. Full-width input, 52px min-height, 18px `--font-heading`, beside a solid accent "Interpret" button of the same height. On submit: a pulsing "Reading your query" line for ~420ms, then a "READ AS" row of accent tags naming each filter the query set, plus a muted note when nothing was recognised. **The visible trace is the point** — the parse is never silent, and every chip it sets remains hand-editable below.
 
@@ -73,9 +73,9 @@ Saved venues, each row `92px | 1fr | auto`: countdown rail, name with a progress
 
 ## State
 
-Component state: `view`, `detailId`, `query`, `trace`, `thinking`, `f` (the filter set), `paper`, `expanded`, `saved`, `compare`, `sort`, `theme`, `edges`, `papers`, `tracker`, plus `dataState` / `dataIssues`.
+Component state: `view`, `detailId`, `query`, `trace`, `thinking`, `f` (the filter set), `paper`, `expanded`, `saved`, `compare`, `sort`, `theme`, `papers`, `tracker`, plus `dataState` / `dataIssues`.
 
-Persisted to `localStorage`: `cg.theme`, `cg.edges`, `cg.saved` (venue ids), `cg.paper` (the paper profile), `cg.papers` (progress, keyed by venue id → array of `{title, stage, outcome, note}`). Ids are the join key — see CLAUDE.md on why they must never be renamed.
+Persisted to `localStorage`: `cg.theme`, `cg.saved` (venue ids), `cg.paper` (the paper profile), `cg.papers` (progress, keyed by venue id → array of `{title, stage, outcome, note}`). Ids are the join key — see CLAUDE.md on why they must never be renamed.
 
 In the URL hash: topics, deadline window, before-date, tiers, formats, kind, acceptance range, sort, view, detail id.
 
@@ -85,7 +85,7 @@ When accounts arrive, `cg.saved` / `cg.papers` / `cg.paper` are the tables to mi
 
 All from `_ds/modernist-*/styles.css`. Light: bg `#f3f2f2`, text `#201e1d`, accent `#ec3013`, plus 100–900 neutral and accent ramps. Dark is an override block in the prototype's `<helmet>`: bg `#171615`, surface `#221f1e`, text `#f1efee`, accent `#ff563c`, with the ramps inverted in step. Type is Archivo throughout (`--font-heading` 800 weight for numerals, labels and names; `--font-body` for prose). Spacing from `--space-*`. **Radius is 0** — Modernist mandates it.
 
-The rounded variant is the one sanctioned deviation: a `data-edges="round"` attribute on the root applies 4px to buttons, inputs, tags, pills and cards, and rounds the left edge of the countdown rail. Exposed as the `cornerStyle` prop and a header toggle while the choice is open; when it settles, delete the loser.
+A rounded variant was trialled behind a `data-edges="round"` attribute and a header toggle. The choice has settled on Modernist's radius 0, and the variant has been removed.
 
 Uppercase 10–11px letterspaced 0.08–0.12em labels do all the sectioning work. Icons, where needed, are Lucide.
 

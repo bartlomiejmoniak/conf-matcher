@@ -20,7 +20,6 @@ export default function App() {
 
   // ── persisted preferences ────────────────────────────────────────────────
   const [theme, setTheme] = useState<'light' | 'dark'>(() => read(KEYS.theme, 'light' as 'light' | 'dark'));
-  const [edges, setEdges] = useState<'sharp' | 'round'>(() => read(KEYS.edges, 'sharp' as 'sharp' | 'round'));
   const [saved, setSaved] = useState<string[]>(() => read<string[]>(KEYS.saved, []));
   const [paper, setPaper] = useState<PaperProfile>(() => ({ ...DEFAULT_PAPER, ...read(KEYS.paper, DEFAULT_PAPER) }));
   const [papers, setPapers] = useState<Record<string, TrackedPaper[]>>(() => read(KEYS.papers, {}));
@@ -54,7 +53,6 @@ export default function App() {
   }, []);
 
   useEffect(() => { write(KEYS.theme, theme); document.documentElement.dataset.theme = theme; }, [theme]);
-  useEffect(() => { write(KEYS.edges, edges); document.documentElement.dataset.edges = edges; }, [edges]);
   useEffect(() => { write(KEYS.saved, saved); }, [saved]);
   useEffect(() => { write(KEYS.paper, paper); }, [paper]);
   useEffect(() => { write(KEYS.papers, papers); }, [papers]);
@@ -125,15 +123,6 @@ export default function App() {
           </button>
           <button type="button" className="btn btn-ghost" onClick={nav('watchlist')} style={{ fontSize: 13 }}>
             Watchlist{saved.length ? ` (${saved.length})` : ''}
-          </button>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => setEdges((e) => (e === 'sharp' ? 'round' : 'sharp'))}
-            style={{ fontSize: 12, padding: '6px 10px', minWidth: 96, justifyContent: 'flex-start' }}
-            title="Modernist mandates radius 0; the rounded variant is a sanctioned trial"
-          >
-            {edges === 'sharp' ? '▢ Sharp' : '▢ Round'}
           </button>
           <button
             type="button"
