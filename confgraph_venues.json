@@ -1,0 +1,3859 @@
+{
+  "venues": [
+    {
+      "id": "neurips-2026",
+      "name": "NeurIPS 2026",
+      "fullName": "Conference on Neural Information Processing Systems",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "Sydney (+ Atlanta/Paris satellites)",
+        "country": "Australia",
+        "format": "hybrid"
+      },
+      "event": {
+        "start": "2026-12-06",
+        "end": "2026-12-12"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "computer vision",
+        "natural language",
+        "reinforcement learning"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "337",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 24.52,
+        "history": [
+          {
+            "year": 2025,
+            "pct": 24.52
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "Yes, author response period",
+        "pageLimit": "9 pages + refs",
+        "openAccess": "Yes, OpenReview",
+        "publisher": "NeurIPS Proceedings"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-05-05",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-05-07",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2026-09-ish",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://neurips.cc/Conferences/2026/CallForPapers",
+        "website": "https://neurips.cc/Conferences/2026"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://blog.neurips.cc/2025/09/30/reflections-on-the-2025-review-process-from-the-program-committee-chairs/",
+          "https://www.wokeey.com/events/neurips-2026/"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Submission closed (May 2026). 2025 acceptance rate 24.52% (5,290/21,575) per PC chairs' blog; 2026 figures not yet published.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "icml-2026",
+      "name": "ICML 2026",
+      "fullName": "International Conference on Machine Learning",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "Seoul",
+        "country": "South Korea",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-07-06",
+        "end": "2026-07-11"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "computer vision",
+        "natural language",
+        "reinforcement learning"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "268",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 26.9,
+        "history": [
+          {
+            "year": 2025,
+            "pct": 26.9
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "8 pages + refs",
+        "openAccess": "Yes, PMLR/OpenReview",
+        "publisher": "PMLR"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-01-23",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-01-28",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://icml.cc/Conferences/2026/CallForPapers",
+        "website": "https://icml.cc/Conferences/2026"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://aip.riken.jp/news/icml2025/"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Submission closed (Jan 2026). 2025 acceptance rate 26.9% (3,260/12,107) not from an official chairs' report — corroborated by secondary aggregator, flagged accordingly.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "iclr-2027",
+      "name": "ICLR 2027",
+      "fullName": "International Conference on Learning Representations",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "TBA (rumored Brazil)",
+        "country": "TBA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "TBD",
+        "end": "TBD"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "computer vision",
+        "natural language"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "304",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 32.08,
+        "history": [
+          {
+            "year": 2025,
+            "pct": 32.08
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "Yes, 1 round",
+        "pageLimit": "9 pages + refs",
+        "openAccess": "Yes, OpenReview",
+        "publisher": "OpenReview"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-09-25",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2026-12-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://iclr.cc/Conferences/2027/CallForPapers",
+        "website": "https://iclr.cc/Conferences/2027"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://eu.36kr.com/en/p/3443306502428032"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "New rule for 2026/2027 cycle: undisclosed LLM-generated text triggers immediate desk rejection. Venue city not yet confirmed on official site.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "aaai-26",
+      "name": "AAAI-26",
+      "fullName": "AAAI Conference on Artificial Intelligence",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "Singapore",
+        "country": "Singapore",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-01-20",
+        "end": "2026-01-27"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "natural language",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "220",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 23.4,
+        "history": [
+          {
+            "year": 2025,
+            "pct": 23.4
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "AAAI Press"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2025-08-01",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2025-08-08",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://aaai.org/conference/aaai/aaai-26/",
+        "website": "https://aaai.org/conference/aaai/aaai-26/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://www.tokiomarinehd.com/en/newsroom/release/2024/o1ckc9000000zjwb-att/20250228_AAAI2025_E.pdf"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed. 2025 rate 23.4% (3,032/12,957) from a lab announcement citing chairs' figures, not an official post — flagged provisional confidence on the % only.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "aaai-27",
+      "name": "AAAI-27",
+      "fullName": "AAAI Conference on Artificial Intelligence",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "Montréal",
+        "country": "Canada",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-02-16",
+        "end": "2027-02-23"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "natural language",
+        "trustworthy AI"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "220",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "AAAI Press"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-07-21",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-07-28",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://aaai.org/conference/aaai/aaai-27/",
+        "website": "https://aaai.org/conference/aaai/aaai-27/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://aaai.org/conference/aaai/aaai-27/"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "OPEN cycle as of verification date. New AI Alignment special track announced — high relevance for trustworthy-AI submissions.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "ijcai-2026",
+      "name": "IJCAI-ECAI 2026",
+      "fullName": "International Joint Conference on Artificial Intelligence / European Conference on AI",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "Bremen",
+        "country": "Germany",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-08-15",
+        "end": "2026-08-21"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "natural language",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-01-19",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://2026.ijcai.org/",
+        "website": "https://2026.ijcai.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://2026.ijcai.org/"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Closed cycle. Joint edition with ECAI 2026.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "acl-2026",
+      "name": "ACL 2026",
+      "fullName": "Annual Meeting of the Association for Computational Linguistics",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "San Diego, CA",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-07-02",
+        "end": "2026-07-07"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "natural language"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "236",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 20.3,
+        "history": [
+          {
+            "year": 2025,
+            "pct": 20.3
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "Yes, ACL Anthology",
+        "publisher": "ACL Anthology"
+      },
+      "deadlines": [
+        {
+          "stage": "ARR Submit",
+          "date": "2026-01-05",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "ARR Commit",
+          "date": "2026-03-14",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://2026.aclweb.org/",
+        "website": "https://2026.aclweb.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://2026.aclweb.org/"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "ACL Rolling Review (ARR) model — submission window closed. 2025 rate 20.3% (1,699/8,360).",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "emnlp-2026",
+      "name": "EMNLP 2026",
+      "fullName": "Conference on Empirical Methods in Natural Language Processing",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Budapest",
+        "country": "Hungary",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-10-24",
+        "end": "2026-10-29"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "natural language"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 20.8,
+        "history": [
+          {
+            "year": 2024,
+            "pct": 20.8
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACL Anthology"
+      },
+      "deadlines": [
+        {
+          "stage": "ARR Submit",
+          "date": "2026-05-25",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://2026.emnlp.org/",
+        "website": "https://2026.emnlp.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://2026.emnlp.org/"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "h5-index not confirmed from a primary Scholar page (blocked automated access) — left unfilled per field rules.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "naacl-2026",
+      "name": "NAACL 2026",
+      "fullName": "North American Chapter of the Association for Computational Linguistics",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "unconfirmed",
+        "country": "unconfirmed",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "TBD",
+        "end": "TBD"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "natural language"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "UNVERIFIED: conflicting secondary sources on 2026 city/date; could not confirm from a primary source within research budget. Do not treat as reliable.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "colm-2026",
+      "name": "COLM 2026",
+      "fullName": "Conference on Language Modeling",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "San Francisco, CA",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-10-06",
+        "end": "2026-10-09"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "natural language",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://colmweb.org/",
+        "website": "https://colmweb.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://colmweb.org/"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "New venue (est. 2024), no long-run acceptance history yet.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "uai-2026",
+      "name": "UAI 2026",
+      "fullName": "Conference on Uncertainty in Artificial Intelligence",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "TBD",
+        "end": "TBD"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "trustworthy AI"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Date/venue not confirmed from a primary source within budget.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "aistats-2026",
+      "name": "AISTATS 2026",
+      "fullName": "International Conference on Artificial Intelligence and Statistics",
+      "kind": "conference",
+      "broadScope": true,
+      "location": {
+        "city": "Tangier",
+        "country": "Morocco",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-05-02",
+        "end": "2026-05-05"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "PMLR"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://conferenceinc.net/post/aistats-2026/"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Date/location from a secondary aggregator; not cross-checked against an official aistats.org dates page.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "kdd-2026",
+      "name": "KDD 2026",
+      "fullName": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Jeju",
+        "country": "South Korea",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-08-09",
+        "end": "2026-08-13"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "data mining",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACM DL"
+      },
+      "deadlines": [
+        {
+          "stage": "Cycle 1 Paper",
+          "date": "2026-02-ish",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Cycle 2 Paper",
+          "date": "2026-05-ish",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "KDD runs two submission cycles per year; exact 2026 cycle dates not confirmed from primary source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "www-2026",
+      "name": "TheWebConf 2026",
+      "fullName": "The Web Conference (WWW)",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "TBD",
+        "end": "TBD"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "information retrieval",
+        "data mining"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Date/venue not confirmed from a primary source within research budget.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "sigir-2026",
+      "name": "SIGIR 2026",
+      "fullName": "ACM SIGIR Conference on Research and Development in Information Retrieval",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Melbourne",
+        "country": "Australia",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-07-20",
+        "end": "2026-07-24"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "information retrieval"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACM DL"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "recsys-2026",
+      "name": "RecSys 2026",
+      "fullName": "ACM Conference on Recommender Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "TBD",
+        "end": "TBD"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "information retrieval",
+        "data mining"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Not confirmed from primary source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "wsdm-2027",
+      "name": "WSDM 2027",
+      "fullName": "ACM International Conference on Web Search and Data Mining",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "TBD",
+        "end": "TBD"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "information retrieval",
+        "data mining"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Not confirmed from primary source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "aamas-2026",
+      "name": "AAMAS 2026",
+      "fullName": "International Conference on Autonomous Agents and Multiagent Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Paphos",
+        "country": "Cyprus",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-05-25",
+        "end": "2026-05-29"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "reinforcement learning",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": "https://www.comses.net/events/782/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://www.comses.net/events/782/"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "corl-2026",
+      "name": "CoRL 2026",
+      "fullName": "Conference on Robot Learning",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "unconfirmed",
+        "country": "unconfirmed",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "TBD",
+        "end": "TBD"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "robotics",
+        "reinforcement learning"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "UNVERIFIED: 2026 date/location not confirmed from a primary source within research budget.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "rss-2026",
+      "name": "RSS 2026",
+      "fullName": "Robotics: Science and Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Sydney",
+        "country": "Australia",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-07-13",
+        "end": "2026-07-17"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "robotics"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": "https://roboticsconference.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://roboticsconference.org/"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "icra-2026",
+      "name": "ICRA 2026",
+      "fullName": "IEEE International Conference on Robotics and Automation",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Vienna",
+        "country": "Austria",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-06-01",
+        "end": "2026-06-05"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "robotics"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "116",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE Xplore"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "iros-2026",
+      "name": "IROS 2026",
+      "fullName": "IEEE/RSJ International Conference on Intelligent Robots and Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "TBD",
+        "country": "TBD",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "TBD",
+        "end": "TBD"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "robotics"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Not confirmed from primary source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "interspeech-2026",
+      "name": "Interspeech 2026",
+      "fullName": "Interspeech",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Sydney",
+        "country": "Australia",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-27",
+        "end": "2026-10-01"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "speech & audio"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "single-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "icassp-2026",
+      "name": "ICASSP 2026",
+      "fullName": "IEEE International Conference on Acoustics, Speech and Signal Processing",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Barcelona",
+        "country": "Spain",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-05-04",
+        "end": "2026-05-08"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "speech & audio",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "single-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE Xplore"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "provisional"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "miccai-2026",
+      "name": "MICCAI 2026",
+      "fullName": "International Conference on Medical Image Computing and Computer-Assisted Intervention",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Strasbourg",
+        "country": "France",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-27",
+        "end": "2026-10-01"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "medical imaging",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 29.0,
+        "history": [
+          {
+            "year": 2025,
+            "pct": 29.0
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "Yes, 1 round",
+        "pageLimit": "8 pages",
+        "openAccess": "Yes",
+        "publisher": "Springer LNCS"
+      },
+      "deadlines": [
+        {
+          "stage": "Intent to submit",
+          "date": "2026-02-12",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-02-26",
+          "extendedTo": null,
+          "extensionNote": "Mandatory: at least one co-author must register as reviewer",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://miccai.org/",
+        "website": "https://miccai.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://miccai.org/"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "RELOCATED from originally-announced Abu Dhabi to Strasbourg — verify before citing. Directly relevant to user's medical-imaging adversarial-robustness research.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "cvpr-2026",
+      "name": "CVPR 2026",
+      "fullName": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Denver, CO",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-06-03",
+        "end": "2026-06-07"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "440",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 22.1,
+        "history": [
+          {
+            "year": 2025,
+            "pct": 22.1
+          },
+          {
+            "year": 2024,
+            "pct": 23.6
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "8 pages + refs",
+        "openAccess": "Yes, CVF Open Access",
+        "publisher": "IEEE/CVF"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2025-11-07",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2025-11-13",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://cvpr.thecvf.com/Conferences/2026",
+        "website": "https://cvpr.thecvf.com/Conferences/2026"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://csconfstats.xoveexu.com/conferences/cvpr/2025/"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed. Main-conference dates sometimes shown as Jun 3-7 (incl. workshops) vs Jun 5-7 (main sessions) across sources — verify against official site.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "cvpr-2027",
+      "name": "CVPR 2027",
+      "fullName": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Seattle, WA",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-06-20",
+        "end": "2027-06-24"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "440",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE/CVF"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-11-ish",
+          "extendedTo": null,
+          "extensionNote": "Exact date not yet on official CFP",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [],
+        "confidence": "projected"
+      },
+      "notes": "Projected from prior-year pattern; official CFP not yet posted.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "iccv-2027",
+      "name": "ICCV 2027",
+      "fullName": "International Conference on Computer Vision",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Hong Kong",
+        "country": "China",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-10-02",
+        "end": "2027-10-08"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "291",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE/CVF"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2027-03-07",
+          "extendedTo": null,
+          "extensionNote": "Date is a visionbib projection, not yet on official CFP",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "projected"
+      },
+      "notes": "Paper deadline NOT yet officially published — treat the Mar 7 2027 figure as projected only.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "eccv-2026",
+      "name": "ECCV 2026",
+      "fullName": "European Conference on Computer Vision",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Malmö",
+        "country": "Sweden",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-08",
+        "end": "2026-09-13"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "186",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": 27.9,
+        "history": [
+          {
+            "year": 2024,
+            "pct": 27.9
+          }
+        ]
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "14 pages + refs",
+        "openAccess": "Yes, ECVA Open Access",
+        "publisher": "Springer/ECVA"
+      },
+      "deadlines": [
+        {
+          "stage": "Registration",
+          "date": "2026-02-26",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-03-05",
+          "extendedTo": null,
+          "extensionNote": "22:00 UTC, hard deadline, not AoE",
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Supplementary",
+          "date": "2026-03-12",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://eccv.ecva.net/Conferences/2026/Dates",
+        "website": "https://eccv.ecva.net/Conferences/2026"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://eccv.ecva.net/Conferences/2026/Dates"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed. Deadline is 22:00 UTC, NOT AoE — flagged per field rules. Deadline was briefly displayed as Mar 2/6 before official correction to Mar 5.",
+      "coLocatedWorkshops": [
+        {
+          "name": "VISART VIII",
+          "deadline": "2026-09-09",
+          "venueId": null
+        },
+        {
+          "name": "MUSTCV",
+          "deadline": "2026-09-09",
+          "venueId": null
+        },
+        {
+          "name": "UNCV",
+          "deadline": "2026-09-09",
+          "venueId": null
+        },
+        {
+          "name": "ACVR 2026",
+          "deadline": "2026-09-09",
+          "venueId": null
+        }
+      ],
+      "hostVenueId": null,
+      "integrityFlag": null
+    },
+    {
+      "id": "accv-2026",
+      "name": "ACCV 2026",
+      "fullName": "Asian Conference on Computer Vision",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Osaka",
+        "country": "Japan",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-12-14",
+        "end": "2026-12-18"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "B",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-06-05",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://accv2026.org/",
+        "website": "https://accv2026.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://accv2026.org/",
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed. visionbib also shows an alternate 'Nov 6' date on one listing — official accv2026.org treated as authoritative.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "icpr-2026",
+      "name": "ICPR 2026",
+      "fullName": "International Conference on Pattern Recognition",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Lyon",
+        "country": "France",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-08-17",
+        "end": "2026-08-21"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "B",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-01-10",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://iapr.org/icpr2026",
+        "website": "https://iapr.org/icpr2026"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://iapr.org/icpr2026"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "coLocatedWorkshops": [
+        {
+          "name": "4th Workshop on Explainable and Ethical AI (XAIE4)",
+          "deadline": "2026-08-21",
+          "venueId": null
+        },
+        {
+          "name": "IMTA-X (Image Mining)",
+          "deadline": "2026-08-21",
+          "venueId": null
+        },
+        {
+          "name": "PRESTIGE",
+          "deadline": "2026-08-21",
+          "venueId": null
+        },
+        {
+          "name": "PAVER (Physics-Aware Video Generation)",
+          "deadline": "2026-08-22",
+          "venueId": null
+        },
+        {
+          "name": "Trustworthy Document Understanding (TRUSTDOC)",
+          "deadline": "2026-08-21",
+          "venueId": null
+        },
+        {
+          "name": "GREEN-PR",
+          "deadline": "2026-08-21",
+          "venueId": null
+        },
+        {
+          "name": "BRAIN Workshop",
+          "deadline": "2026-08-22",
+          "venueId": null
+        },
+        {
+          "name": "AUSTEC (Underwater Surveillance)",
+          "deadline": "2026-08-21",
+          "venueId": null
+        },
+        {
+          "name": "ICPR Doctoral Consortium",
+          "deadline": "2026-08-17",
+          "venueId": null
+        }
+      ],
+      "hostVenueId": null,
+      "integrityFlag": null
+    },
+    {
+      "id": "icpr-2027",
+      "name": "ICPR 2027",
+      "fullName": "International Conference on Pattern Recognition (Virtual)",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Fully Virtual",
+        "country": "—",
+        "format": "virtual"
+      },
+      "event": {
+        "start": "2027-10-04",
+        "end": "2027-10-15"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "B",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2027-03-01",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://iapr.org/icpr-2027/",
+        "website": "https://iapr.org/icpr-2027/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://iapr.org/icpr-2027/"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Split over two separate virtual weeks (Oct 4-5 and Oct 14-15, 2027).",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "wacv-2027",
+      "name": "WACV 2027",
+      "fullName": "IEEE/CVF Winter Conference on Applications of Computer Vision",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Orlando, FL",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-01-04",
+        "end": "2027-01-08"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "109",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE/CVF"
+      },
+      "deadlines": [
+        {
+          "stage": "Round 1",
+          "date": "2026-06-20",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Round 2",
+          "date": "2026-08-28",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://wacv.thecvf.com/",
+        "website": "https://wacv.thecvf.com/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://wacv.thecvf.com/"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "OPEN cycle — Round 2 deadline Aug 28 2026 still upcoming as of verification date.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "bmvc-2026",
+      "name": "BMVC 2026",
+      "fullName": "British Machine Vision Conference",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Lancaster",
+        "country": "UK",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-11-23",
+        "end": "2026-11-26"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "65",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-05-22",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-05-29",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://bmvc2026.bmva.org",
+        "website": "https://bmvc2026.bmva.org"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "coLocatedWorkshops": [
+        {
+          "name": "RV-SE (Robust Vision in Synthetic Environments)",
+          "deadline": "2026-11-26",
+          "venueId": null
+        }
+      ],
+      "hostVenueId": null,
+      "integrityFlag": null
+    },
+    {
+      "id": "ijcb-2026",
+      "name": "IJCB 2026",
+      "fullName": "IEEE International Joint Conference on Biometrics",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Rome",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-01",
+        "end": "2026-09-04"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "double-blind",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-04-10",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://ijcb2026.ieee-biometrics.org",
+        "website": "https://ijcb2026.ieee-biometrics.org"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "3dor-2026",
+      "name": "3DOR 2026",
+      "fullName": "Symposium on 3D Object Retrieval",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Genoa",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-03",
+        "end": "2026-09-04"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-04-20",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://sites.google.com/view/3dor26/home",
+        "website": "https://sites.google.com/view/3dor26/home"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed. Short papers due later in July per source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "das-2026",
+      "name": "DAS 2026",
+      "fullName": "IAPR International Workshop on Document Analysis Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Vienna",
+        "country": "Austria",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-03",
+        "end": "2026-09-04"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://das2026.seecs.edu.pk",
+        "website": "https://das2026.seecs.edu.pk"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed; exact paper deadline not itemized on source page.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "maclean-2026",
+      "name": "MACLEAN 2026",
+      "fullName": "MAChine Learning for EArth ObservatioN",
+      "kind": "workshop",
+      "broadScope": false,
+      "location": {
+        "city": "Naples",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-07",
+        "end": "2026-09-11"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision",
+        "data mining"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://sites.google.com/view/maclean26",
+        "website": "https://sites.google.com/view/maclean26"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "ssspr-2026",
+      "name": "S+SSPR 2026",
+      "fullName": "Joint IAPR International Workshops on Statistical, Structural and Syntactic Pattern Recognition",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Bern",
+        "country": "Switzerland",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-08-24",
+        "end": "2026-08-26"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-05-25",
+          "extendedTo": "2026-06-08",
+          "extensionNote": "Deadline extension",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://ssspr2026.inf.unibe.ch",
+        "website": "https://ssspr2026.inf.unibe.ch"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "avss-2026",
+      "name": "AVSS 2026",
+      "fullName": "IEEE International Conference on Advanced Video and Signal-Based Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Lecce",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-08-31",
+        "end": "2026-09-03"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper Round 1",
+          "date": "2026-04-ish",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper Round 2",
+          "date": "2026-08-ish",
+          "extendedTo": null,
+          "extensionNote": "Extension round 2",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://www.avss2026.org",
+        "website": "https://www.avss2026.org"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "coLocatedWorkshops": [
+        {
+          "name": "Adaptive Biometric Systems (ABS)",
+          "deadline": "2026-08-31",
+          "venueId": null
+        },
+        {
+          "name": "AI4Nature",
+          "deadline": "2026-08-31",
+          "venueId": null
+        },
+        {
+          "name": "Ethical Video Analysis in the Wild",
+          "deadline": "2026-08-31",
+          "venueId": null
+        }
+      ],
+      "hostVenueId": null,
+      "integrityFlag": null
+    },
+    {
+      "id": "mipr-2026",
+      "name": "MIPR 2026",
+      "fullName": "IEEE International Conference on Multimedia Information Processing and Retrieval",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Bangkok",
+        "country": "Thailand",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-08-09",
+        "end": "2026-08-11"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "multimodal",
+        "information retrieval"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed; exact paper deadline not itemized on source page.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "vismac-2026",
+      "name": "VISMAC 2026",
+      "fullName": "CVPL Summer School on Machine Vision",
+      "kind": "workshop",
+      "broadScope": false,
+      "location": {
+        "city": "Siena",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-21",
+        "end": "2026-09-25"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [
+        {
+          "stage": "Registration",
+          "date": "2026-06-ish",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://vismac26.github.io/",
+        "website": "https://vismac26.github.io/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Summer school, not a peer-reviewed paper venue — registration deadline, not a submission deadline.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "gcpr-2026",
+      "name": "GCPR 2026",
+      "fullName": "48th DAGM German Conference on Pattern Recognition",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Siegen",
+        "country": "Germany",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-22",
+        "end": "2026-09-25"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-05-05",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://www.gcpr-vmv.de/year/2026/gcpr",
+        "website": "https://www.gcpr-vmv.de/year/2026/gcpr"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "euvip-2026",
+      "name": "EUVIP 2026",
+      "fullName": "European Visual Information Processing Conference",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Luxembourg",
+        "country": "Luxembourg",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-28",
+        "end": "2026-10-01"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-06-30",
+          "extendedTo": null,
+          "extensionNote": "Extension",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "icmi-2026",
+      "name": "ICMI 2026",
+      "fullName": "28th International Conference on Multimodal Interaction",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Napoli",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-10-06",
+        "end": "2026-10-08"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "multimodal",
+        "speech & audio"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACM DL"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-06-25",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-07-02",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://icmi.acm.org/2026/",
+        "website": "https://icmi.acm.org/2026/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "coLocatedWorkshops": [
+        {
+          "name": "Beacon (Grounding Abstract Concepts)",
+          "deadline": "2026-10-09",
+          "venueId": null
+        },
+        {
+          "name": "GENEA (Non-verbal Behaviour Gen.)",
+          "deadline": "2026-10-05",
+          "venueId": null
+        }
+      ],
+      "hostVenueId": null,
+      "integrityFlag": null
+    },
+    {
+      "id": "smc-2026",
+      "name": "SMC 2026",
+      "fullName": "IEEE International Conference on Systems, Man, and Cybernetics",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Bellevue, WA",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-10-11",
+        "end": "2026-10-14"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "ml theory",
+        "robotics"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-04-19",
+          "extendedTo": null,
+          "extensionNote": "Extension",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://www.ieeesmc2026.org/call-for-papers",
+        "website": "https://www.ieeesmc2026.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "https://www.ieeesmc2026.org/call-for-papers"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "coLocatedWorkshops": [
+        {
+          "name": "NeuroWearX for Empowered Co-Intelligence",
+          "deadline": "2026-10-11",
+          "venueId": null
+        }
+      ],
+      "hostVenueId": null,
+      "integrityFlag": null
+    },
+    {
+      "id": "cbmi-2026",
+      "name": "CBMI 2026",
+      "fullName": "22nd International Conference on Content-based Multimedia Indexing",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Toulouse",
+        "country": "France",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-10-21",
+        "end": "2026-10-23"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "multimodal",
+        "information retrieval"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-06-03",
+          "extendedTo": null,
+          "extensionNote": "Extension",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://cbmi2026.sciencesconf.org/",
+        "website": "https://cbmi2026.sciencesconf.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed. Six co-located special sessions (ExFMA, MDFSA, ETCE, UHBER, MusiCHER, VR4B) share the main deadline.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "isc2-2026",
+      "name": "IEEE ISC2 2026",
+      "fullName": "12th IEEE International Smart Cities Conference",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Porto",
+        "country": "Portugal",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-10-27",
+        "end": "2026-10-30"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "data mining",
+        "robotics"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://www.fe.up.pt/isc2",
+        "website": "https://www.fe.up.pt/isc2"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed; exact paper deadline not itemized on source page.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "acmmm-2026",
+      "name": "ACM MM 2026",
+      "fullName": "ACM International Conference on Multimedia",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Rio de Janeiro",
+        "country": "Brazil",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-11-10",
+        "end": "2026-11-14"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "multimodal",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACM DL"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://2026.acmmm.org/index.html",
+        "website": "https://2026.acmmm.org/index.html"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed; registration required before paper deadline.",
+      "coLocatedWorkshops": [
+        {
+          "name": "SUMAC (Heritage Contents)",
+          "deadline": "2026-11-14",
+          "venueId": null
+        },
+        {
+          "name": "MultiMediate Grand Challenge",
+          "deadline": "2026-11-14",
+          "venueId": null
+        },
+        {
+          "name": "Multimedia Content Analysis in Sports",
+          "deadline": "2026-11-14",
+          "venueId": null
+        }
+      ],
+      "hostVenueId": null,
+      "integrityFlag": null
+    },
+    {
+      "id": "ivcnz-2026",
+      "name": "IVCNZ 2026",
+      "fullName": "International Conference on Image and Vision Computing New Zealand",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Dunedin",
+        "country": "New Zealand",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-11-18",
+        "end": "2026-11-20"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-09-07",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://ivcnz.github.io/",
+        "website": "https://ivcnz.github.io/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "o3dm-lc3d-2026",
+      "name": "O3DM/LC3D 2026",
+      "fullName": "ISPRS Optical 3D Metrology & 9th Intl. Workshop Low Cost 3D",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Braunschweig",
+        "country": "Germany",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-11-18",
+        "end": "2026-11-20"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://lc3d.fbk.eu.",
+        "website": "https://lc3d.fbk.eu."
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed; abstract-then-full-paper process.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "acivs-2026",
+      "name": "ACIVS 2026",
+      "fullName": "Advanced Concepts for Intelligent Vision Systems",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Okinawa",
+        "country": "Japan",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-12-15",
+        "end": "2026-12-17"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-06-15",
+          "extendedTo": null,
+          "extensionNote": "Extension",
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://www.acivs2026.com/",
+        "website": "https://www.acivs2026.com/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "confirmed"
+      },
+      "notes": "Cycle closed.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "3dv-2027",
+      "name": "3DV 2027",
+      "fullName": "International Conference on 3D Vision",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Thessaloniki",
+        "country": "Greece",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-04-06",
+        "end": "2027-04-09"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://3dvconf.github.io/2027/",
+        "website": "https://3dvconf.github.io/2027/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Exact paper deadline not yet itemized on source page.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "dgmm-2027",
+      "name": "DGMM 2027",
+      "fullName": "Discrete Geometry and Mathematical Morphology",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Grenoble",
+        "country": "France",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-04-13",
+        "end": "2027-04-16"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://dgmm2027.sciencesconf.org",
+        "website": "https://dgmm2027.sciencesconf.org"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Full paper due 1 week after abstract per source.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "cvc-2027",
+      "name": "CVC 2027",
+      "fullName": "Computer Vision Conference",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Amsterdam",
+        "country": "Netherlands",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-04-15",
+        "end": "2027-04-16"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "—"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "http://conferences.visionbib.com/2027/cvc-4-27-call.html",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Two-round submission process (Round 1, Round 2 ~2 weeks later). Newer/less-established venue — verify legitimacy before submitting.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "scia-2027",
+      "name": "SCIA 2027",
+      "fullName": "Scandinavian Conference on Image Analysis",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Gjøvik",
+        "country": "Norway",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-06-09",
+        "end": "2027-06-11"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2027-01-26",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://scia2027.org/",
+        "website": "https://scia2027.org/"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "ipmi-2027",
+      "name": "IPMI 2027",
+      "fullName": "Information Processing in Medical Imaging",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Lake Stukely, Quebec",
+        "country": "Canada",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-06-27",
+        "end": "2027-07-02"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "medical imaging"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://2027.ipmi-conf.org",
+        "website": "https://2027.ipmi-conf.org"
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Biennial. Highly relevant to medical-imaging adversarial-robustness research.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "tomm-fusion-2027",
+      "name": "TOMM Special Issue: Responsible & Explainable Multi-Modal Fusion",
+      "kind": "workshop",
+      "broadScope": false,
+      "hostVenueId": null,
+      "location": {
+        "city": "—",
+        "country": "—",
+        "format": "journal"
+      },
+      "event": {
+        "start": "2027-04",
+        "end": "2027-04"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "multimodal",
+        "trustworthy AI"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "ACM TOMM"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://dl.acm.org/pb-assets/static_journal_pages/tomm/pdf/ACM-TOMM-CfP-Responsible-Explainable-Multi-Modal-Fusion-1774551739410.pdf",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Journal special issue, not a conference; publication target April 2027. Directly relevant to trustworthy-AI research interest.",
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "id": "ijcv-social-2027",
+      "name": "IJCV Special Issue: Social, Emotional, and Cognitive Visual Intelligence",
+      "kind": "workshop",
+      "broadScope": false,
+      "hostVenueId": null,
+      "location": {
+        "city": "—",
+        "country": "—",
+        "format": "journal"
+      },
+      "event": {
+        "start": "2027-08",
+        "end": "2027-09"
+      },
+      "registration": {
+        "fee": "—"
+      },
+      "topics": [
+        "computer vision",
+        "multimodal"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "—"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "history": []
+      },
+      "review": {
+        "blinding": "—",
+        "blindingNote": "",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "Springer IJCV"
+      },
+      "deadlines": [],
+      "links": {
+        "cfp": "https://wang.ist.psu.edu/docs/docs/IJCV-CFP.pdf",
+        "website": ""
+      },
+      "source": {
+        "verifiedOn": "2026-08-21",
+        "urls": [
+          "http://conferences.visionbib.com/Iris-Conferences.html"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Journal special issue; publication target Aug/Sept 2027.",
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    }
+  ]
+}
