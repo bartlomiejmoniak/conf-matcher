@@ -119,7 +119,10 @@ export interface TrackedPaper {
 
 export interface Filters {
   topics: string[];
+  /** "within N days of today". Any positive day count; the taxonomy only offers shortcuts. */
   window: number | null;
+  /** Absolute bounds on the next deadline, inclusive. Empty string means unbounded. */
+  after: string;
   before: string;
   tiers: string[];
   formats: LocationFormat[];
@@ -127,6 +130,10 @@ export interface Filters {
   blinding: Blinding | null;
   accFrom: number;
   accTo: number;
+  /** Keep venues that publish no acceptance figure when the range is narrowed. */
+  accIncludeUnknown: boolean;
+  /** Show venues whose cycle has closed, or that publish no dates at all. */
+  showClosed: boolean;
 }
 
 export type SortKey = 'fit' | 'deadline' | 'ranking' | 'acceptance';

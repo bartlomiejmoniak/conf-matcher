@@ -82,13 +82,18 @@ const BAND_ORDER: Record<MatchBand, number> = { strong: 0, partial: 1, weak: 2 }
 
 /**
  * Fit: band, then overlap count, then whether the venue sits in the user's target tier,
- * then CORE tier, then deadline proximity. Venues with no live deadline always sink.
+ * then CORE tier, then deadline proximity.
+ *
+ * A venue with no live deadline sinks below every venue that has one, in *every* sort —
+ * the filter now shows closed cycles rather than removing them, so this is what keeps a
+ * closed venue from outranking a live one on tier or acceptance alone.
  */
 export function sortVenues(list: VenueView[], sort: SortKey): VenueView[] {
+  const liveFirst = (a: VenueView, b: VenueView) =>
+    Number(a.daysLeft === null) - Number(b.daysLeft === null);
+
   const byDeadline = (a: VenueView, b: VenueView) => {
-    if (a.daysLeft === null && b.daysLeft === null) return a.name.localeCompare(b.name);
-    if (a.daysLeft === null) return 1;
-    if (b.daysLeft === null) return -1;
+    if (a.daysLeft === null || b.daysLeft === null) return a.name.localeCompare(b.name);
     return a.daysLeft - b.daysLeft;
   };
 
@@ -112,5 +117,5 @@ export function sortVenues(list: VenueView[], sort: SortKey): VenueView[] {
     },
   };
 
-  return [...list].sort(cmp[sort]);
+  return [...list].sort((a, b) => liveFirst(a, b) || cmp[sort](a, b));
 }
