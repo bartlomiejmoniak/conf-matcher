@@ -5,6 +5,15 @@ export type LocationFormat = 'in-person' | 'hybrid' | 'virtual';
 export type Blinding = 'double-blind' | 'single-blind' | 'open review' | 'unspecified';
 export type Confidence = 'confirmed' | 'provisional' | 'projected';
 
+/** One row of a venue's published fee table, in the currency it was published in. */
+export interface RegistrationTier {
+  label: string;
+  amount: number;
+  currency: string;
+  cutoff?: string | null;
+  note?: string;
+}
+
 export interface Deadline {
   stage: string;
   date: string;
@@ -24,11 +33,16 @@ export interface Venue {
   location: { city: string; country: string; format: LocationFormat };
   /** null on both ends when the venue has not announced its dates (schema amendment). */
   event: { start: string | null; end: string | null };
-  registration?: { fee?: string };
+  registration?: { fee?: string; tiers?: RegistrationTier[] };
   topics: string[];
   rankings: { core?: string; ccf?: string; h5Index?: string; mnisw?: string };
   /** `latestPct` is null when the venue publishes no figure (schema amendment). */
-  acceptance: { latestPct: number | null; history?: { year: number; pct: number }[] };
+  acceptance: {
+    latestPct: number | null;
+    /** Which edition latestPct describes. Non-null exactly when latestPct is. */
+    latestYear: number | null;
+    history?: { year: number; pct: number }[];
+  };
   review: {
     blinding: Blinding;
     blindingNote?: string;
@@ -57,6 +71,7 @@ export interface TierDef {
 
 export interface Taxonomy {
   topics: string[];
+  registrationTiers: string[];
   narrowTopics: Record<string, string>;
   formats: LocationFormat[];
   kinds: Kind[];

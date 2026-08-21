@@ -96,6 +96,46 @@ for (const [narrow, broad] of Object.entries(taxonomy.narrowTopics ?? {})) {
   if (!TOPICS.has(broad)) err(`taxonomy narrowTopics."${narrow}" rolls up into "${broad}", which is not a topic`);
 }
 
+// ── acceptance figures carry their edition ──────────────────────────────────
+// A rate without its year reads as this year's, and two of these records are quoting a
+// figure two editions old. The year is the only thing that makes that visible.
+for (const v of venues) {
+  const at = (m) => err(`${v.id}: ${m}`);
+  const a = v.acceptance ?? {};
+  if (a.latestPct === null && a.latestYear !== null) {
+    at('acceptance.latestYear is set but latestPct is null — there is no figure for it to date');
+  }
+  if (a.latestPct !== null && a.latestPct !== undefined) {
+    if (typeof a.latestYear !== 'number') at('acceptance.latestPct is set but latestYear is not — an undated rate reads as this year\'s');
+    else if (a.latestYear > new Date().getUTCFullYear()) at(`acceptance.latestYear ${a.latestYear} is in the future`);
+  }
+  // The schema says oldest first, and nothing was checking it.
+  const hist = a.history ?? [];
+  for (let i = 1; i < hist.length; i++) {
+    if (hist[i].year <= hist[i - 1].year) {
+      at(`acceptance.history is not oldest-first at entry ${i} (${hist[i - 1].year} then ${hist[i].year})`);
+      break;
+    }
+  }
+  if (hist.length && a.latestPct !== null && a.latestYear !== null) {
+    const newest = hist[hist.length - 1];
+    if (newest.year === a.latestYear && newest.pct !== a.latestPct) {
+      at(`acceptance.latestPct ${a.latestPct} disagrees with history ${newest.year}: ${newest.pct}`);
+    }
+  }
+
+  // ── registration fee tables ──
+  for (const [i, t] of (v.registration?.tiers ?? []).entries()) {
+    const label = `registration.tiers[${i}]`;
+    if (!taxonomy.registrationTiers?.includes(t.label)) {
+      at(`${label} label "${t.label}" is not in taxonomy.json#/registrationTiers`);
+    }
+    if (!(typeof t.amount === 'number' && t.amount >= 0)) at(`${label} has no usable amount`);
+    if (!/^[A-Z]{3}$/.test(t.currency ?? '')) at(`${label} currency "${t.currency}" is not an ISO 4217 code`);
+    if (t.cutoff != null && !ISO.test(t.cutoff)) at(`${label} cutoff "${t.cutoff}" is not an ISO date`);
+  }
+}
+
 // ── taxonomy is internally consistent ───────────────────────────────────────
 // The tier rules and the window presets moved out of the code and into this file, so
 // they are now data that can be wrong. A tier naming a ranking source that does not

@@ -9,7 +9,6 @@ import type { Filters, VenueView } from '../types';
  */
 function view(over: Partial<VenueView> & { id: string }): VenueView {
   return {
-    id: over.id,
     name: over.id,
     fullName: over.id,
     kind: 'conference',
@@ -17,7 +16,7 @@ function view(over: Partial<VenueView> & { id: string }): VenueView {
     event: { start: null, end: null },
     topics: ['computer vision'],
     rankings: {},
-    acceptance: { latestPct: null },
+    acceptance: { latestPct: null, latestYear: null },
     review: { blinding: 'double-blind' },
     deadlines: [],
     source: { verifiedOn: '2026-08-21', urls: ['https://example.org'] },
@@ -48,9 +47,9 @@ const ids = (list: VenueView[]) => list.map((v) => v.id);
 
 describe('acceptance range and unpublished figures', () => {
   const list = [
-    live('has-rate', 10, { acceptance: { latestPct: 25 } }),
-    live('no-rate', 10, { acceptance: { latestPct: null } }),
-    live('out-of-range', 10, { acceptance: { latestPct: 80 } }),
+    live('has-rate', 10, { acceptance: { latestPct: 25, latestYear: 2025 } }),
+    live('no-rate', 10, { acceptance: { latestPct: null, latestYear: null } }),
+    live('out-of-range', 10, { acceptance: { latestPct: 80, latestYear: 2025 } }),
   ];
 
   it('keeps unpublished figures while the range is untouched', () => {

@@ -15,7 +15,7 @@ const venue = (over: Partial<Venue>): Venue => ({
   event: { start: '2027-06-01', end: '2027-06-05' },
   topics: ['computer vision'],
   rankings: { core: 'A' },
-  acceptance: { latestPct: 25 },
+  acceptance: { latestPct: 25, latestYear: 2025 },
   review: { blinding: 'double-blind' },
   deadlines: [{ stage: 'Paper', date: '2027-01-10' }],
   integrityFlag: null,
@@ -102,8 +102,8 @@ describe('sorting', () => {
   });
 
   it('sinks venues with no published acceptance rate rather than treating them as 0%', () => {
-    const withPct = mk({ id: 'a-2027', acceptance: { latestPct: 40 } });
-    const without = mk({ id: 'b-2027', acceptance: { latestPct: null } });
+    const withPct = mk({ id: 'a-2027', acceptance: { latestPct: 40, latestYear: 2025 } });
+    const without = mk({ id: 'b-2027', acceptance: { latestPct: null, latestYear: null } });
     expect(sortVenues([without, withPct], 'acceptance').map((v) => v.id)).toEqual(['a-2027', 'b-2027']);
   });
 

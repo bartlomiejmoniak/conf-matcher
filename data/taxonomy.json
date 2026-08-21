@@ -39,6 +39,15 @@
     "$comment": "Preset day counts for the deadline-window chips. The filter itself accepts any positive day count — these are only the offered shortcuts.",
     "days": [30, 60, 90]
   },
+  "registrationTiers": [
+    "early-bird",
+    "regular",
+    "late",
+    "student",
+    "student early-bird",
+    "virtual",
+    "workshop only"
+  ],
   "blindingTypes": ["double-blind", "single-blind", "open review", "unspecified"],
   "rankingSources": {
     "$comment": "displayed=false keeps a ranking in the data but out of the UI. MNiSW is collected and hidden by product decision.",
