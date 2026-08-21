@@ -1,8 +1,11 @@
 # Schema amendments
 
-`data/venue.schema.json` was amended in three places before the first records shipped.
-Each amendment resolves a case where the schema as written demanded a fact that
-`DATA_GUIDE.md` forbids inventing.
+`data/venue.schema.json` was amended in three places before the first records shipped, and
+twice since. Each amendment resolves a case where the schema as written demanded a fact
+that `DATA_GUIDE.md` forbids inventing, or could not record one it should have.
+
+- [Round 1 — three fields made absent-able](#why) (before the first records shipped)
+- [Round 2 — `acceptance.latestYear` and `registration.tiers`](#round-2--dating-a-rate-and-tabling-a-fee)
 
 ## Why
 
@@ -37,6 +40,47 @@ replaced with a guess.
 `source.verifiedOn` and at least one URL still does not ship. 13 records failed on this and
 were quarantined rather than badged as unverified — an unsourced deadline is worse than a
 missing one, because a user schedules against it.
+
+## Round 2 — dating a rate, and tabling a fee
+
+Two fields added, both because the shape as written could not hold something the data
+already contained.
+
+### `acceptance.latestYear` — required whenever `latestPct` is set
+
+`latestPct` is documented as "most recent published … rate", and `DATA_GUIDE.md` says to
+"use the most recent published figure even if it is two years old and say so in `notes`".
+Two shipping records do exactly that — `eccv-2026` and `emnlp-2026` both quote a **2024**
+figure — and neither says so anywhere the UI can read. A rate rendered without its year
+reads as the current edition's, which is the one thing it usually is not.
+
+Prose in `notes` is not a fix: nothing can render it beside the number. `latestYear` is
+non-null exactly when `latestPct` is, enforced in both directions by `validate.mjs`.
+
+The backfill invented nothing. All 9 records with a non-null rate carry a `history` array,
+every one of them ends at a year whose `pct` equals `latestPct`, so the year was derived
+from data already present and asserted to match before being written. The other 33 records
+have no figure and therefore no year.
+
+While there: `history` is documented "oldest first" and nothing checked it. `cvpr-2026`
+shipped newest-first. Both the ordering and its agreement with `latestPct` are now
+validated.
+
+### `registration.tiers[]` — the fee table as data
+
+`registration.fee` is free text "as published", which is right for a venue that publishes a
+blob and useless for one that publishes a table. It is the literal string `"—"` on all 42
+records, so nothing is lost by leaving it in place for the blob case.
+
+`tiers[]` holds one entry per published row: `{label, amount, currency, cutoff, note}`,
+with `label` drawn from `taxonomy.json#/registrationTiers` and `currency` an ISO 4217 code.
+Amounts are stored in the currency they were published in and **never converted** — the
+same rule `fee` already carried.
+
+Every record ships `tiers: []`, because no venue in this set has published a 2026/2027 fee
+table yet. That is the honest state, and it is the state the cost estimator is built for:
+with no tier to select, it takes a hand-entered figure instead of implying a price the data
+does not have.
 
 ## Promoting a quarantined record
 

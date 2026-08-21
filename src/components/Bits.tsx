@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import type { MatchBand, Taxonomy, Venue, VenueView } from '../lib/types';
 import { fmtDate, relative } from '../lib/dates';
+import { editionYear } from '../lib/matching';
+import { Flag, ICON_SM } from './Icons';
 
 export function Label({ children, style }: { children: ReactNode; style?: React.CSSProperties }) {
   return <div className="cg-label" style={style}>{children}</div>;
@@ -73,10 +75,40 @@ export function RankingBadges({ venue, taxonomy }: { venue: Venue; taxonomy: Tax
   );
 }
 
-/** "24.5% accepted", or an explicit statement that no figure is published. */
-export function AcceptanceText({ pct }: { pct: number | null }) {
-  if (pct === null) return <span className="cg-muted">acceptance not published</span>;
-  return <span>{pct}% accepted</span>;
+/**
+ * "24.5% accepted (2025)", or an explicit statement that no figure is published.
+ *
+ * The year is not decoration. An acceptance rate is almost always the *previous* edition's
+ * — the current one has not happened — and two shipping records quote a figure two
+ * editions old. Rendered bare, every one of them reads as this year's. A gap of two or
+ * more editions gets the same accent treatment as the other "read this before you rely on
+ * it" states.
+ */
+export function AcceptanceText({ venue }: { venue: Venue }) {
+  const { latestPct, latestYear } = venue.acceptance;
+  if (latestPct === null) return <span className="cg-muted">acceptance not published</span>;
+
+  const edition = editionYear(venue);
+  const gap = edition !== null && latestYear !== null ? edition - latestYear : 0;
+
+  return (
+    <span>
+      {latestPct}% accepted
+      {latestYear !== null && (
+        <span
+          className={gap >= 2 ? undefined : 'cg-muted'}
+          style={gap >= 2 ? { color: 'var(--color-accent-700)' } : undefined}
+          title={
+            gap >= 2
+              ? `${latestYear} figure — ${gap} editions before this one. The venue has published nothing more recent.`
+              : `The ${latestYear} edition's published figure.`
+          }
+        >
+          {' '}({latestYear})
+        </span>
+      )}
+    </span>
+  );
 }
 
 /** projected / provisional dates are labelled; confirmed ones say nothing. */
@@ -94,7 +126,7 @@ export function IntegrityPill({ venue }: { venue: Venue }) {
   if (!venue.integrityFlag) return null;
   return (
     <span className="cg-pill cg-pill-outline" title={venue.integrityFlag.note}>
-      ⚑ {venue.integrityFlag.level}
+      <Flag size={ICON_SM} /> {venue.integrityFlag.level}
     </span>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Filters, LocationFormat, SortKey } from '../lib/types';
 import type { PaperProfile } from '../lib/types';
 import { applyFilters } from '../lib/filtering';
@@ -7,7 +7,8 @@ import { parseQuery, traceNote, type ParseResult } from '../lib/parser';
 import { filtersActive } from '../lib/urlState';
 import { Chip, EmptyState, Label, SmallLabel } from '../components/Bits';
 import ResultRow from '../components/ResultRow';
-import { TIERS, type ViewProps } from './shared';
+import { type ViewProps } from './shared';
+import { ICON_SM, X } from '../components/Icons';
 
 interface Props extends ViewProps {
   filters: Filters;
@@ -57,7 +58,22 @@ export default function Browse(props: Props) {
   const toggleIn = <T,>(list: T[], value: T): T[] =>
     list.includes(value) ? list.filter((x) => x !== value) : [...list, value];
 
-  const { shown, closedHidden } = applyFilters(views, filters);
+  /**
+   * Chips advertise only what the data can actually match. A topic in the taxonomy with no
+   * venue behind it renders a chip that empties the list, so the vocabulary is the taxonomy
+   * intersected with what shipped — in taxonomy order, which is load-bearing.
+   */
+  const topicOptions = useMemo(() => {
+    const used = new Set(views.flatMap((v) => v.topics));
+    return taxonomy.topics.filter((t) => used.has(t));
+  }, [views, taxonomy.topics]);
+
+  const kindOptions = useMemo(() => {
+    const used = new Set(views.map((v) => v.kind));
+    return taxonomy.kinds.filter((k) => used.has(k));
+  }, [views, taxonomy.kinds]);
+
+  const { shown, closed, undated } = applyFilters(views, filters);
   const results = sortVenues(shown, sort);
 
   const strongCount = views.filter((v) => v.band === 'strong').length;
@@ -67,6 +83,9 @@ export default function Browse(props: Props) {
     : 'Add your paper’s topics to rank every result against it.';
 
   const accNarrowed = filters.accFrom !== 0 || filters.accTo !== 100;
+  const dormant = closed + undated;
+  const customDates = Boolean(filters.after || filters.before);
+  const [showDates, setShowDates] = useState(customDates);
 
   return (
     <div>
@@ -126,7 +145,7 @@ export default function Browse(props: Props) {
                   style={{ border: 0, cursor: 'pointer', fontFamily: 'var(--font-body)', gap: 6 }}
                   aria-label={`Remove topic ${t}`}
                 >
-                  {t} <span style={{ opacity: 0.55 }}>✕</span>
+                  {t} <X size={ICON_SM} style={{ opacity: 0.55 }} />
                 </button>
               ))}
               <select
@@ -159,8 +178,8 @@ export default function Browse(props: Props) {
           <div>
             <Label style={{ marginBottom: 6 }}>Target tier</Label>
             <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-              {TIERS.slice(0, 3).map((t) => (
-                <Chip key={t} label={t} active={paper.tiers.includes(t)} onClick={() => setPaper((p) => ({ ...p, tiers: toggleIn(p.tiers, t) }))} />
+              {taxonomy.tiers.entries.filter((t) => t.inProfile).map((t) => (
+                <Chip key={t.label} label={t.label} active={paper.tiers.includes(t.label)} onClick={() => setPaper((p) => ({ ...p, tiers: toggleIn(p.tiers, t.label) }))} />
               ))}
             </div>
           </div>
@@ -188,7 +207,7 @@ export default function Browse(props: Props) {
         <div>
           <SmallLabel style={{ marginBottom: 7 }}>Topic</SmallLabel>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {taxonomy.topics.map((t) => (
+            {topicOptions.map((t) => (
               <Chip key={t} label={t} active={filters.topics.includes(t)} onClick={() => setFilters((f) => ({ ...f, topics: toggleIn(f.topics, t) }))} />
             ))}
           </div>
@@ -197,17 +216,47 @@ export default function Browse(props: Props) {
         <div>
           <SmallLabel style={{ marginBottom: 7 }}>Deadline window</SmallLabel>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {[30, 60, 90].map((w) => (
+            {taxonomy.deadlineWindows.days.map((w) => (
               <Chip key={w} label={`${w} days`} active={filters.window === w} onClick={() => setFilters((f) => ({ ...f, window: f.window === w ? null : w }))} />
             ))}
+            {/* The presets are relative to today; this is the same filter in absolute dates. */}
+            <Chip
+              label="Dates…"
+              active={customDates}
+              onClick={() => {
+                if (customDates) {
+                  setFilters((f) => ({ ...f, after: '', before: '' }));
+                  setShowDates(false);
+                } else {
+                  setShowDates((s) => !s);
+                }
+              }}
+            />
           </div>
+          {(showDates || customDates) && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 7, flexWrap: 'wrap' }}>
+              <input
+                type="date" className="input" aria-label="Earliest deadline"
+                value={filters.after} max={filters.before || undefined}
+                onChange={(e) => setFilters((f) => ({ ...f, after: e.target.value }))}
+                style={{ fontSize: 11, padding: '4px 6px' }}
+              />
+              <span className="cg-muted" style={{ fontSize: 11 }}>to</span>
+              <input
+                type="date" className="input" aria-label="Latest deadline"
+                value={filters.before} min={filters.after || undefined}
+                onChange={(e) => setFilters((f) => ({ ...f, before: e.target.value }))}
+                style={{ fontSize: 11, padding: '4px 6px' }}
+              />
+            </div>
+          )}
         </div>
 
         <div>
           <SmallLabel style={{ marginBottom: 7 }}>Ranking</SmallLabel>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {TIERS.map((t) => (
-              <Chip key={t} label={t} active={filters.tiers.includes(t)} onClick={() => setFilters((f) => ({ ...f, tiers: toggleIn(f.tiers, t) }))} />
+            {taxonomy.tiers.entries.map((t) => (
+              <Chip key={t.label} label={t.label} active={filters.tiers.includes(t.label)} onClick={() => setFilters((f) => ({ ...f, tiers: toggleIn(f.tiers, t.label) }))} />
             ))}
           </div>
         </div>
@@ -228,8 +277,9 @@ export default function Browse(props: Props) {
         <div>
           <SmallLabel style={{ marginBottom: 7 }}>Type</SmallLabel>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {([['all', 'Everything'], ['conference', 'Conferences'], ['workshop', 'Workshops']] as const).map(([k, label]) => (
-              <Chip key={k} label={label} active={filters.kind === k} onClick={() => setFilters((f) => ({ ...f, kind: k }))} />
+            <Chip label="Everything" active={filters.kind === 'all'} onClick={() => setFilters((f) => ({ ...f, kind: 'all' }))} />
+            {kindOptions.map((k) => (
+              <Chip key={k} label={`${k[0]!.toUpperCase()}${k.slice(1)}s`} active={filters.kind === k} onClick={() => setFilters((f) => ({ ...f, kind: k }))} />
             ))}
           </div>
         </div>
@@ -244,9 +294,16 @@ export default function Browse(props: Props) {
             onChange={(accFrom, accTo) => setFilters((f) => ({ ...f, accFrom, accTo }))}
           />
           {accNarrowed && (
-            <div className="cg-muted" style={{ fontSize: 10, marginTop: 6, lineHeight: 1.4 }}>
-              Venues that publish no figure are excluded while this is narrowed.
-            </div>
+            <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 10, marginTop: 6, lineHeight: 1.4, cursor: 'pointer' }}>
+              <input
+                type="checkbox"
+                checked={filters.accIncludeUnknown}
+                onChange={(e) => setFilters((f) => ({ ...f, accIncludeUnknown: e.target.checked }))}
+              />
+              <span className="cg-muted">
+                Keep the {views.filter((v) => v.acceptance.latestPct === null).length} venues that publish no figure
+              </span>
+            </label>
           )}
         </div>
       </section>
@@ -256,8 +313,16 @@ export default function Browse(props: Props) {
         <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 15 }}>
           {results.length} {results.length === 1 ? 'venue' : 'venues'}
         </span>
-        {closedHidden > 0 && (
-          <span className="cg-muted" style={{ fontSize: 12 }}>{closedHidden} closed {closedHidden === 1 ? 'cycle' : 'cycles'} hidden</span>
+        {dormant > 0 && (
+          <Chip
+            label={
+              filters.showClosed
+                ? `including ${dormant} not open`
+                : `${dormant} not open, hidden`
+            }
+            active={!filters.showClosed}
+            onClick={() => setFilters((f) => ({ ...f, showClosed: !f.showClosed }))}
+          />
         )}
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5, flexWrap: 'wrap' }}>
           <SmallLabel style={{ marginRight: 4 }}>Sort</SmallLabel>
@@ -274,10 +339,17 @@ export default function Browse(props: Props) {
       {results.length === 0 ? (
         <EmptyState kicker="No results" title="Nothing matches those filters.">
           <p>
-            {closedHidden > 0
-              ? `${closedHidden} ${closedHidden === 1 ? 'venue matches' : 'venues match'} but ${closedHidden === 1 ? 'its cycle has' : 'their cycles have'} already closed, so ${closedHidden === 1 ? 'it is' : 'they are'} hidden.`
+            {!filters.showClosed && dormant > 0
+              ? `${dormant} ${dormant === 1 ? 'venue matches' : 'venues match'}, but ${dormant === 1 ? 'it has' : 'they have'} no deadline open right now and closed cycles are hidden.`
               : 'Every filter is an AND, so a narrow topic plus a short deadline window empties the list quickly.'}
           </p>
+          {!filters.showClosed && dormant > 0 && (
+            <p>
+              <button type="button" className="btn btn-secondary" onClick={() => setFilters((f) => ({ ...f, showClosed: true }))}>
+                Show them anyway
+              </button>
+            </p>
+          )}
           <p><button type="button" className="btn btn-secondary" onClick={reset}>Reset every filter</button></p>
         </EmptyState>
       ) : (

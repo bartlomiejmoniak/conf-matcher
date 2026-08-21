@@ -116,8 +116,8 @@ three schema amendments this required and why.
 Modernist: zero corner radius, 2px rules, flush-left labels, Archivo, a single red accent.
 Every colour, space and font comes from `var(--*)` in the design system stylesheet — no
 hex is hard-coded in the app. Dark mode is a `data-theme="dark"` attribute with the ramps
-inverted in step. The rounded-corner variant is the one sanctioned deviation, behind the
-header toggle while the choice is open; when it settles, delete the loser.
+inverted in step. A rounded-corner variant was trialled behind a header toggle; the choice
+settled on radius 0 and the variant has been removed.
 
 [`HANDOFF.md`](HANDOFF.md) is the full design spec and `docs/Confgraph.dc.html` is the
 original prototype it describes.

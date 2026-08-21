@@ -36,16 +36,26 @@ const coreRank = (v: Venue): number => {
   return i === -1 ? CORE_ORDER.length : i;
 };
 
-/** Does the venue sit in one of the tiers the user is targeting? */
-export function inTier(venue: Venue, tiers: string[]): boolean {
-  if (tiers.length === 0) return false;
-  return tiers.some((t) => {
-    if (t === 'CORE A*') return venue.rankings.core === 'A*';
-    if (t === 'CORE A') return venue.rankings.core === 'A';
-    if (t === 'CORE B') return venue.rankings.core === 'B';
-    if (t === 'CCF-A') return venue.rankings.ccf === 'A';
-    return false;
-  });
+/**
+ * Every tier label the venue satisfies. The rules live in taxonomy.json rather than here,
+ * so adding a ranking tier is a data edit. Resolved once per venue in `toView`, which is
+ * why the filter downstream only ever reads `VenueView.tierLabels`.
+ */
+export function venueTiers(venue: Venue, taxonomy: Taxonomy): string[] {
+  return taxonomy.tiers.entries
+    .filter((t) => (venue.rankings as Record<string, string | undefined>)[t.source] === t.value)
+    .map((t) => t.label);
+}
+
+/**
+ * Which edition of the venue this record is. Taken from the event dates where they exist,
+ * and otherwise from the trailing year of the id, which DATA_GUIDE requires be the edition
+ * year. Null when neither is available, in which case nothing downstream claims a gap.
+ */
+export function editionYear(venue: Venue): number | null {
+  if (venue.event.start) return Number(venue.event.start.slice(0, 4));
+  const fromId = venue.id.match(/-(\d{4})$/);
+  return fromId ? Number(fromId[1]) : null;
 }
 
 /** Build the derived view model for one venue against the user's paper profile. */
@@ -63,6 +73,7 @@ export function toView(
   const daysLeft = nextDeadline ? daysBetween(today, nextDeadline.effectiveDate) : null;
 
   const { band, overlap } = matchBand(venue, expandTopics(paper.topics, taxonomy));
+  const tierLabels = venueTiers(venue, taxonomy);
 
   return {
     ...venue,
@@ -70,10 +81,11 @@ export function toView(
     daysLeft,
     cycleClosed: chain.length > 0 && nextDeadline === null,
     hostName,
+    tierLabels,
     band,
     overlap,
     tooEarly: Boolean(paper.readyBy && nextDeadline && nextDeadline.effectiveDate < paper.readyBy),
-    inTargetTier: inTier(venue, paper.tiers),
+    inTargetTier: paper.tiers.some((t) => tierLabels.includes(t)),
   };
 }
 
@@ -81,13 +93,18 @@ const BAND_ORDER: Record<MatchBand, number> = { strong: 0, partial: 1, weak: 2 }
 
 /**
  * Fit: band, then overlap count, then whether the venue sits in the user's target tier,
- * then CORE tier, then deadline proximity. Venues with no live deadline always sink.
+ * then CORE tier, then deadline proximity.
+ *
+ * A venue with no live deadline sinks below every venue that has one, in *every* sort —
+ * the filter now shows closed cycles rather than removing them, so this is what keeps a
+ * closed venue from outranking a live one on tier or acceptance alone.
  */
 export function sortVenues(list: VenueView[], sort: SortKey): VenueView[] {
+  const liveFirst = (a: VenueView, b: VenueView) =>
+    Number(a.daysLeft === null) - Number(b.daysLeft === null);
+
   const byDeadline = (a: VenueView, b: VenueView) => {
-    if (a.daysLeft === null && b.daysLeft === null) return a.name.localeCompare(b.name);
-    if (a.daysLeft === null) return 1;
-    if (b.daysLeft === null) return -1;
+    if (a.daysLeft === null || b.daysLeft === null) return a.name.localeCompare(b.name);
     return a.daysLeft - b.daysLeft;
   };
 
@@ -111,5 +128,5 @@ export function sortVenues(list: VenueView[], sort: SortKey): VenueView[] {
     },
   };
 
-  return [...list].sort(cmp[sort]);
+  return [...list].sort((a, b) => liveFirst(a, b) || cmp[sort](a, b));
 }

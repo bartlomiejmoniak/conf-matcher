@@ -26,6 +26,28 @@
   },
   "formats": ["in-person", "hybrid", "virtual"],
   "kinds": ["conference", "workshop"],
+  "tiers": {
+    "$comment": "The ranking filter chips, and the rule that decides whether a venue sits in one. `source` names a key of `rankingSources`; a venue is in the tier when its rankings[source] equals `value`. `inProfile` marks the tiers offered as a paper's target tier, which is deliberately a shorter list than the filter row.",
+    "entries": [
+      { "label": "CORE A*", "source": "core", "value": "A*", "inProfile": true },
+      { "label": "CORE A", "source": "core", "value": "A", "inProfile": true },
+      { "label": "CORE B", "source": "core", "value": "B", "inProfile": true },
+      { "label": "CCF-A", "source": "ccf", "value": "A", "inProfile": false }
+    ]
+  },
+  "deadlineWindows": {
+    "$comment": "Preset day counts for the deadline-window chips. The filter itself accepts any positive day count — these are only the offered shortcuts.",
+    "days": [30, 60, 90]
+  },
+  "registrationTiers": [
+    "early-bird",
+    "regular",
+    "late",
+    "student",
+    "student early-bird",
+    "virtual",
+    "workshop only"
+  ],
   "blindingTypes": ["double-blind", "single-blind", "open review", "unspecified"],
   "rankingSources": {
     "$comment": "displayed=false keeps a ranking in the data but out of the UI. MNiSW is collected and hidden by product decision.",

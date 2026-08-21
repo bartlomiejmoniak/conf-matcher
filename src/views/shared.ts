@@ -1,5 +1,6 @@
 import type { LoadedData } from '../lib/data';
 import type { PaperProfile, TrackedPaper, VenueView } from '../lib/types';
+import type { CostInputs } from '../lib/costing';
 
 /** The props every view receives from App. */
 export interface ViewProps {
@@ -14,6 +15,7 @@ export interface ViewProps {
   toggleCompare: (id: string) => void;
   openDetail: (id: string) => void;
   trackedCount: (id: string) => number;
+  costs: Record<string, CostInputs>;
+  setCost: (venueId: string, next: CostInputs) => void;
 }
 
-export const TIERS = ['CORE A*', 'CORE A', 'CORE B', 'CCF-A'];

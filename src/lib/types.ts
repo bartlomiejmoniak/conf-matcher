@@ -5,6 +5,15 @@ export type LocationFormat = 'in-person' | 'hybrid' | 'virtual';
 export type Blinding = 'double-blind' | 'single-blind' | 'open review' | 'unspecified';
 export type Confidence = 'confirmed' | 'provisional' | 'projected';
 
+/** One row of a venue's published fee table, in the currency it was published in. */
+export interface RegistrationTier {
+  label: string;
+  amount: number;
+  currency: string;
+  cutoff?: string | null;
+  note?: string;
+}
+
 export interface Deadline {
   stage: string;
   date: string;
@@ -24,11 +33,16 @@ export interface Venue {
   location: { city: string; country: string; format: LocationFormat };
   /** null on both ends when the venue has not announced its dates (schema amendment). */
   event: { start: string | null; end: string | null };
-  registration?: { fee?: string };
+  registration?: { fee?: string; tiers?: RegistrationTier[] };
   topics: string[];
   rankings: { core?: string; ccf?: string; h5Index?: string; mnisw?: string };
   /** `latestPct` is null when the venue publishes no figure (schema amendment). */
-  acceptance: { latestPct: number | null; history?: { year: number; pct: number }[] };
+  acceptance: {
+    latestPct: number | null;
+    /** Which edition latestPct describes. Non-null exactly when latestPct is. */
+    latestYear: number | null;
+    history?: { year: number; pct: number }[];
+  };
   review: {
     blinding: Blinding;
     blindingNote?: string;
@@ -46,11 +60,23 @@ export interface Venue {
   source: { verifiedOn: string; urls: string[]; confidence?: Confidence };
 }
 
+/** A ranking tier as a rule: `rankings[source] === value` puts a venue in it. */
+export interface TierDef {
+  label: string;
+  source: string;
+  value: string;
+  /** Offered as a paper's target tier. A shorter list than the filter row. */
+  inProfile: boolean;
+}
+
 export interface Taxonomy {
   topics: string[];
+  registrationTiers: string[];
   narrowTopics: Record<string, string>;
   formats: LocationFormat[];
   kinds: Kind[];
+  tiers: { entries: TierDef[] };
+  deadlineWindows: { days: number[] };
   blindingTypes: Blinding[];
   rankingSources: Record<string, { label: string; assessedLabel: string; displayed: boolean }>;
   integrityLevels: string[];
@@ -78,6 +104,8 @@ export interface VenueView extends Venue {
   /** true when the venue published deadlines and every one of them has passed. */
   cycleClosed: boolean;
   hostName: string | null;
+  /** Every tier label this venue satisfies, resolved once against the taxonomy. */
+  tierLabels: string[];
   band: MatchBand;
   overlap: string[];
   /** Deadline falls before the user can have the paper ready. */
@@ -106,7 +134,10 @@ export interface TrackedPaper {
 
 export interface Filters {
   topics: string[];
+  /** "within N days of today". Any positive day count; the taxonomy only offers shortcuts. */
   window: number | null;
+  /** Absolute bounds on the next deadline, inclusive. Empty string means unbounded. */
+  after: string;
   before: string;
   tiers: string[];
   formats: LocationFormat[];
@@ -114,7 +145,11 @@ export interface Filters {
   blinding: Blinding | null;
   accFrom: number;
   accTo: number;
+  /** Keep venues that publish no acceptance figure when the range is narrowed. */
+  accIncludeUnknown: boolean;
+  /** Show venues whose cycle has closed, or that publish no dates at all. */
+  showClosed: boolean;
 }
 
 export type SortKey = 'fit' | 'deadline' | 'ranking' | 'acceptance';
-export type View = 'browse' | 'detail' | 'compare' | 'watchlist';
+export type View = 'browse' | 'detail' | 'compare' | 'watchlist' | 'papers';

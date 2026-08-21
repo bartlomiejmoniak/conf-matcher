@@ -8,7 +8,10 @@ import Browse from './views/Browse';
 import Detail from './views/Detail';
 import Compare from './views/Compare';
 import Watchlist from './views/Watchlist';
+import Papers from './views/Papers';
 import { EmptyState } from './components/Bits';
+import type { CostInputs } from './lib/costing';
+import { Flag, ICON, Moon, Sun } from './components/Icons';
 
 const DEFAULT_PAPER: PaperProfile = { topics: [], tiers: [], readyBy: '' };
 
@@ -20,10 +23,10 @@ export default function App() {
 
   // ── persisted preferences ────────────────────────────────────────────────
   const [theme, setTheme] = useState<'light' | 'dark'>(() => read(KEYS.theme, 'light' as 'light' | 'dark'));
-  const [edges, setEdges] = useState<'sharp' | 'round'>(() => read(KEYS.edges, 'sharp' as 'sharp' | 'round'));
   const [saved, setSaved] = useState<string[]>(() => read<string[]>(KEYS.saved, []));
   const [paper, setPaper] = useState<PaperProfile>(() => ({ ...DEFAULT_PAPER, ...read(KEYS.paper, DEFAULT_PAPER) }));
   const [papers, setPapers] = useState<Record<string, TrackedPaper[]>>(() => read(KEYS.papers, {}));
+  const [costs, setCosts] = useState<Record<string, CostInputs>>(() => read(KEYS.cost, {}));
 
   // ── shareable state, mirrored into the URL hash ──────────────────────────
   const [url, setUrl] = useState<UrlState>(() => parseHash(window.location.hash));
@@ -54,10 +57,10 @@ export default function App() {
   }, []);
 
   useEffect(() => { write(KEYS.theme, theme); document.documentElement.dataset.theme = theme; }, [theme]);
-  useEffect(() => { write(KEYS.edges, edges); document.documentElement.dataset.edges = edges; }, [edges]);
   useEffect(() => { write(KEYS.saved, saved); }, [saved]);
   useEffect(() => { write(KEYS.paper, paper); }, [paper]);
   useEffect(() => { write(KEYS.papers, papers); }, [papers]);
+  useEffect(() => { write(KEYS.cost, costs); }, [costs]);
 
   useEffect(() => {
     let live = true;
@@ -104,6 +107,8 @@ export default function App() {
   const nav = (view: UrlState['view']) => () => { patchUrl({ view }); window.scrollTo({ top: 0 }); };
 
   const trackedCount = useCallback((id: string) => papers[id]?.length ?? 0, [papers]);
+  const paperCount = useMemo(() => Object.values(papers).reduce((n, list) => n + list.length, 0), [papers]);
+  const setCost = useCallback((venueId: string, next: CostInputs) => setCosts((prev) => ({ ...prev, [venueId]: next })), []);
 
   // ── chrome ───────────────────────────────────────────────────────────────
   const header = (
@@ -119,29 +124,37 @@ export default function App() {
         </button>
 
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
-          <button type="button" className="btn btn-ghost" onClick={nav('browse')} style={{ fontSize: 13 }}>Browse</button>
-          <button type="button" className="btn btn-ghost" onClick={nav('compare')} style={{ fontSize: 13 }}>
-            Compare{url.compare.length ? ` (${url.compare.length})` : ''}
-          </button>
-          <button type="button" className="btn btn-ghost" onClick={nav('watchlist')} style={{ fontSize: 13 }}>
-            Watchlist{saved.length ? ` (${saved.length})` : ''}
-          </button>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => setEdges((e) => (e === 'sharp' ? 'round' : 'sharp'))}
-            style={{ fontSize: 12, padding: '6px 10px', minWidth: 96, justifyContent: 'flex-start' }}
-            title="Modernist mandates radius 0; the rounded variant is a sanctioned trial"
-          >
-            {edges === 'sharp' ? '▢ Sharp' : '▢ Round'}
-          </button>
+          {(
+            [
+              ['browse', 'Browse', null],
+              ['compare', 'Compare', url.compare.length],
+              ['watchlist', 'Watchlist', saved.length],
+              ['papers', 'Papers', paperCount],
+            ] as const
+          ).map(([view, label, count]) => {
+            // Detail has no tab of its own; it belongs to Browse, which is where Back goes.
+            const active = url.view === view || (view === 'browse' && url.view === 'detail');
+            return (
+              <button
+                key={view}
+                type="button"
+                className="btn btn-ghost"
+                onClick={nav(view)}
+                aria-current={active ? 'page' : undefined}
+                style={{ fontSize: 13, textDecoration: active ? 'underline' : undefined, textUnderlineOffset: 4 }}
+              >
+                {label}{count ? ` (${count})` : ''}
+              </button>
+            );
+          })}
           <button
             type="button"
             className="btn btn-secondary"
             onClick={() => setTheme((t) => (t === 'light' ? 'dark' : 'light'))}
             style={{ fontSize: 12, padding: '6px 10px', minWidth: 74, justifyContent: 'flex-start' }}
           >
-            {theme === 'light' ? '☾ Dark' : '☀ Light'}
+            {theme === 'light' ? <Moon size={ICON} /> : <Sun size={ICON} />}
+            {theme === 'light' ? 'Dark' : 'Light'}
           </button>
         </div>
       </div>
@@ -210,6 +223,8 @@ export default function App() {
     toggleCompare,
     openDetail,
     trackedCount,
+    costs,
+    setCost,
   };
 
   return (
@@ -233,6 +248,7 @@ export default function App() {
         )}
         {url.view === 'compare' && <Compare {...shared} browse={nav('browse')} />}
         {url.view === 'watchlist' && <Watchlist {...shared} setPapers={setPapers} browse={nav('browse')} />}
+        {url.view === 'papers' && <Papers {...shared} setPapers={setPapers} browse={nav('browse')} />}
       </div>
       <footer className="cg-shell cg-muted" style={{ fontSize: 11, padding: '32px 20px 40px', borderTop: '2px solid var(--color-divider)', marginTop: 40 }}>
         {data.venues.length} venues · data verified per record, see each venue's provenance line · deadlines are AoE
@@ -279,7 +295,7 @@ function IssueBanner({ issues }: { issues: DataIssue[] }) {
           onClick={() => setOpen((o) => !o)}
           style={{ background: 'none', border: 0, padding: 0, cursor: 'pointer', fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 12, color: 'var(--color-accent-800)' }}
         >
-          ⚑ {issues.length} data {issues.length === 1 ? 'issue' : 'issues'}
+          <Flag size={ICON} /> {issues.length} data {issues.length === 1 ? 'issue' : 'issues'}
           {errors ? ` (${errors} blocking)` : ''} · {open ? 'hide' : 'show'}
         </button>
         {open && (

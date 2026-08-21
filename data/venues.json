@@ -19,7 +19,8 @@
         "end": "2026-09-04"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -31,7 +32,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -81,7 +83,8 @@
         "end": "2027-04-09"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -93,7 +96,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -135,7 +139,8 @@
         "end": "2026-01-27"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory",
@@ -155,7 +160,8 @@
             "year": 2025,
             "pct": 23.4
           }
-        ]
+        ],
+        "latestYear": 2025
       },
       "review": {
         "blinding": "double-blind",
@@ -212,7 +218,8 @@
         "end": "2027-02-23"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory",
@@ -226,7 +233,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -283,7 +291,8 @@
         "end": "2026-05-29"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "reinforcement learning",
@@ -296,7 +305,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -337,7 +347,8 @@
         "end": "2026-12-18"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -349,7 +360,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -400,7 +412,8 @@
         "end": "2026-12-17"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -412,7 +425,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -462,7 +476,8 @@
         "end": "2026-07-07"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "natural language"
@@ -480,7 +495,8 @@
             "year": 2025,
             "pct": 20.3
           }
-        ]
+        ],
+        "latestYear": 2025
       },
       "review": {
         "blinding": "double-blind",
@@ -537,7 +553,8 @@
         "end": "2026-11-14"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "multimodal",
@@ -550,7 +567,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -608,7 +626,8 @@
         "end": "2026-05-05"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory"
@@ -620,7 +639,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -659,7 +679,8 @@
         "end": "2026-09-03"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -671,7 +692,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -729,7 +751,8 @@
         "end": "2026-11-26"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -741,7 +764,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -804,7 +828,8 @@
         "end": "2026-10-23"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "multimodal",
@@ -817,7 +842,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -867,7 +893,8 @@
         "end": "2026-10-09"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "natural language",
@@ -880,7 +907,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -922,7 +950,8 @@
         "end": "2027-04-16"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -934,7 +963,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -975,7 +1005,8 @@
         "end": "2026-06-07"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -990,14 +1021,15 @@
         "latestPct": 22.1,
         "history": [
           {
-            "year": 2025,
-            "pct": 22.1
-          },
-          {
             "year": 2024,
             "pct": 23.6
+          },
+          {
+            "year": 2025,
+            "pct": 22.1
           }
-        ]
+        ],
+        "latestYear": 2025
       },
       "review": {
         "blinding": "double-blind",
@@ -1054,7 +1086,8 @@
         "end": "2026-09-04"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -1066,7 +1099,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -1108,7 +1142,8 @@
         "end": "2027-04-16"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision",
@@ -1121,7 +1156,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -1163,7 +1199,8 @@
         "end": "2026-09-13"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -1181,7 +1218,8 @@
             "year": 2024,
             "pct": 27.9
           }
-        ]
+        ],
+        "latestYear": 2024
       },
       "review": {
         "blinding": "double-blind",
@@ -1266,7 +1304,8 @@
         "end": "2026-10-29"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "natural language"
@@ -1284,7 +1323,8 @@
             "year": 2024,
             "pct": 20.8
           }
-        ]
+        ],
+        "latestYear": 2024
       },
       "review": {
         "blinding": "double-blind",
@@ -1334,7 +1374,8 @@
         "end": "2026-10-01"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -1346,7 +1387,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -1393,7 +1435,8 @@
         "end": "2026-09-25"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision",
@@ -1406,7 +1449,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -1456,7 +1500,8 @@
         "end": "2027-10-08"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -1468,7 +1513,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -1515,7 +1561,8 @@
         "end": null
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory",
@@ -1535,7 +1582,8 @@
             "year": 2025,
             "pct": 32.08
           }
-        ]
+        ],
+        "latestYear": 2025
       },
       "review": {
         "blinding": "double-blind",
@@ -1592,7 +1640,8 @@
         "end": "2026-10-08"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "multimodal",
@@ -1605,7 +1654,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -1673,7 +1723,8 @@
         "end": "2026-07-11"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory",
@@ -1694,7 +1745,8 @@
             "year": 2025,
             "pct": 26.9
           }
-        ]
+        ],
+        "latestYear": 2025
       },
       "review": {
         "blinding": "double-blind",
@@ -1751,7 +1803,8 @@
         "end": "2026-08-21"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision",
@@ -1764,7 +1817,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -1860,7 +1914,8 @@
         "end": "2027-10-15"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision",
@@ -1873,7 +1928,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -1923,7 +1979,8 @@
         "end": "2026-08-21"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory",
@@ -1937,7 +1994,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -1987,7 +2045,8 @@
         "end": "2026-09-04"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -1999,7 +2058,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -2049,7 +2109,8 @@
         "end": "2027-07-02"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "medical imaging"
@@ -2061,7 +2122,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -2103,7 +2165,8 @@
         "end": "2026-10-30"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "data mining",
@@ -2116,7 +2179,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -2158,7 +2222,8 @@
         "end": "2026-11-20"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -2170,7 +2235,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -2220,7 +2286,8 @@
         "end": "2026-10-01"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "medical imaging",
@@ -2239,7 +2306,8 @@
             "year": 2025,
             "pct": 29
           }
-        ]
+        ],
+        "latestYear": 2025
       },
       "review": {
         "blinding": "double-blind",
@@ -2296,7 +2364,8 @@
         "end": "2026-08-11"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "multimodal",
@@ -2309,7 +2378,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -2348,7 +2418,8 @@
         "end": "2026-12-12"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory",
@@ -2369,7 +2440,8 @@
             "year": 2025,
             "pct": 24.52
           }
-        ]
+        ],
+        "latestYear": 2025
       },
       "review": {
         "blinding": "double-blind",
@@ -2427,7 +2499,8 @@
         "end": "2026-11-20"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -2439,7 +2512,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -2481,7 +2555,8 @@
         "end": "2026-07-17"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "robotics"
@@ -2493,7 +2568,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",
@@ -2533,7 +2609,8 @@
         "end": "2027-06-11"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -2545,7 +2622,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -2594,7 +2672,8 @@
         "end": "2026-10-14"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory",
@@ -2607,7 +2686,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -2663,7 +2743,8 @@
         "end": "2026-08-26"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "ml theory",
@@ -2676,7 +2757,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "unspecified",
@@ -2726,7 +2808,8 @@
         "end": "2027-01-08"
       },
       "registration": {
-        "fee": "—"
+        "fee": "—",
+        "tiers": []
       },
       "topics": [
         "computer vision"
@@ -2738,7 +2821,8 @@
         "mnisw": "—"
       },
       "acceptance": {
-        "latestPct": null
+        "latestPct": null,
+        "latestYear": null
       },
       "review": {
         "blinding": "double-blind",

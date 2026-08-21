@@ -1,16 +1,21 @@
-import { addMonths, fmtDate, fmtMonth, fmtRange, utc } from '../lib/dates';
+import { useState } from 'react';
+import { fmtDate, fmtRange, todayISO } from '../lib/dates';
+import { fmtMoney } from '../lib/costing';
 import { effectiveDate } from '../lib/matching';
+import { Timeline, TimelineWindow, type Lane } from '../components/Timeline';
+import { KEYS, read, write } from '../lib/storage';
 import { AcceptanceText, EmptyState, SmallLabel, place } from '../components/Bits';
 import type { ViewProps } from './shared';
+import { Flag, ICON_SM, X } from '../components/Icons';
 
 interface Props extends ViewProps {
   browse: () => void;
 }
 
-const MONTHS_SHOWN = 16;
-
 export default function Compare({ compare, byId, data, toggleCompare, openDetail, browse }: Props) {
   const venues = compare.map((id) => byId.get(id)).filter((v): v is NonNullable<typeof v> => Boolean(v));
+  const [spanDays, setSpanDays] = useState<number>(() => read(KEYS.timeline, 365));
+  const setSpan = (d: number) => { setSpanDays(d); write(KEYS.timeline, d); };
 
   if (venues.length === 0) {
     return (
@@ -24,19 +29,17 @@ export default function Compare({ compare, byId, data, toggleCompare, openDetail
     );
   }
 
-  // 16 months from the start of the current month
-  const now = new Date();
-  const [y0, m0] = [now.getUTCFullYear(), now.getUTCMonth()];
-  const startMs = Date.UTC(y0, m0, 1);
-  const [yEnd, mEnd] = addMonths(y0, m0, MONTHS_SHOWN);
-  const endMs = Date.UTC(yEnd, mEnd, 1);
-  const span = endMs - startMs;
-  const pct = (iso: string) => ((utc(iso) - startMs) / span) * 100;
-
-  const ticks = Array.from({ length: MONTHS_SHOWN / 2 + 1 }, (_, i) => {
-    const [y, m] = addMonths(y0, m0, i * 2);
-    return { label: fmtMonth(y, m), left: ((Date.UTC(y, m, 1) - startMs) / span) * 100 };
-  });
+  const today = todayISO();
+  const lanes: Lane[] = venues.map((v) => ({
+    id: v.id,
+    name: v.name,
+    onNameClick: () => openDetail(v.id),
+    emptyNote: v.deadlines.length ? 'No deadline inside this window' : 'No dates published',
+    marks: v.deadlines.map((d) => {
+      const iso = effectiveDate(d);
+      return { iso, label: d.stage, muted: iso < today };
+    }),
+  }));
 
   const displayed = Object.entries(data.taxonomy.rankingSources).filter(([k, s]) => !k.startsWith('$') && s.displayed);
   const sharedTopics = venues.reduce<string[]>(
@@ -55,49 +58,13 @@ export default function Compare({ compare, byId, data, toggleCompare, openDetail
 
       {/* ── Shared timeline ─────────────────────────────────────────────── */}
       <section className="cg-rule" style={{ padding: '18px 0 8px', overflowX: 'auto' }}>
-        <SmallLabel style={{ marginBottom: 14 }}>Deadline timeline · next {MONTHS_SHOWN} months</SmallLabel>
-        <div style={{ minWidth: 720 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr' }}>
-            <div />
-            <div style={{ position: 'relative', height: 18, borderBottom: '1px solid var(--color-divider)' }}>
-              {ticks.map((t) => (
-                <div key={t.label} className="cg-muted" style={{ position: 'absolute', left: `${t.left}%`, fontSize: 10, whiteSpace: 'nowrap' }}>
-                  {t.label}
-                </div>
-              ))}
-            </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
+          <SmallLabel>Deadline timeline</SmallLabel>
+          <div style={{ marginLeft: 'auto' }}>
+            <TimelineWindow spanDays={spanDays} setSpanDays={setSpan} />
           </div>
-
-          {venues.map((v) => (
-            <div key={v.id} style={{ display: 'grid', gridTemplateColumns: '150px 1fr', height: 62, borderBottom: '1px solid var(--color-divider)' }}>
-              <div style={{ paddingRight: 12, paddingTop: 8 }}>
-                <button type="button" className="cg-namebtn" style={{ fontSize: 13 }} onClick={() => openDetail(v.id)}>{v.name}</button>
-              </div>
-              <div style={{ position: 'relative' }}>
-                {v.deadlines
-                  .map((d) => ({ d, iso: effectiveDate(d) }))
-                  .filter(({ iso }) => utc(iso) >= startMs && utc(iso) < endMs)
-                  .map(({ d, iso }, i) => (
-                    <div key={i} style={{ position: 'absolute', left: `${pct(iso)}%`, top: 0, height: '100%' }}>
-                      <div style={{ width: 2, height: '100%', background: 'var(--color-accent)' }} />
-                      {/* labels alternate 10/30px down so neighbouring ticks do not collide */}
-                      <div
-                        className="cg-muted"
-                        style={{ position: 'absolute', top: i % 2 === 0 ? 10 : 30, left: 4, fontSize: 9, whiteSpace: 'nowrap' }}
-                      >
-                        {d.stage} · {fmtDate(iso)}
-                      </div>
-                    </div>
-                  ))}
-                {v.deadlines.every(({ ...d }) => utc(effectiveDate(d)) < startMs || utc(effectiveDate(d)) >= endMs) && (
-                  <div className="cg-muted" style={{ position: 'absolute', top: 20, fontSize: 11 }}>
-                    {v.deadlines.length ? 'No deadline inside this window' : 'No dates published'}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
         </div>
+        <Timeline lanes={lanes} spanDays={spanDays} />
       </section>
 
       {/* ── Fact table ──────────────────────────────────────────────────── */}
@@ -120,10 +87,24 @@ export default function Compare({ compare, byId, data, toggleCompare, openDetail
             {displayed.map(([key, src]) => (
               <Row key={key} label={src.label} venues={venues} cell={(v) => v.rankings[key as keyof typeof v.rankings] || '—'} />
             ))}
-            <Row label="Acceptance" venues={venues} cell={(v) => <AcceptanceText pct={v.acceptance.latestPct} />} />
+            <Row label="Acceptance" venues={venues} cell={(v) => <AcceptanceText venue={v} />} />
             <Row label="Review" venues={venues} cell={(v) => [v.review.blinding, v.review.rebuttal].filter((x) => x && x !== '—').join(' · ') || '—'} />
             <Row label="Page limit" venues={venues} cell={(v) => v.review.pageLimit || '—'} />
-            <Row label="Cost" venues={venues} cell={(v) => v.registration?.fee || '—'} />
+            <Row label="Registration" venues={venues} cell={(v) => {
+              const tiers = v.registration?.tiers ?? [];
+              if (!tiers.length) return v.registration?.fee && v.registration.fee !== '—'
+                ? v.registration.fee
+                : <span className="cg-muted">no fee published</span>;
+              return (
+                <span>
+                  {tiers.map((t, i) => (
+                    <span key={i} style={{ display: 'block' }}>
+                      {t.label} · {fmtMoney(t.amount, t.currency)}
+                    </span>
+                  ))}
+                </span>
+              );
+            }} />
             <Row label="Location" venues={venues} cell={(v) => `${place(v.location)} · ${v.location.format}`} />
             <Row label="Event dates" venues={venues} cell={(v) => fmtRange(v.event.start, v.event.end)} />
             <Row label="Topics" venues={venues} cell={(v) => (
@@ -133,12 +114,15 @@ export default function Compare({ compare, byId, data, toggleCompare, openDetail
                 ))}
               </div>
             )} />
-            <Row label="Integrity" venues={venues} cell={(v) => v.integrityFlag ? `⚑ ${v.integrityFlag.level}` : <span className="cg-muted">no flag recorded</span>} />
+            <Row label="Integrity" venues={venues} cell={(v) => v.integrityFlag ? <><Flag size={ICON_SM} /> {v.integrityFlag.level}</> : <span className="cg-muted">no flag recorded</span>} />
             <tr>
               <td className="cg-muted">Remove</td>
               {venues.map((v) => (
                 <td key={v.id}>
-                  <button type="button" className="btn btn-ghost" onClick={() => toggleCompare(v.id)} style={{ fontSize: 11 }}>Remove</button>
+                  <button type="button" className="btn btn-ghost" onClick={() => toggleCompare(v.id)} style={{ fontSize: 11 }}>
+                    <X size={ICON_SM} />
+                    Remove
+                  </button>
                 </td>
               ))}
             </tr>

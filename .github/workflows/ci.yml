@@ -1,9 +1,18 @@
 name: CI
 
+# Pull requests only, on purpose. A push to `main` is already gated by
+# deploy.yml, which runs the same validate/test/build before it publishes —
+# running this on `push: ['**']` too meant every PR branch built twice on the
+# same commit, once for the push and once for the PR.
 on:
-  push:
-    branches: ['**']
   pull_request:
+  workflow_dispatch:
+
+# A follow-up push supersedes the run it interrupts; nothing is learned from
+# finishing a build for a commit that is no longer the branch head.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   check:

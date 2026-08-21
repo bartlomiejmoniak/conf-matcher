@@ -105,9 +105,9 @@ export function parseQuery(raw: string, lexicon: Lexicon): ParseResult {
     const n = Number(windowMatch[1]);
     const unit = windowMatch[2]!;
     const days = unit === 'day' ? n : unit === 'week' ? n * 7 : n * 30;
-    const bucket = [30, 60, 90].find((b) => days <= b) ?? 90;
-    patch.window = bucket;
-    take(windowMatch[0], `deadline within ${bucket} days`, 'window');
+    // The window filter takes any day count, so this no longer rounds up to a preset.
+    patch.window = days;
+    take(windowMatch[0], `deadline within ${days} days`, 'window');
   } else {
     const byMonth = q.match(
       /\bby\s+(january|february|march|april|may|june|july|august|september|october|november|december)\b/

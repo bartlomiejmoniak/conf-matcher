@@ -50,7 +50,23 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "fee": { "type": "string", "description": "Free text with currency symbol as published, e.g. \"$850\", \"€780\", \"included in ICLR registration\". Never converted." }
+            "fee": { "type": "string", "description": "Free text with currency symbol as published, e.g. \"$850\", \"€780\", \"included in ICLR registration\". Never converted. Use this when the venue publishes a blob rather than a table; use `tiers` when it publishes a table." },
+            "tiers": {
+              "type": "array",
+              "description": "The published fee table, one entry per row. Empty when the venue has not published fees — the cost estimator then takes a hand-entered figure instead. Never estimate a fee, and never convert one: `currency` records what was published.",
+              "items": {
+                "type": "object",
+                "required": ["label", "amount", "currency"],
+                "additionalProperties": false,
+                "properties": {
+                  "label": { "type": "string", "description": "One of taxonomy.json#/registrationTiers." },
+                  "amount": { "type": "number", "minimum": 0, "description": "As published, in major units. No conversion, no rounding." },
+                  "currency": { "type": "string", "pattern": "^[A-Z]{3}$", "description": "ISO 4217 code for the currency the fee was published in." },
+                  "cutoff": { "$ref": "#/definitions/nullableDate", "description": "Last day this rate applies, when the venue publishes one. null for rates with no date attached." },
+                  "note": { "type": "string", "description": "Qualifier as published, e.g. \"IEEE member\", \"includes banquet\"." }
+                }
+              }
+            }
           }
         },
         "topics": {
@@ -75,7 +91,8 @@
           "required": ["latestPct"],
           "additionalProperties": false,
           "properties": {
-            "latestPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "Most recent published main-track acceptance rate, or null when the venue publishes no figure. Never estimate one — DATA_GUIDE forbids it. A null record is shown as \"acceptance not published\" and is excluded from the acceptance range filter rather than being assigned a fake value." },
+            "latestPct": { "type": ["number", "null"], "minimum": 0, "maximum": 100, "description": "Most recent published main-track acceptance rate, or null when the venue publishes no figure. Never estimate one — DATA_GUIDE forbids it. A null record is shown as \"acceptance not published\" and is kept by the acceptance range filter unless the reader opts out, rather than being assigned a fake value." },
+            "latestYear": { "type": ["integer", "null"], "description": "Which edition `latestPct` describes. Required whenever latestPct is non-null, because the figure is usually the previous edition's and a rate shown without its year reads as this year's. null exactly when latestPct is null." },
             "history": {
               "type": "array",
               "description": "Oldest first. Omit years with no published figure rather than interpolating.",

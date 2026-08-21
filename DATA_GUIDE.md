@@ -30,7 +30,11 @@ Add objects to the `venues` array. `data/venue.schema.json` carries the authorit
 
 **MNiSW is collected but hidden.** Fill `rankings.mnisw` anyway. Visibility is one flag in `taxonomy.json#/rankingSources/mnisw/displayed`, so the day it is wanted the data is already there.
 
-**Acceptance rate means the main track.** Do not blend a workshop track or a findings track into it. If a venue publishes no figure, omit the year from `history` rather than estimating; `latestPct` is required because the range filter needs it, so use the most recent published figure even if it is two years old and say so in `notes`.
+**Acceptance rate means the main track.** Do not blend a workshop track or a findings track into it. If a venue publishes no figure, omit the year from `history` rather than estimating, and set both `latestPct` and `latestYear` to `null` — the filter keeps unrated venues unless the reader opts out, so there is nothing to fake.
+
+Using a figure two editions old is fine and common; saying which edition it is, is not optional. `latestYear` records it, and must be set whenever `latestPct` is. It used to go in `notes`, where nothing could render it next to the number.
+
+**Registration fees are never converted or estimated.** If the venue publishes a fee table, put one `registration.tiers[]` entry per row, with the amount and ISO 4217 currency exactly as published and a `cutoff` where one is given. If it publishes only a blob ("included in ICLR registration"), that is what `registration.fee` is for. If it has published nothing yet — which is the case for every record currently shipping — leave `tiers` empty. The cost estimator asks the reader for a figure rather than implying one.
 
 **`source` is not optional.** A record without `verifiedOn` and at least one URL should not be committed. `confidence: "projected"` is the honest value for a venue whose 2027 dates you inferred from its 2026 pattern, and the UI is expected to label those differently from confirmed ones.
 
