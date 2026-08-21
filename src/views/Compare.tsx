@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { fmtDate, fmtRange, todayISO } from '../lib/dates';
+import { fmtMoney } from '../lib/costing';
 import { effectiveDate } from '../lib/matching';
 import { Timeline, TimelineWindow, type Lane } from '../components/Timeline';
 import { KEYS, read, write } from '../lib/storage';
@@ -89,7 +90,21 @@ export default function Compare({ compare, byId, data, toggleCompare, openDetail
             <Row label="Acceptance" venues={venues} cell={(v) => <AcceptanceText venue={v} />} />
             <Row label="Review" venues={venues} cell={(v) => [v.review.blinding, v.review.rebuttal].filter((x) => x && x !== '—').join(' · ') || '—'} />
             <Row label="Page limit" venues={venues} cell={(v) => v.review.pageLimit || '—'} />
-            <Row label="Cost" venues={venues} cell={(v) => v.registration?.fee || '—'} />
+            <Row label="Registration" venues={venues} cell={(v) => {
+              const tiers = v.registration?.tiers ?? [];
+              if (!tiers.length) return v.registration?.fee && v.registration.fee !== '—'
+                ? v.registration.fee
+                : <span className="cg-muted">no fee published</span>;
+              return (
+                <span>
+                  {tiers.map((t, i) => (
+                    <span key={i} style={{ display: 'block' }}>
+                      {t.label} · {fmtMoney(t.amount, t.currency)}
+                    </span>
+                  ))}
+                </span>
+              );
+            }} />
             <Row label="Location" venues={venues} cell={(v) => `${place(v.location)} · ${v.location.format}`} />
             <Row label="Event dates" venues={venues} cell={(v) => fmtRange(v.event.start, v.event.end)} />
             <Row label="Topics" venues={venues} cell={(v) => (

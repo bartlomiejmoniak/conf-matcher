@@ -10,6 +10,7 @@ import Compare from './views/Compare';
 import Watchlist from './views/Watchlist';
 import Papers from './views/Papers';
 import { EmptyState } from './components/Bits';
+import type { CostInputs } from './lib/costing';
 import { Flag, ICON, Moon, Sun } from './components/Icons';
 
 const DEFAULT_PAPER: PaperProfile = { topics: [], tiers: [], readyBy: '' };
@@ -25,6 +26,7 @@ export default function App() {
   const [saved, setSaved] = useState<string[]>(() => read<string[]>(KEYS.saved, []));
   const [paper, setPaper] = useState<PaperProfile>(() => ({ ...DEFAULT_PAPER, ...read(KEYS.paper, DEFAULT_PAPER) }));
   const [papers, setPapers] = useState<Record<string, TrackedPaper[]>>(() => read(KEYS.papers, {}));
+  const [costs, setCosts] = useState<Record<string, CostInputs>>(() => read(KEYS.cost, {}));
 
   // ── shareable state, mirrored into the URL hash ──────────────────────────
   const [url, setUrl] = useState<UrlState>(() => parseHash(window.location.hash));
@@ -58,6 +60,7 @@ export default function App() {
   useEffect(() => { write(KEYS.saved, saved); }, [saved]);
   useEffect(() => { write(KEYS.paper, paper); }, [paper]);
   useEffect(() => { write(KEYS.papers, papers); }, [papers]);
+  useEffect(() => { write(KEYS.cost, costs); }, [costs]);
 
   useEffect(() => {
     let live = true;
@@ -105,6 +108,7 @@ export default function App() {
 
   const trackedCount = useCallback((id: string) => papers[id]?.length ?? 0, [papers]);
   const paperCount = useMemo(() => Object.values(papers).reduce((n, list) => n + list.length, 0), [papers]);
+  const setCost = useCallback((venueId: string, next: CostInputs) => setCosts((prev) => ({ ...prev, [venueId]: next })), []);
 
   // ── chrome ───────────────────────────────────────────────────────────────
   const header = (
@@ -219,6 +223,8 @@ export default function App() {
     toggleCompare,
     openDetail,
     trackedCount,
+    costs,
+    setCost,
   };
 
   return (

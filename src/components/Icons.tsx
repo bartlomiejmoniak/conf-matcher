@@ -25,6 +25,7 @@ export {
   Flag,
   Plus,
   FileText,
+  Calculator,
 } from 'lucide-react';
 
 /** The size every inline icon uses unless it sits beside smaller text. */

@@ -4,13 +4,14 @@ import { AcceptanceChart, AcceptanceText, ConfidenceNote, EmptyState, Label, Sma
 import { Facts } from '../components/ResultRow';
 import type { ViewProps } from './shared';
 import { ArrowLeft, ArrowLeftRight, CalendarPlus, Check, ExternalLink, Flag, Globe, ICON, ICON_SM, Save } from '../components/Icons';
+import { CostEstimator } from '../components/CostEstimator';
 
 interface Props extends ViewProps {
   id: string | null;
   back: () => void;
 }
 
-export default function Detail({ id, back, byId, data, saved, compare, toggleSaved, toggleCompare, openDetail }: Props) {
+export default function Detail({ id, back, byId, data, saved, compare, costs, setCost, toggleSaved, toggleCompare, openDetail }: Props) {
   const v = id ? byId.get(id) : undefined;
 
   if (!v) {
@@ -193,6 +194,10 @@ export default function Detail({ id, back, byId, data, saved, compare, toggleSav
             <div style={{ fontSize: 12, marginTop: 6 }}><AcceptanceText venue={v} /></div>
           </div>
         </div>
+      </section>
+
+      <section className="cg-rule" style={{ padding: '22px 0' }}>
+        <CostEstimator venue={v} inputs={costs[v.id]} setInputs={(next) => setCost(v.id, next)} />
       </section>
 
       {v.coLocatedWorkshops?.length ? (

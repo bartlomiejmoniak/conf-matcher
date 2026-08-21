@@ -4,7 +4,8 @@ import { fmtRange } from '../lib/dates';
 import { icsHref } from '../lib/ics';
 import { ConfidenceNote, CountdownRail, DeadlineLine, EmptyState, place } from '../components/Bits';
 import type { ViewProps } from './shared';
-import { CalendarPlus, Globe, ICON, ListChecks, Plus, X } from '../components/Icons';
+import { CalendarPlus, Calculator, Globe, ICON, ListChecks, Plus, X } from '../components/Icons';
+import { CostEstimator } from '../components/CostEstimator';
 import { PaperEditor } from '../components/PaperEditor';
 import { addPaper, removePaper, updatePaper } from '../lib/papers';
 
@@ -13,8 +14,9 @@ interface Props extends ViewProps {
   browse: () => void;
 }
 
-export default function Watchlist({ saved, byId, data, papers, setPapers, toggleSaved, openDetail, browse }: Props) {
+export default function Watchlist({ saved, byId, data, papers, costs, setCost, setPapers, toggleSaved, openDetail, browse }: Props) {
   const [open, setOpen] = useState<string | null>(null);
+  const [costOpen, setCostOpen] = useState<string | null>(null);
   const venues = saved.map((id) => byId.get(id)).filter((v): v is NonNullable<typeof v> => Boolean(v));
   const orphaned = saved.filter((id) => !byId.has(id));
 
@@ -77,6 +79,10 @@ export default function Watchlist({ saved, byId, data, papers, setPapers, toggle
                 <ListChecks size={ICON} />
                 Progress{tracked.length ? ` (${tracked.length})` : ''}
               </button>
+              <button type="button" className="btn btn-secondary" onClick={() => setCostOpen((o) => (o === v.id ? null : v.id))} aria-expanded={costOpen === v.id}>
+                <Calculator size={ICON} />
+                Cost
+              </button>
               {ics && (
                 <a className="btn btn-secondary" href={ics} download={`${v.id}-deadline.ics`}>
                   <CalendarPlus size={ICON} />
@@ -94,6 +100,12 @@ export default function Watchlist({ saved, byId, data, papers, setPapers, toggle
                 Remove
               </button>
             </div>
+
+            {costOpen === v.id && (
+              <div className="cg-in" style={{ gridColumn: '1 / -1', paddingTop: 14, marginTop: 12, borderTop: '1px solid var(--color-divider)' }}>
+                <CostEstimator venue={v} inputs={costs[v.id]} setInputs={(next) => setCost(v.id, next)} />
+              </div>
+            )}
 
             {open === v.id && (
               <div className="cg-in" style={{ gridColumn: '1 / -1', paddingTop: 14, marginTop: 12, borderTop: '1px solid var(--color-divider)' }}>

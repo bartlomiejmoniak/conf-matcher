@@ -31,4 +31,5 @@ export const KEYS = {
   paper: 'cg.paper',
   papers: 'cg.papers',
   timeline: 'cg.timeline',
+  cost: 'cg.cost',
 } as const;
