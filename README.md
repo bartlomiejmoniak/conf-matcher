@@ -1,4 +1,6 @@
-# Confgraph
+# Confgraph: x&#7496;
+
+The wordmark is **CONFGRAPH: x<sup>D</sup>** — a scientific `x` under an upper-index `D`.
 
 A search interface for scientific conferences and workshops, aimed at one question:
 *where should I submit this paper?*

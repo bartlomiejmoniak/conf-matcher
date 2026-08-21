@@ -114,7 +114,7 @@ export default function App() {
           onClick={nav('browse')}
           style={{ display: 'flex', alignItems: 'baseline', gap: 10, background: 'none', border: 0, padding: 0, cursor: 'pointer', color: 'var(--color-text)' }}
         >
-          <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 17, letterSpacing: '-0.01em' }}>CONFGRAPH</span>
+          <Wordmark />
           <span className="cg-label" style={{ color: 'var(--color-accent)' }}>AI venue index</span>
         </button>
 
@@ -239,6 +239,27 @@ export default function App() {
         unless stated · absence of an integrity flag is not an endorsement.
       </footer>
     </>
+  );
+}
+
+/**
+ * The wordmark: CONFGRAPH: x^D — a small scientific `x` carrying an upper-index `D`.
+ * Set in the heading face at 800 like the rest of the mark; the superscript is sized and
+ * raised in `em`, so it tracks the wordmark at any font size.
+ */
+function Wordmark() {
+  return (
+    <span
+      style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 17, letterSpacing: '-0.01em' }}
+      // the sup is decorative typography, not content — screen readers get the plain name
+      aria-label="Confgraph x to the D"
+    >
+      <span aria-hidden="true">
+        CONFGRAPH:{' '}
+        <span style={{ fontStyle: 'italic' }}>x</span>
+        <sup style={{ fontSize: '0.62em', verticalAlign: 'super', letterSpacing: 0, marginLeft: '0.02em' }}>D</sup>
+      </span>
+    </span>
   );
 }
 
