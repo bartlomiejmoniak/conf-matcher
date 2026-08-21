@@ -24,6 +24,7 @@ data/venue.schema.json   JSON Schema for venues.json
 data/venues.example.json two filled records; reference only, not loaded
 scripts/validate.mjs     the DATA_GUIDE "before committing" checks — `npm run validate`
 scripts/build-venues.mjs the repair/quarantine pipeline over a raw research dump
+confgraph_venues.json  that raw dump — build-venues.mjs's input, kept as provenance. NOT loaded
 _ds/modernist-*/     the Modernist design system: styles.css + component bundle
 docs/                DEPLOYMENT.md, SCHEMA_CHANGES.md, the original .dc.html prototype
 ```
