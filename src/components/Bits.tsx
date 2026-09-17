@@ -111,6 +111,36 @@ export function AcceptanceText({ venue }: { venue: Venue }) {
   );
 }
 
+/**
+ * How long ago the record was last checked, appended to the provenance line.
+ *
+ * A fresh record says its age quietly; one past the taxonomy threshold takes the accent,
+ * because at that point every date above it is a claim nobody has re-read. This is
+ * deliberately separate from `cycleClosed`: a closed cycle is a fact about the venue and
+ * the user can act on it, while a stale record is a fact about this repo and they cannot.
+ */
+export function VerifiedAge({ v, standalone = false }: { v: VenueView; standalone?: boolean }) {
+  if (v.verifiedDaysAgo === null) return null;
+  const d = v.verifiedDaysAgo;
+  const when = d <= 0 ? 'today' : d === 1 ? 'yesterday' : `${d} days ago`;
+  // On a provenance line the preceding words are already "Verified <date>"; anywhere else
+  // a bare "27 days ago" reads as a fact about the deadline above it, so it says what it is.
+  const text = standalone ? `verified ${when}` : when;
+  if (v.freshness === 'fresh') return <span> · {text}</span>;
+  return (
+    <span
+      style={{ color: 'var(--color-accent-700)' }}
+      title={
+        v.freshness === 'very-stale'
+          ? `Nobody has checked this record against its source in ${d} days. Treat every date on it as unconfirmed.`
+          : `Last checked ${d} days ago. The venue may have moved or extended since.`
+      }
+    >
+      {' · '}{text}{v.freshness === 'very-stale' ? ' — unchecked' : ''}
+    </span>
+  );
+}
+
 /** projected / provisional dates are labelled; confirmed ones say nothing. */
 export function ConfidenceNote({ venue }: { venue: Venue }) {
   const c = venue.source.confidence ?? 'confirmed';

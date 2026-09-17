@@ -1,6 +1,6 @@
 import { fmtDate, fmtRange, relative } from '../lib/dates';
 import { icsHref } from '../lib/ics';
-import { AcceptanceChart, AcceptanceText, ConfidenceNote, EmptyState, Label, SmallLabel, place } from '../components/Bits';
+import { AcceptanceChart, AcceptanceText, ConfidenceNote, EmptyState, Label, SmallLabel, VerifiedAge, place } from '../components/Bits';
 import { Facts } from '../components/ResultRow';
 import type { ViewProps } from './shared';
 import { ArrowLeft, ArrowLeftRight, CalendarPlus, Check, ExternalLink, Flag, Globe, ICON, ICON_SM, Save } from '../components/Icons';
@@ -228,6 +228,7 @@ export default function Detail({ id, back, byId, data, saved, compare, costs, se
 
       <section className="cg-muted" style={{ padding: '18px 0 40px', fontSize: 11, lineHeight: 1.6 }}>
         Verified {fmtDate(v.source.verifiedOn)}
+        <VerifiedAge v={v} />
         <ConfidenceNote venue={v} />
         {' · '}
         {v.source.urls.map((u, i) => (

@@ -13,6 +13,7 @@ import {
   IntegrityPill,
   RankingBadges,
   SmallLabel,
+  VerifiedAge,
   hasRankings,
   place,
 } from './Bits';
@@ -174,6 +175,7 @@ export default function ResultRow({ v, expanded, onExpand, data, saved, compare,
             style={{ gridColumn: '1 / -1', fontSize: 11, lineHeight: 1.6, paddingTop: 12, marginTop: 4, borderTop: '1px solid var(--color-divider)' }}
           >
             Last verified {fmtDate(v.source.verifiedOn)}
+            <VerifiedAge v={v} />
             <ConfidenceNote venue={v} />
             {v.source.urls.length > 0 && ' · '}
             {v.source.urls.map((u, i) => (

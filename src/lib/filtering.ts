@@ -9,6 +9,13 @@ export interface FilterOutcome {
 }
 
 /**
+ * A venue with no deadline still ahead of it — either its cycle has closed or it publishes
+ * no dates at all. `showClosed` is the single switch over both, and Browse and Watchlist
+ * read the same rule from here so the counts on the two chips can never disagree.
+ */
+export const isDormant = (v: VenueView): boolean => v.daysLeft === null;
+
+/**
  * Filters apply immediately — no apply button, no spinner.
  *
  * Two rules here are about absence rather than value, and both default to inclusive:
@@ -54,7 +61,7 @@ export function applyFilters(list: VenueView[], f: Filters): FilterOutcome {
   const undated = matched.filter((v) => v.daysLeft === null && !v.cycleClosed).length;
 
   return {
-    shown: f.showClosed ? matched : matched.filter((v) => v.daysLeft !== null),
+    shown: f.showClosed ? matched : matched.filter((v) => !isDormant(v)),
     closed,
     undated,
   };

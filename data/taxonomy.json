@@ -39,6 +39,11 @@
     "$comment": "Preset day counts for the deadline-window chips. The filter itself accepts any positive day count — these are only the offered shortcuts.",
     "days": [30, 60, 90]
   },
+  "freshness": {
+    "$comment": "How old a record's source.verifiedOn may get before the interface and `npm run validate` start saying so. These are review thresholds, not facts about any venue: a record past `staleDays` is not wrong, it is unchecked. Both are day counts from today.",
+    "staleDays": 60,
+    "veryStaleDays": 180
+  },
   "registrationTiers": [
     "early-bird",
     "regular",

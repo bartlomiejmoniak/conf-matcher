@@ -247,7 +247,9 @@ export default function App() {
           <Detail {...shared} id={url.detailId} back={() => patchUrl({ view: 'browse', detailId: null })} />
         )}
         {url.view === 'compare' && <Compare {...shared} browse={nav('browse')} />}
-        {url.view === 'watchlist' && <Watchlist {...shared} setPapers={setPapers} browse={nav('browse')} />}
+        {url.view === 'watchlist' && (
+          <Watchlist {...shared} setPapers={setPapers} browse={nav('browse')} filters={url.f} setFilters={setFilters} />
+        )}
         {url.view === 'papers' && <Papers {...shared} setPapers={setPapers} browse={nav('browse')} />}
       </div>
       <footer className="cg-shell cg-muted" style={{ fontSize: 11, padding: '32px 20px 40px', borderTop: '2px solid var(--color-divider)', marginTop: 40 }}>

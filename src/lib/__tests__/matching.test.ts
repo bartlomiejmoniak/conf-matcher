@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { expandTopics, matchBand, sortVenues, toView } from '../matching';
+import { expandTopics, freshnessOf, matchBand, sortVenues, toView } from '../matching';
 import type { PaperProfile, Taxonomy, Venue } from '../types';
 
 const taxonomy: Taxonomy = JSON.parse(readFileSync('data/taxonomy.json', 'utf8'));
@@ -111,5 +111,67 @@ describe('sorting', () => {
     const live = mk({ id: 'a-2027', deadlines: [{ stage: 'Paper', date: '2026-09-25' }] });
     const closed = mk({ id: 'b-2027', deadlines: [{ stage: 'Paper', date: '2026-01-01' }] });
     expect(sortVenues([closed, live], 'deadline').map((v) => v.id)).toEqual(['a-2027', 'b-2027']);
+  });
+});
+
+describe('freshness', () => {
+  // The thresholds are data, so the tests read them rather than restating them — a change
+  // in taxonomy.json should move these boundaries, not break these tests.
+  const { staleDays, veryStaleDays } = taxonomy.freshness;
+  const daysBefore = (n: number) => new Date(Date.UTC(2026, 8, 17) - n * 86_400_000).toISOString().slice(0, 10);
+  const TODAY = '2026-09-17';
+
+  it('counts the days since verifiedOn', () => {
+    const v = venue({ source: { verifiedOn: daysBefore(27), urls: ['https://example.org'] } });
+    expect(freshnessOf(v, taxonomy, TODAY).days).toBe(27);
+  });
+
+  it('is fresh right up to the threshold and stale on it', () => {
+    const at = (n: number) => freshnessOf(venue({ source: { verifiedOn: daysBefore(n), urls: ['https://x.org'] } }), taxonomy, TODAY).level;
+    expect(at(staleDays - 1)).toBe('fresh');
+    expect(at(staleDays)).toBe('stale');
+    expect(at(veryStaleDays - 1)).toBe('stale');
+    expect(at(veryStaleDays)).toBe('very-stale');
+  });
+
+  it('reads a record verified today as fresh, at zero days', () => {
+    const v = venue({ source: { verifiedOn: TODAY, urls: ['https://example.org'] } });
+    expect(freshnessOf(v, taxonomy, TODAY)).toEqual({ days: 0, level: 'fresh' });
+  });
+
+  it('claims nothing when verifiedOn is missing or malformed', () => {
+    const missing = venue({ source: { verifiedOn: '', urls: [] } });
+    expect(freshnessOf(missing, taxonomy, TODAY)).toEqual({ days: null, level: 'fresh' });
+    const junk = venue({ source: { verifiedOn: 'last spring', urls: [] } });
+    expect(freshnessOf(junk, taxonomy, TODAY)).toEqual({ days: null, level: 'fresh' });
+  });
+
+  it('is independent of whether the cycle is open — the two states do not track each other', () => {
+    // Verified this morning, but every deadline is long gone.
+    const v = toView(
+      venue({ deadlines: [{ stage: 'Paper', date: '2026-01-01' }], source: { verifiedOn: TODAY, urls: ['https://x.org'] } }),
+      taxonomy,
+      paper(),
+      null,
+      TODAY
+    );
+    expect(v.cycleClosed).toBe(true);
+    expect(v.freshness).toBe('fresh');
+
+    // Wide open, but nobody has looked at it in a year.
+    const w = toView(
+      venue({ deadlines: [{ stage: 'Paper', date: '2027-06-01' }], source: { verifiedOn: daysBefore(365), urls: ['https://x.org'] } }),
+      taxonomy,
+      paper(),
+      null,
+      TODAY
+    );
+    expect(w.cycleClosed).toBe(false);
+    expect(w.freshness).toBe('very-stale');
+  });
+
+  it('carries the age onto the view model', () => {
+    const v = toView(venue({ source: { verifiedOn: daysBefore(90), urls: ['https://x.org'] } }), taxonomy, paper(), null, TODAY);
+    expect(v.verifiedDaysAgo).toBe(90);
   });
 });

@@ -161,8 +161,61 @@ for (const t of taxonomy.topics) {
   if (!usedTopics.has(t)) warn(`taxonomy topic "${t}" is used by no venue, so it renders no filter chip`);
 }
 
+// ── freshness ───────────────────────────────────────────────────────────────
+// Nothing above this point knows what day it is. Every check so far asks whether a record
+// is internally consistent, and a record can be perfectly consistent and two years out of
+// date — which is the state most of this file's corpus decays into, because a conference
+// cycle closes whether or not anyone re-reads the CFP.
+//
+// These are warnings, never errors. `npm run build` runs this script first, so an error
+// here stops a deploy; a corpus going stale is a reason to go and re-verify it, not a
+// reason to take the site down. The summary line at the end is the number to watch.
+const FRESH = taxonomy.freshness ?? {};
+if (!Number.isInteger(FRESH.staleDays) || FRESH.staleDays <= 0) {
+  err('taxonomy freshness.staleDays is not a positive day count');
+}
+if (!Number.isInteger(FRESH.veryStaleDays) || FRESH.veryStaleDays <= FRESH.staleDays) {
+  err('taxonomy freshness.veryStaleDays must be a day count greater than staleDays');
+}
+
+const TODAY = new Date().toISOString().slice(0, 10);
+const utcDay = (iso) => Date.UTC(+iso.slice(0, 4), +iso.slice(5, 7) - 1, +iso.slice(8, 10));
+const daysSince = (iso) => Math.round((utcDay(TODAY) - utcDay(iso)) / 86_400_000);
+
+let live = 0;
+let closed = 0;
+let undated = 0;
+let stalest = null;
+
+for (const v of venues) {
+  // `date` is the original and `extendedTo` the extension, so the deadline that actually
+  // still stands is the later of the two — reading `date` alone would call an extended
+  // venue closed while its extension is still open.
+  const chain = (v.deadlines ?? []).map((d) => d.extendedTo ?? d.date).filter((d) => ISO.test(d));
+  if (chain.length === 0) undated++;
+  else if (chain.some((d) => d >= TODAY)) live++;
+  else {
+    closed++;
+    warn(`${v.id}: every published deadline has passed (latest ${chain[chain.length - 1]}) — the record needs a new cycle or an explicit close`);
+  }
+
+  const verified = v.source?.verifiedOn;
+  if (verified && ISO.test(verified)) {
+    const age = daysSince(verified);
+    if (stalest === null || age > stalest.age) stalest = { id: v.id, age };
+    if (age >= FRESH.veryStaleDays) {
+      warn(`${v.id}: last verified ${age} days ago (${verified}) — past the ${FRESH.veryStaleDays}-day re-check threshold`);
+    } else if (age >= FRESH.staleDays) {
+      warn(`${v.id}: last verified ${age} days ago (${verified})`);
+    }
+  }
+}
+
 // ── report ──────────────────────────────────────────────────────────────────
 for (const w of warnings) console.warn(`warn  ${w}`);
 for (const e of errors) console.error(`ERROR ${e}`);
+const pct = venues.length ? Math.round((live / venues.length) * 100) : 0;
 console.log(`\n${venues.length} venues · ${errors.length} error(s) · ${warnings.length} warning(s)`);
+console.log(`${live} with a live deadline (${pct}%) · ${closed} closed cycle(s) · ${undated} publishing no dates`);
+if (stalest) console.log(`oldest verification: ${stalest.id}, ${stalest.age} days ago`);
 process.exit(errors.length ? 1 : 0);

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applyFilters } from '../filtering';
+import { applyFilters, isDormant } from '../filtering';
 import { DEFAULT_FILTERS } from '../urlState';
 import type { Filters, VenueView } from '../types';
 
@@ -130,5 +130,24 @@ describe('every filter is an AND', () => {
     ];
     const { shown } = applyFilters(list, f({ topics: ['computer vision'], tiers: ['CORE A*'] }));
     expect(ids(shown)).toEqual(['cv-core']);
+  });
+});
+
+describe('isDormant', () => {
+  // Watchlist hides closed cycles by reading this same predicate, so the two views can
+  // never disagree about which saved venue is "not open".
+  it('covers both a closed cycle and a venue that publishes no dates', () => {
+    expect(isDormant(view({ id: 'closed', cycleClosed: true, daysLeft: null }))).toBe(true);
+    expect(isDormant(view({ id: 'undated', cycleClosed: false, daysLeft: null }))).toBe(true);
+  });
+
+  it('leaves a venue with a live deadline alone, including one closing today', () => {
+    expect(isDormant(view({ id: 'live', daysLeft: 12 }))).toBe(false);
+    expect(isDormant(view({ id: 'today', daysLeft: 0 }))).toBe(false);
+  });
+
+  it('is the rule applyFilters uses for showClosed', () => {
+    const list = [view({ id: 'live', daysLeft: 5 }), view({ id: 'closed', cycleClosed: true, daysLeft: null })];
+    expect(applyFilters(list, f({ showClosed: false })).shown.every((v) => !isDormant(v))).toBe(true);
   });
 });

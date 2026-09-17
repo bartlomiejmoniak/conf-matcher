@@ -1,5 +1,5 @@
-import type { Deadline, MatchBand, PaperProfile, SortKey, Taxonomy, Venue, VenueView } from './types';
-import { daysBetween, todayISO, utc } from './dates';
+import type { Deadline, Freshness, MatchBand, PaperProfile, SortKey, Taxonomy, Venue, VenueView } from './types';
+import { ISO, daysBetween, todayISO, utc } from './dates';
 
 /** An extension replaces the original for scheduling purposes; the original is still shown, struck through. */
 export const effectiveDate = (d: Deadline): string => d.extendedTo ?? d.date;
@@ -58,6 +58,22 @@ export function editionYear(venue: Venue): number | null {
   return fromId ? Number(fromId[1]) : null;
 }
 
+/**
+ * How long ago this record was checked against its source, read against the thresholds in
+ * taxonomy.json. This says nothing about whether the venue's cycle is open — a venue can
+ * be verified this morning and have closed last year, or be wide open and unchecked since
+ * spring. The interface keeps the two apart because the user can act on one and only the
+ * maintainer can act on the other.
+ */
+export function freshnessOf(venue: Venue, taxonomy: Taxonomy, today: string): { days: number | null; level: Freshness } {
+  const verified = venue.source?.verifiedOn;
+  if (!verified || !ISO.test(verified)) return { days: null, level: 'fresh' };
+  const days = daysBetween(verified, today);
+  const { staleDays, veryStaleDays } = taxonomy.freshness;
+  const level: Freshness = days >= veryStaleDays ? 'very-stale' : days >= staleDays ? 'stale' : 'fresh';
+  return { days, level };
+}
+
 /** Build the derived view model for one venue against the user's paper profile. */
 export function toView(
   venue: Venue,
@@ -74,6 +90,7 @@ export function toView(
 
   const { band, overlap } = matchBand(venue, expandTopics(paper.topics, taxonomy));
   const tierLabels = venueTiers(venue, taxonomy);
+  const fresh = freshnessOf(venue, taxonomy, today);
 
   return {
     ...venue,
@@ -84,6 +101,8 @@ export function toView(
     tierLabels,
     band,
     overlap,
+    verifiedDaysAgo: fresh.days,
+    freshness: fresh.level,
     tooEarly: Boolean(paper.readyBy && nextDeadline && nextDeadline.effectiveDate < paper.readyBy),
     inTargetTier: paper.tiers.some((t) => tierLabels.includes(t)),
   };

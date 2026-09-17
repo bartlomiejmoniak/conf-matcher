@@ -77,6 +77,8 @@ export interface Taxonomy {
   kinds: Kind[];
   tiers: { entries: TierDef[] };
   deadlineWindows: { days: number[] };
+  /** Day counts at which a record's verification starts reading as unchecked. */
+  freshness: { staleDays: number; veryStaleDays: number };
   blindingTypes: Blinding[];
   rankingSources: Record<string, { label: string; assessedLabel: string; displayed: boolean }>;
   integrityLevels: string[];
@@ -97,6 +99,13 @@ export interface Lexicon {
 
 export type MatchBand = 'strong' | 'partial' | 'weak';
 
+/**
+ * How long ago a record was last checked against its source — not a claim that it is
+ * wrong, only that nobody has looked. A closed cycle and a stale record are different
+ * failures: the first is a fact about the venue, the second is a fact about this repo.
+ */
+export type Freshness = 'fresh' | 'stale' | 'very-stale';
+
 export interface VenueView extends Venue {
   /** First deadline still in the future, or null when the cycle has closed / none published. */
   nextDeadline: (Deadline & { effectiveDate: string }) | null;
@@ -108,6 +117,10 @@ export interface VenueView extends Venue {
   tierLabels: string[];
   band: MatchBand;
   overlap: string[];
+  /** Days since source.verifiedOn. Null only when the record carries no usable date. */
+  verifiedDaysAgo: number | null;
+  /** That age read against taxonomy freshness thresholds. */
+  freshness: Freshness;
   /** Deadline falls before the user can have the paper ready. */
   tooEarly: boolean;
   inTargetTier: boolean;

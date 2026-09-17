@@ -56,7 +56,33 @@ Using a figure two editions old is fine and common; saying which edition it is, 
 - No duplicate ids.
 - `updated` at the top of the file is today.
 
-A `npm run validate` script implementing exactly these checks is the first thing worth writing.
+`npm run validate` implements exactly these checks, and `npm run build` runs it first.
+
+### Keeping records current
+
+Validation also reports two things that are not errors and never fail the build, because a
+corpus going stale is a reason to re-verify it, not a reason to stop deploying:
+
+- **`every published deadline has passed`** — the record's cycle has closed. The interface
+  already says so, and `showClosed` in Browse and Watchlist hides these on request. The fix
+  is a new record for the next edition, under a new `acronym-year` id. Never re-date the old
+  one: ids are permanent and a user's tracked papers are keyed on them.
+- **`last verified N days ago`** — nobody has re-read the source. The thresholds are
+  `freshness.staleDays` and `freshness.veryStaleDays` in `taxonomy.json`; past the first the
+  interface prints the age in the accent colour, past the second it adds "unchecked".
+  Re-reading the CFP and bumping `source.verifiedOn` clears it.
+
+These are different failures and the interface keeps them apart. A closed cycle is a fact
+about the venue that the user can act on; a stale record is a fact about this repo that only
+a maintainer can. A record can be verified this morning and have closed last year.
+
+The summary at the end of a validate run is the number to watch:
+
+```
+42 venues · 0 error(s) · 25 warning(s)
+4 with a live deadline (10%) · 24 closed cycle(s) · 14 publishing no dates
+oldest verification: 3dor-2026, 27 days ago
+```
 
 ## Extending the search bar
 

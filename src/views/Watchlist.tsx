@@ -1,26 +1,37 @@
 import { useState } from 'react';
-import type { TrackedPaper } from '../lib/types';
+import type { Filters, TrackedPaper } from '../lib/types';
 import { fmtRange } from '../lib/dates';
 import { icsHref } from '../lib/ics';
-import { ConfidenceNote, CountdownRail, DeadlineLine, EmptyState, place } from '../components/Bits';
+import { Chip, ConfidenceNote, CountdownRail, DeadlineLine, EmptyState, VerifiedAge, place } from '../components/Bits';
 import type { ViewProps } from './shared';
 import { CalendarPlus, Calculator, Globe, ICON, ListChecks, Plus, X } from '../components/Icons';
 import { CostEstimator } from '../components/CostEstimator';
 import { PaperEditor } from '../components/PaperEditor';
 import { addPaper, removePaper, updatePaper } from '../lib/papers';
+import { isDormant } from '../lib/filtering';
 
 interface Props extends ViewProps {
   setPapers: (p: Record<string, TrackedPaper[]> | ((prev: Record<string, TrackedPaper[]>) => Record<string, TrackedPaper[]>)) => void;
   browse: () => void;
+  /** Shared with Browse so "hide closed cycles" means one thing across the app, and survives in the URL. */
+  filters: Filters;
+  setFilters: (f: Filters | ((prev: Filters) => Filters)) => void;
 }
 
-export default function Watchlist({ saved, byId, data, papers, costs, setCost, setPapers, toggleSaved, openDetail, browse }: Props) {
+export default function Watchlist({ saved, byId, data, papers, costs, setCost, setPapers, toggleSaved, openDetail, browse, filters, setFilters }: Props) {
   const [open, setOpen] = useState<string | null>(null);
   const [costOpen, setCostOpen] = useState<string | null>(null);
-  const venues = saved.map((id) => byId.get(id)).filter((v): v is NonNullable<typeof v> => Boolean(v));
+  const all = saved.map((id) => byId.get(id)).filter((v): v is NonNullable<typeof v> => Boolean(v));
   const orphaned = saved.filter((id) => !byId.has(id));
 
-  if (venues.length === 0 && orphaned.length === 0) {
+  // Same rule as Browse, read from the same helper: a saved venue with nothing still ahead
+  // of it is hidden when the toggle is off, but it is never dropped from `saved` — the
+  // count below always says how many are being held back, so nothing vanishes silently.
+  const dormant = all.filter(isDormant).length;
+  const venues = filters.showClosed ? all : all.filter((v) => !isDormant(v));
+  const toggleClosed = () => setFilters((f) => ({ ...f, showClosed: !f.showClosed }));
+
+  if (all.length === 0 && orphaned.length === 0) {
     return (
       <EmptyState kicker="Watchlist empty" title="Nothing saved yet.">
         <p>
@@ -46,8 +57,29 @@ export default function Watchlist({ saved, byId, data, papers, costs, setCost, s
     <div className="cg-in">
       <section className="cg-rule" style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', padding: '20px 0 12px' }}>
         <h1 style={{ fontSize: 28, letterSpacing: '-0.02em', margin: 0 }}>Watchlist</h1>
-        <span className="cg-muted" style={{ fontSize: 12 }}>{venues.length} saved · stored in this browser only</span>
+        <span className="cg-muted" style={{ fontSize: 12 }}>
+          {filters.showClosed ? `${all.length} saved` : `${venues.length} of ${all.length} saved`} · stored in this browser only
+        </span>
+        {dormant > 0 && (
+          <Chip
+            label={filters.showClosed ? `including ${dormant} not open` : `${dormant} not open, hidden`}
+            active={!filters.showClosed}
+            onClick={toggleClosed}
+          />
+        )}
       </section>
+
+      {venues.length === 0 && dormant > 0 && (
+        <EmptyState kicker="All hidden" title="Every saved venue is between cycles.">
+          <p>
+            {dormant === 1 ? 'The one venue you have saved has' : `All ${dormant} venues you have saved have`} no
+            deadline open right now, and closed cycles are hidden. Nothing has been removed.
+          </p>
+          <p>
+            <button type="button" className="btn btn-secondary" onClick={toggleClosed}>Show them anyway</button>
+          </p>
+        </EmptyState>
+      )}
 
       {venues.map((v) => {
         const tracked = papers[v.id] ?? [];
@@ -68,6 +100,7 @@ export default function Watchlist({ saved, byId, data, papers, costs, setCost, s
               <div style={{ fontSize: 13 }}>
                 <DeadlineLine v={v} />
                 <ConfidenceNote venue={v} />
+                <span className="cg-muted"><VerifiedAge v={v} standalone /></span>
               </div>
               <div className="cg-muted" style={{ fontSize: 12 }}>
                 {place(v.location)} · {fmtRange(v.event.start, v.event.end)}
