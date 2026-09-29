@@ -3337,7 +3337,9 @@
       },
       "review": {
         "blinding": "unspecified",
-        "publisher": "IEEE"
+        "publisher": "IEEE",
+        "rebuttal": "Yes",
+        "pageLimit": "18 pages max"
       },
       "links": {
         "cfp": "https://sp2027.ieee-security.org/cfpapers.html",
@@ -3355,8 +3357,8 @@
         "format": "in-person"
       },
       "event": {
-        "start": null,
-        "end": null
+        "start": "2027-05-17",
+        "end": "2027-05-19"
       },
       "topics": [
         "security & privacy"
@@ -3370,17 +3372,45 @@
       "deadlines": [
         {
           "stage": "Registration (cycle 1)",
-          "date": "2026-06-05",
+          "date": "2026-06-04",
           "extendedTo": null,
           "extensionNote": null,
-          "timezone": "07:59 EDT"
+          "timezone": "AoE"
         },
         {
           "stage": "Paper (cycle 1)",
-          "date": "2026-06-12",
+          "date": "2026-06-11",
           "extendedTo": null,
           "extensionNote": null,
-          "timezone": "07:59 EDT"
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Early-reject notification (cycle 1)",
+          "date": "2026-07-27",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Rebuttal closes (cycle 1)",
+          "date": "2026-08-27",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification (cycle 1)",
+          "date": "2026-09-11",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready (cycle 1)",
+          "date": "2026-10-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
         },
         {
           "stage": "Registration (cycle 2)",
@@ -3395,6 +3425,34 @@
           "extendedTo": null,
           "extensionNote": null,
           "timezone": "AoE"
+        },
+        {
+          "stage": "Early-reject notification (cycle 2)",
+          "date": "2027-01-18",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Rebuttal closes (cycle 2)",
+          "date": "2027-02-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification (cycle 2)",
+          "date": "2027-03-05",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready (cycle 2)",
+          "date": "2027-04-08",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
         }
       ],
       "source": {
@@ -3405,7 +3463,7 @@
           "https://sp2027.ieee-security.org/cfpapers.html"
         ]
       },
-      "notes": "Cycle 2 is OPEN. Sources disagree on the cycle-2 paper date (17 vs 18 Nov) and its cutoff time — the cycle-1 site shows EDT, so confirm which zone cycle 2 uses. Event dates not confirmed. Workshop paper deadlines are not itemised here; per the maintainer's table they usually fall around February."
+      "notes": "Cycle 2 is OPEN (paper 17 Nov 2026, registration 10 Nov). Dates are the CFP's own (11 Jun / 17 Nov); time zone is not stated on the CFP but cycle 1 matches AoE exactly (the HotCRP display of 12 Jun 07:59 EDT is 11 Jun 23:59 AoE), so AoE is assumed for all. Workshop paper deadlines usually around February (per maintainer's table)."
     },
     {
       "kind": "conference",
@@ -3421,11 +3479,11 @@
       "review": {
         "blinding": "double-blind",
         "rebuttal": "Yes, 1 round",
-        "pageLimit": "13 pages body (20 camera-ready)",
+        "pageLimit": "13 pages excluding references and appendices",
         "publisher": "USENIX"
       },
       "links": {
-        "cfp": "https://www.usenix.org/conference/usenixsecurity27",
+        "cfp": "https://www.usenix.org/conference/usenixsecurity27/call-for-papers",
         "website": "https://www.usenix.org/conference/usenixsecurity27"
       },
       "hostVenueId": null,
@@ -3546,7 +3604,7 @@
           "https://www.usenix.org/conference/usenixsecurity27"
         ]
       },
-      "notes": "Cycle 2 is OPEN (paper 26 Jan 2027); registration a week earlier is mandatory. Preliminary CFP; an Open Science appendix is required. Cutoff time of day not captured. Dates read from search-result excerpts of the official CFP, not the CFP page itself (site unreachable from the build sandbox) — re-check before relying on them."
+      "notes": "Cycle 2 is OPEN (paper 26 Jan 2027); registration a week earlier is mandatory. an Open Science appendix is required. Cutoff time of day not captured. Dates read from search-result excerpts of the official CFP, not the CFP page itself (site unreachable from the build sandbox) — re-check before relying on them."
     },
     {
       "kind": "conference",
@@ -3622,9 +3680,13 @@
         "latestYear": null
       },
       "review": {
-        "blinding": "unspecified"
+        "blinding": "double-blind",
+        "pageLimit": "20 pages excluding references",
+        "publisher": "Springer"
       },
-      "links": {},
+      "links": {
+        "cfp": "https://raid2026.org/call.html"
+      },
       "hostVenueId": null,
       "coLocatedWorkshops": [],
       "integrityFlag": null,
@@ -3637,8 +3699,8 @@
         "format": "in-person"
       },
       "event": {
-        "start": null,
-        "end": null
+        "start": "2026-10-11",
+        "end": "2026-10-14"
       },
       "topics": [
         "security & privacy"
@@ -3663,16 +3725,24 @@
           "extendedTo": null,
           "extensionNote": null,
           "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready",
+          "date": "2026-08-13",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
         }
       ],
       "source": {
         "verifiedOn": "2026-09-29",
         "confidence": "provisional",
         "urls": [
+          "https://raid2026.org/call.html",
           "https://www.myhuiban.com/conference/64"
         ]
       },
-      "notes": "Cycle closed; held in Lancaster around 11 Oct 2026 (exact span not confirmed). Secondary aggregator source, not the RAID site. RAID 2027 not announced."
+      "notes": "Cycle closed; paper deadline stated as AoE on the CFP. RAID 2027 not announced."
     },
     {
       "kind": "conference",
@@ -3939,7 +4009,43 @@
         "h5Index": "—",
         "mnisw": "200"
       },
-      "deadlines": [],
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-06-23",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-06-30",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Rebuttal closes",
+          "date": "2026-09-25",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2026-10-20",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready",
+          "date": "2026-11-24",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
       "source": {
         "verifiedOn": "2026-09-29",
         "confidence": "provisional",
@@ -3948,7 +4054,7 @@
           "https://icse-conferences.org/news.html"
         ]
       },
-      "notes": "Research track drops the spring cycle from 2027: a single summer deadline only. That date was not retrievable — add from the researchr dates page. Workshop paper deadlines are not itemised here; per the maintainer's table they usually fall around October (ICSE workshops)."
+      "notes": "Research track has a single cycle from 2027 (spring cycle dropped). Submission closed; author response 23–25 Sep 2026, notification 20 Oct. Workshop paper deadlines usually around October (per maintainer's table)."
     },
     {
       "kind": "conference",
