@@ -12,7 +12,12 @@
     "information retrieval",
     "ml theory",
     "multimodal",
-    "graph learning"
+    "graph learning",
+    "security & privacy",
+    "formal verification",
+    "software engineering",
+    "information systems",
+    "education"
   ],
   "narrowTopics": {
     "$comment": "Finer-grained topics a user may put in their own paper profile, mapped to the broad topic they roll up into. A paper tagged `fairness` matches a venue tagged `trustworthy AI`. Keys are NOT valid venue topics; values must be.",
