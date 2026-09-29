@@ -1,7 +1,7 @@
 {
   "$comment": "NOT LOADED BY THE APP. Records that failed a shipping gate, each with the reason under `_quarantine`. Fix the reason, delete `_quarantine`, move the record into venues.json, then run `npm run validate`. Ids here are already in their final form, so promoting a record never renames it.",
   "version": 1,
-  "updated": "2026-08-21",
+  "updated": "2026-09-29",
   "venues": [
     {
       "_quarantine": [
@@ -52,58 +52,6 @@
         "confidence": "provisional"
       },
       "notes": "UNVERIFIED: 2026 date/location not confirmed from a primary source within research budget.",
-      "hostVenueId": null,
-      "coLocatedWorkshops": [],
-      "integrityFlag": null
-    },
-    {
-      "_quarantine": [
-        "No source URL. DATA_GUIDE: a record without `verifiedOn` and at least one URL must not be committed. Add the CFP URL to ship it."
-      ],
-      "id": "cvpr-2027",
-      "name": "CVPR 2027",
-      "fullName": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
-      "kind": "conference",
-      "broadScope": false,
-      "location": {
-        "city": "Seattle, WA",
-        "country": "USA",
-        "format": "in-person"
-      },
-      "event": {
-        "start": "2027-06-20",
-        "end": "2027-06-24"
-      },
-      "registration": {
-        "fee": "—"
-      },
-      "topics": [
-        "computer vision"
-      ],
-      "rankings": {
-        "core": "A*",
-        "ccf": "—",
-        "h5Index": "440",
-        "mnisw": "—"
-      },
-      "acceptance": {
-        "latestPct": null
-      },
-      "review": {
-        "blinding": "double-blind",
-        "rebuttal": "—",
-        "pageLimit": "—",
-        "openAccess": "—",
-        "publisher": "IEEE/CVF"
-      },
-      "deadlines": [],
-      "links": {},
-      "source": {
-        "verifiedOn": "2026-08-21",
-        "urls": [],
-        "confidence": "projected"
-      },
-      "notes": "Projected from prior-year pattern; official CFP not yet posted.",
       "hostVenueId": null,
       "coLocatedWorkshops": [],
       "integrityFlag": null

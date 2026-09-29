@@ -1,7 +1,7 @@
 {
   "$schema": "./venue.schema.json",
   "version": 1,
-  "updated": "2026-08-21",
+  "updated": "2026-09-29",
   "venues": [
     {
       "id": "3dor-2026",
@@ -151,7 +151,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "220",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": 23.4,
@@ -230,7 +230,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "220",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": null,
@@ -564,7 +564,7 @@
         "core": "A",
         "ccf": "—",
         "h5Index": "—",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": null,
@@ -636,7 +636,7 @@
         "core": "A",
         "ccf": "—",
         "h5Index": "—",
-        "mnisw": "—"
+        "mnisw": "140"
       },
       "acceptance": {
         "latestPct": null,
@@ -1015,7 +1015,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "440",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": 22.1,
@@ -1209,7 +1209,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "186",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": 27.9,
@@ -1510,7 +1510,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "291",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": null,
@@ -1573,7 +1573,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "304",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": 32.08,
@@ -1736,7 +1736,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "268",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": 26.9,
@@ -1991,7 +1991,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "—",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": null,
@@ -2005,6 +2005,13 @@
         "publisher": "—"
       },
       "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-01-12",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
         {
           "stage": "Paper",
           "date": "2026-01-19",
@@ -2020,7 +2027,8 @@
       "source": {
         "verifiedOn": "2026-08-21",
         "urls": [
-          "https://2026.ijcai.org/"
+          "https://2026.ijcai.org/",
+          "https://www.aepia.org/ijcai-ecai-2026-call-for-papers/"
         ],
         "confidence": "provisional"
       },
@@ -2297,7 +2305,7 @@
         "core": "A",
         "ccf": "—",
         "h5Index": "—",
-        "mnisw": "—"
+        "mnisw": "140"
       },
       "acceptance": {
         "latestPct": 29,
@@ -2431,7 +2439,7 @@
         "core": "A*",
         "ccf": "—",
         "h5Index": "337",
-        "mnisw": "—"
+        "mnisw": "200"
       },
       "acceptance": {
         "latestPct": 24.52,
@@ -2818,7 +2826,7 @@
         "core": "A",
         "ccf": "—",
         "h5Index": "109",
-        "mnisw": "—"
+        "mnisw": "140"
       },
       "acceptance": {
         "latestPct": null,
@@ -2859,6 +2867,1440 @@
         "confidence": "confirmed"
       },
       "notes": "OPEN cycle — Round 2 deadline Aug 28 2026 still upcoming as of verification date.",
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null
+    },
+    {
+      "kind": "conference",
+      "broadScope": true,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "double-blind"
+      },
+      "links": {
+        "website": "https://www.ijcai.org/future_conferences"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "ijcai-2027",
+      "name": "IJCAI 2027",
+      "fullName": "International Joint Conference on Artificial Intelligence",
+      "location": {
+        "city": "Kyoto (+ Hengqin satellite)",
+        "country": "Japan",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-08-07",
+        "end": "2027-08-13"
+      },
+      "topics": [
+        "ml theory",
+        "natural language",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://www.ijcai.org/future_conferences"
+        ]
+      },
+      "notes": "CFP not yet published. IJCAI-ECAI 2026 used abstract 12 Jan / paper 19 Jan, so expect January. Workshop paper deadlines are not itemised here; per the maintainer's table they usually fall around May–June."
+    },
+    {
+      "kind": "conference",
+      "broadScope": true,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "double-blind"
+      },
+      "links": {},
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "icml-2027",
+      "name": "ICML 2027",
+      "fullName": "International Conference on Machine Learning",
+      "location": {
+        "city": "TBA (South America)",
+        "country": "TBA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": null,
+        "end": null
+      },
+      "topics": [
+        "ml theory",
+        "computer vision",
+        "natural language",
+        "reinforcement learning"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "268",
+        "mnisw": "200"
+      },
+      "deadlines": [],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "projected",
+        "urls": [
+          "https://semihub.io/en/conf/icml.html"
+        ]
+      },
+      "notes": "Announced for July 2027, city and dates not yet confirmed (aggregator source, not icml.cc). CFP not published; ICML 2026 deadlines were 23/28 Jan, so expect late January."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "publisher": "Springer LNCS"
+      },
+      "links": {
+        "website": "https://miccai.org/upcoming-conferences/"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "miccai-2027",
+      "name": "MICCAI 2027",
+      "fullName": "International Conference on Medical Image Computing and Computer-Assisted Intervention",
+      "location": {
+        "city": "Auckland",
+        "country": "New Zealand",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-09-26",
+        "end": "2027-10-01"
+      },
+      "topics": [
+        "medical imaging",
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "140"
+      },
+      "deadlines": [],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://miccai.org/upcoming-conferences/"
+        ]
+      },
+      "notes": "CFP not yet published; MICCAI 2026 paper deadline was 26 Feb, so expect February. Workshop paper deadlines are not itemised here; per the maintainer's table they usually fall around June–July."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "publisher": "IEEE/CVF"
+      },
+      "links": {},
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "wacv-2028",
+      "name": "WACV 2028",
+      "fullName": "IEEE/CVF Winter Conference on Applications of Computer Vision",
+      "location": {
+        "city": "Waikoloa, HI",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2028-01-02",
+        "end": "2028-01-09"
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "109",
+        "mnisw": "140"
+      },
+      "deadlines": [],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://wacv.thecvf.com/"
+        ]
+      },
+      "notes": "Host site and dates announced; CFP not yet published. WACV uses two rounds (roughly July and September in the maintainer's table)."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "publisher": "Springer LNCS"
+      },
+      "links": {
+        "cfp": "https://www.ieee-security.org/Calendar/cfps/cfp-ESORICS2026.html"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "esorics-2026",
+      "name": "ESORICS 2026",
+      "fullName": "European Symposium on Research in Computer Security",
+      "location": {
+        "city": "Rome",
+        "country": "Italy",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-09-14",
+        "end": "2026-09-18"
+      },
+      "topics": [
+        "security & privacy"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "140"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper (winter cycle)",
+          "date": "2026-01-09",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification (winter cycle)",
+          "date": "2026-03-10",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready (winter cycle)",
+          "date": "2026-03-24",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper (spring cycle)",
+          "date": "2026-04-21",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification (spring cycle)",
+          "date": "2026-06-12",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready (spring cycle)",
+          "date": "2026-06-26",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://www.ieee-security.org/Calendar/cfps/cfp-ESORICS2026.html",
+          "https://easychair.org/cfp/ESORICS-2026"
+        ]
+      },
+      "notes": "Cycle closed; 2027 edition not announced yet. Workshop paper deadlines are not itemised here; per the maintainer's table they usually fall around July (LNCS workshop volume unconfirmed)."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "publisher": "ACM"
+      },
+      "links": {
+        "cfp": "https://www.ieee-security.org/Calendar/cfps/cfp-CCS2026.html"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "ccs-2026",
+      "name": "ACM CCS 2026",
+      "fullName": "ACM Conference on Computer and Communications Security",
+      "location": {
+        "city": "The Hague",
+        "country": "Netherlands",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-11-15",
+        "end": "2026-11-19"
+      },
+      "topics": [
+        "security & privacy"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract (cycle 1)",
+          "date": "2026-01-07",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper (cycle 1)",
+          "date": "2026-01-14",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Abstract (cycle 2)",
+          "date": "2026-04-22",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper (cycle 2)",
+          "date": "2026-04-29",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://www.ieee-security.org/Calendar/cfps/cfp-CCS2026.html"
+        ]
+      },
+      "notes": "Cycle closed. Abstract registration is mandatory in both cycles. CCS 2027 not announced yet. Workshop paper deadlines are not itemised here; per the maintainer's table they usually fall around July."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified"
+      },
+      "links": {
+        "cfp": "https://www.ndss-symposium.org/ndss2027/submissions/call-for-papers/",
+        "website": "https://www.ndss-symposium.org/ndss2027/"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "ndss-2027",
+      "name": "NDSS 2027",
+      "fullName": "Network and Distributed System Security Symposium",
+      "location": {
+        "city": "Seoul",
+        "country": "South Korea",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-03-22",
+        "end": "2027-03-26"
+      },
+      "topics": [
+        "security & privacy"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper (summer cycle)",
+          "date": "2026-05-06",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper (fall cycle)",
+          "date": "2026-08-19",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://www.ndss-symposium.org/ndss2027/submissions/call-for-papers/",
+          "https://ndss27-summer.hotcrp.com/deadlines"
+        ]
+      },
+      "notes": "Cycle closed. Max six submissions per author per cycle; major overlap between a rejected summer paper and a fall submission is disallowed. Dates read from search-result excerpts of the official CFP, not the CFP page itself (site unreachable from the build sandbox) — re-check before relying on them."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "publisher": "IEEE",
+        "rebuttal": "Yes",
+        "pageLimit": "18 pages max"
+      },
+      "links": {
+        "cfp": "https://sp2027.ieee-security.org/cfpapers.html",
+        "website": "https://sp2027.ieee-security.org/"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "ieee-sp-2027",
+      "name": "IEEE S&P 2027",
+      "fullName": "IEEE Symposium on Security and Privacy",
+      "location": {
+        "city": "Montréal",
+        "country": "Canada",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-05-17",
+        "end": "2027-05-19"
+      },
+      "topics": [
+        "security & privacy"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [
+        {
+          "stage": "Registration (cycle 1)",
+          "date": "2026-06-04",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper (cycle 1)",
+          "date": "2026-06-11",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Early-reject notification (cycle 1)",
+          "date": "2026-07-27",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Rebuttal closes (cycle 1)",
+          "date": "2026-08-27",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification (cycle 1)",
+          "date": "2026-09-11",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready (cycle 1)",
+          "date": "2026-10-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Registration (cycle 2)",
+          "date": "2026-11-10",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper (cycle 2)",
+          "date": "2026-11-17",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Early-reject notification (cycle 2)",
+          "date": "2027-01-18",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Rebuttal closes (cycle 2)",
+          "date": "2027-02-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification (cycle 2)",
+          "date": "2027-03-05",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready (cycle 2)",
+          "date": "2027-04-08",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://cycle1.sp2027.ieee-security.org/deadlines",
+          "https://sp2027.ieee-security.org/cfpapers.html"
+        ]
+      },
+      "notes": "Cycle 2 is OPEN (paper 17 Nov 2026, registration 10 Nov). Dates are the CFP's own (11 Jun / 17 Nov); time zone is not stated on the CFP but cycle 1 matches AoE exactly (the HotCRP display of 12 Jun 07:59 EDT is 11 Jun 23:59 AoE), so AoE is assumed for all. Workshop paper deadlines usually around February (per maintainer's table)."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "Yes, 1 round",
+        "pageLimit": "13 pages excluding references and appendices",
+        "publisher": "USENIX"
+      },
+      "links": {
+        "cfp": "https://www.usenix.org/conference/usenixsecurity27/call-for-papers",
+        "website": "https://www.usenix.org/conference/usenixsecurity27"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "usenixsec-2027",
+      "name": "USENIX Security 2027",
+      "fullName": "USENIX Security Symposium",
+      "location": {
+        "city": "Denver, CO",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-08-11",
+        "end": "2027-08-13"
+      },
+      "topics": [
+        "security & privacy"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [
+        {
+          "stage": "Registration (cycle 1)",
+          "date": "2026-08-18",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Paper (cycle 1)",
+          "date": "2026-08-25",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Early-reject notification (cycle 1)",
+          "date": "2026-10-06",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Rebuttal closes (cycle 1)",
+          "date": "2026-11-12",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Notification (cycle 1)",
+          "date": "2026-12-03",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Camera-ready (cycle 1)",
+          "date": "2027-01-14",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Registration (cycle 2)",
+          "date": "2027-01-19",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Paper (cycle 2)",
+          "date": "2027-01-26",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Early-reject notification (cycle 2)",
+          "date": "2027-03-09",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Rebuttal closes (cycle 2)",
+          "date": "2027-04-15",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Notification (cycle 2)",
+          "date": "2027-05-06",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        },
+        {
+          "stage": "Camera-ready (cycle 2)",
+          "date": "2027-06-03",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "see CFP"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://www.usenix.org/sites/default/files/sec27_cfp-070826.pdf",
+          "https://www.usenix.org/conference/usenixsecurity27"
+        ]
+      },
+      "notes": "Cycle 2 is OPEN (paper 26 Jan 2027); registration a week earlier is mandatory. an Open Science appendix is required. Cutoff time of day not captured. Dates read from search-result excerpts of the official CFP, not the CFP page itself (site unreachable from the build sandbox) — re-check before relying on them."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "publisher": "Springer LNCS"
+      },
+      "links": {
+        "cfp": "https://conferences.i-cav.org/2027/cfp/",
+        "website": "https://conferences.i-cav.org/2027/"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "cav-2027",
+      "name": "CAV 2027",
+      "fullName": "International Conference on Computer Aided Verification",
+      "location": {
+        "city": "Amsterdam",
+        "country": "Netherlands",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-07-19",
+        "end": "2027-07-23"
+      },
+      "topics": [
+        "formal verification"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2027-01-20",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://conferences.i-cav.org/2027/cfp/",
+          "https://conferences.i-cav.org/2027/"
+        ]
+      },
+      "notes": "Only the paper deadline was retrievable; abstract/notification dates not captured. Dates read from search-result excerpts of the official CFP, not the CFP page itself (site unreachable from the build sandbox) — re-check before relying on them."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "pageLimit": "20 pages excluding references",
+        "publisher": "Springer"
+      },
+      "links": {
+        "cfp": "https://raid2026.org/call.html"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "raid-2026",
+      "name": "RAID 2026",
+      "fullName": "International Symposium on Research in Attacks, Intrusions and Defenses",
+      "location": {
+        "city": "Lancaster",
+        "country": "United Kingdom",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-10-11",
+        "end": "2026-10-14"
+      },
+      "topics": [
+        "security & privacy"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "B",
+        "h5Index": "—",
+        "mnisw": "140"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-04-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2026-07-10",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready",
+          "date": "2026-08-13",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://raid2026.org/call.html",
+          "https://www.myhuiban.com/conference/64"
+        ]
+      },
+      "notes": "Cycle closed; paper deadline stated as AoE on the CFP. RAID 2027 not announced."
+    },
+    {
+      "kind": "conference",
+      "broadScope": true,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified"
+      },
+      "links": {
+        "website": "https://icis2026.aisconferences.org/"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "icis-2026",
+      "name": "ICIS 2026",
+      "fullName": "International Conference on Information Systems",
+      "location": {
+        "city": "Lisbon",
+        "country": "Portugal",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-12-13",
+        "end": "2026-12-16"
+      },
+      "topics": [
+        "information systems",
+        "security & privacy"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-05-01",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://icis2026.aisconferences.org/submissions/",
+          "https://cto.aom.org/discussion/cfp-icis-2026-lisbon-submissions-due-may-1"
+        ]
+      },
+      "notes": "Cycle closed. Theme: Digital Collaboration and Coexistence. Tracks span security and healthcare IS."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "publisher": "IEEE"
+      },
+      "links": {
+        "website": "https://www3.cs.stonybrook.edu/~icdm2026/"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "icdm-2026",
+      "name": "ICDM 2026",
+      "fullName": "IEEE International Conference on Data Mining",
+      "location": {
+        "city": "Shenyang",
+        "country": "China",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2026-11-12",
+        "end": "2026-11-15"
+      },
+      "topics": [
+        "data mining",
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-06-06",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2026-08-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready",
+          "date": "2026-09-09",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://www3.cs.stonybrook.edu/~icdm2026/"
+        ]
+      },
+      "notes": "Cycle closed. Separate Applied Track; submit to Research or Applied, not both. Workshop proposals closed 14 Mar 2026; individual workshop paper deadlines vary (one lists 20 Aug 2026)."
+    },
+    {
+      "kind": "conference",
+      "broadScope": true,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified"
+      },
+      "links": {},
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "hicss-2027",
+      "name": "HICSS-60",
+      "fullName": "Hawaii International Conference on System Sciences",
+      "location": {
+        "city": "Waikoloa, HI",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-01-05",
+        "end": "2027-01-08"
+      },
+      "topics": [
+        "information systems",
+        "medical imaging"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "140"
+      },
+      "deadlines": [
+        {
+          "stage": "Paper",
+          "date": "2026-06-15",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "HST"
+        },
+        {
+          "stage": "Notification",
+          "date": "2026-08-17",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "HST"
+        },
+        {
+          "stage": "Revised manuscript",
+          "date": "2026-09-04",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "HST"
+        },
+        {
+          "stage": "Final manuscript",
+          "date": "2026-09-22",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "HST"
+        },
+        {
+          "stage": "Author registration",
+          "date": "2026-10-01",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "HST"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://issip.org/event/hawaii-international-conference-on-system-sciences-hicss/"
+        ]
+      },
+      "notes": "Submission closed; author registration (1 Oct) is the next date. Track-based; healthcare tracks exist. Dates from track CFP mailings, not the HICSS site."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "publisher": "IEEE/ACM"
+      },
+      "links": {
+        "cfp": "https://conf.researchr.org/track/icse-2027/icse-2027-research-track",
+        "website": "https://conf.researchr.org/home/icse-2027"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "icse-2027",
+      "name": "ICSE 2027",
+      "fullName": "International Conference on Software Engineering",
+      "location": {
+        "city": "Dublin",
+        "country": "Ireland",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-04-25",
+        "end": "2027-05-01"
+      },
+      "topics": [
+        "software engineering"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "200"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-06-23",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-06-30",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Rebuttal closes",
+          "date": "2026-09-25",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2026-10-20",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready",
+          "date": "2026-11-24",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://conf.researchr.org/dates/icse-2027",
+          "https://icse-conferences.org/news.html"
+        ]
+      },
+      "notes": "Research track has a single cycle from 2027 (spring cycle dropped). Submission closed; author response 23–25 Sep 2026, notification 20 Oct. Workshop paper deadlines usually around October (per maintainer's table)."
+    },
+    {
+      "kind": "conference",
+      "broadScope": false,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "unspecified",
+        "publisher": "AAAI Press"
+      },
+      "links": {
+        "cfp": "https://aaai.org/conference/aaai/aaai-27/eaai-27-call/"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "eaai-2027",
+      "name": "EAAI-27",
+      "fullName": "Symposium on Educational Advances in Artificial Intelligence",
+      "location": {
+        "city": "Montréal",
+        "country": "Canada",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-02-21",
+        "end": "2027-02-23"
+      },
+      "topics": [
+        "education"
+      ],
+      "rankings": {
+        "core": "—",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "140"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-09-01",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-09-08",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2026-11-17",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Camera-ready",
+          "date": "2026-12-14",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://easychair.org/cfp/EAAI-27",
+          "https://aaai.org/conference/aaai/aaai-27/eaai-27-call/"
+        ]
+      },
+      "notes": "Submission closed. Co-located with AAAI-27 but has its own proceedings and points, so modelled as a conference."
+    },
+    {
+      "kind": "conference",
+      "broadScope": true,
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "publisher": "PMLR"
+      },
+      "links": {
+        "cfp": "https://virtual.aistats.org/Conferences/2027/SubmissionFAQ"
+      },
+      "hostVenueId": null,
+      "coLocatedWorkshops": [],
+      "integrityFlag": null,
+      "id": "aistats-2027",
+      "name": "AISTATS 2027",
+      "fullName": "International Conference on Artificial Intelligence and Statistics",
+      "location": {
+        "city": "Montréal",
+        "country": "Canada",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-05-03",
+        "end": "2027-05-06"
+      },
+      "topics": [
+        "ml theory"
+      ],
+      "rankings": {
+        "core": "A",
+        "ccf": "—",
+        "h5Index": "—",
+        "mnisw": "140"
+      },
+      "deadlines": [
+        {
+          "stage": "Abstract",
+          "date": "2026-09-29",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-10-06",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Reviews released",
+          "date": "2026-11-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2027-01-20",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "confidence": "provisional",
+        "urls": [
+          "https://virtual.aistats.org/Conferences/2027/SubmissionFAQ",
+          "https://mldeadlines.com/conference/aistats-2027/"
+        ]
+      },
+      "notes": "Abstract deadline is today (29 Sep 2026); full paper incl. supplementary 6 Oct. Submissions via OpenReview."
+    },
+    {
+      "id": "cvpr-2027",
+      "name": "CVPR 2027",
+      "fullName": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "kind": "conference",
+      "broadScope": false,
+      "location": {
+        "city": "Seattle, WA",
+        "country": "USA",
+        "format": "in-person"
+      },
+      "event": {
+        "start": "2027-06-20",
+        "end": "2027-06-25"
+      },
+      "registration": {
+        "fee": "—",
+        "tiers": []
+      },
+      "topics": [
+        "computer vision"
+      ],
+      "rankings": {
+        "core": "A*",
+        "ccf": "—",
+        "h5Index": "440",
+        "mnisw": "200"
+      },
+      "acceptance": {
+        "latestPct": null,
+        "latestYear": null
+      },
+      "review": {
+        "blinding": "double-blind",
+        "rebuttal": "—",
+        "pageLimit": "—",
+        "openAccess": "—",
+        "publisher": "IEEE/CVF"
+      },
+      "deadlines": [
+        {
+          "stage": "Registration",
+          "date": "2026-11-10",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Paper",
+          "date": "2026-11-16",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Supplementary",
+          "date": "2026-11-23",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        },
+        {
+          "stage": "Notification",
+          "date": "2027-02-25",
+          "extendedTo": null,
+          "extensionNote": null,
+          "timezone": "AoE"
+        }
+      ],
+      "links": {
+        "cfp": "https://cvpr.thecvf.com/Conferences/2027/CallForPapers",
+        "website": "https://cvpr.thecvf.com/Conferences/2027"
+      },
+      "source": {
+        "verifiedOn": "2026-09-29",
+        "urls": [
+          "https://cvpr.thecvf.com/Conferences/2027/CallForPapers"
+        ],
+        "confidence": "provisional"
+      },
+      "notes": "Submission OPEN via OpenReview. Workshops/tutorials 20–21 Jun, main conference 22–25 Jun. Workshop paper deadlines usually Feb–Mar (per maintainer's table).",
       "hostVenueId": null,
       "coLocatedWorkshops": [],
       "integrityFlag": null

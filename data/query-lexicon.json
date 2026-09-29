@@ -12,7 +12,12 @@
     "information retrieval": ["retrieval", "search engine", "ranking"],
     "ml theory": ["theory", "theoretical", "optimization", "statistic"],
     "multimodal": ["multimodal", "vision-language", "vlm"],
-    "graph learning": ["graph", "gnn"]
+    "graph learning": ["graph", "gnn"],
+    "security & privacy": ["security", "cyber", "malware", "intrusion", "attack", "cryptograph", "exploit"],
+    "formal verification": ["verification", "formal method", "model checking", "theorem prov"],
+    "software engineering": ["software", "testing", "program analysis", "code generation"],
+    "information systems": ["information system", "socio-technical", "digital transformation"],
+    "education": ["education", "teaching", "classroom", "curriculum"]
   },
   "blinding": {
     "double-blind": ["double blind", "double-blind", "doubleblind"],
